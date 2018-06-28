@@ -1,2 +1,3 @@
 # Train-Time
-Train Time with DB 
+
+Train Time App featuring Moment JS and Firebase
