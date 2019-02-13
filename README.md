@@ -1,3 +1,1 @@
-# Train-Time
-
-Train Time App featuring Moment JS and Firebase
+#All of the fun to be had with D3 

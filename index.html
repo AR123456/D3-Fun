@@ -1,89 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
+    <title>SVG stuff</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Train Time </title>
-    <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
-    <!-- Moment.js Reference -->
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-yAYSLJjzniZh9Kau9E1v1ma5CzvyHF8fPK/xUpaRx1XTH9r60WxzDivvHG3xm6Hn"
-        crossorigin="anonymous">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
+    <!-- link to local style sheet -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <svg width="600" height="600">
+      <rect x="300" y="100" fill="blue" width="100" height="200"></rect>
+      <!--  cx is the center of the circle in they x direction and cy is the center of the circle in the y direction -->
+      <!-- r is the radious , fill is fill, stroke is the outlineline , 2 is the width of the line -->
+      <circle
+        cx="200"
+        cy="200"
+        r="50"
+        fill="pink"
+        stroke="red"
+        stroke-width="2"
+      ></circle>
+      <!-- line start x1 and y1  and stop c2 and y2 stroke is line and stroke width is the line width  -->
+      <!-- <circle cx='200' cy='200' r='50' fill='pink' stroke="red" stroke-width="2"></circle>-->
+      <line
+        x1="100"
+        y1="100"
+        x2="120"
+        y2="300"
+        stroke="grey"
+        stroke-width="3"
+      ></line>
+    </svg>
 
-</head>
-
-<body>
-    <div class="container-fluid">
-        <div class="jumbotron">
-            <h1 class="text-center">Train Time </h1>
-        </div>
-        <div class="card -primary">
-            <div class="card-heading">
-                <h3 class="text-center" class="card-title">Current Train Schedule</h3>
-            </div>
-            <div class="card-body">
-                <table class="table table-hover" id="trainTable">
-                    <thead>
-                        <tr>
-                            <th>Train Name </th>
-                            <th>Destination</th>
-                            <th>Frequency(min)</th>
-                            <th>Next Arrival</th>
-                            <th>Minutes Away</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- form to submit to firebase -->
-        <div class="card card-primary">
-            <div class="card-heading">
-                <h3 class="card-title">Add Train</h3>
-            </div>
-            <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <label for=""> Train Name</label>
-                        <input type="text" class="form-control" id="trainNameInput">
-                    </div>
-                    <div class="form-group">
-                        <label for=""> Destination</label>
-                        <input type="text" class="form-control" id="destinationInput">
-                    </div>
-                    <div class="form-group">
-                        <label for=""> First Train Time (24hr clock)</label>
-                        <input type="text" class="form-control" id="firstTrainInput">
-                    </div>
-                    <div class="form-group">
-                        <label for=""> Frequency in min</label>
-                        <input type="text" class="form-control" id="frequencyInput">
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="addTrainBtn">Submit</button>
-                </form>
-            </div>
-
-        </div>
-
-    </div>
-    <!-- jQuery Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script src="./assets/javascript/app.js"> </script>
-</body>
-
+    <!-- local external js file  -->
+    <script src="./assets/javascript/app.js"></script>
+  </body>
 </html>
