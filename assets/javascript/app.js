@@ -37,3 +37,14 @@ svg
   .attr("stroke", "red");
 
 //can also append p tags and other elements just will not on this course
+// can also add text  text svg this is usefull for adding a label to a graph ect
+svg
+  .append("text")
+  //the start of the text string along x
+  .attr("x", 20)
+  // the start position from the top
+  .attr("y", 200)
+  .attr("fill", "grey")
+  .text("Hello world !")
+  //can use the css style methond to apply css
+  .style("font-family", "arial");
