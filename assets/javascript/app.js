@@ -1,13 +1,9 @@
-// // vanilla javascript
-// const a = document.querySelector("div");
-// // same thing with the d3 methond from its library plus it puts it in a d3 wrapper so other d3 methods are avalible
-// const b = d3.select("div");
-
-// // vanilla javascript
-// const a = document.querySelectorAll("div");
-// // same thing with the d3 methond from its library plus it puts it in a d3 wrapper so other d3 methods are avalible
-// const b = d3.selectAll("div");
-
-// console.log(a, b);
-
 const canvas = d3.select(".canvas");
+// append is an d3 methond that appends the svg to the canvas
+const svg = canvas.append("svg");
+// append shapes to svg container
+svg.append("rect");
+svg.append("circle");
+svg.append("line");
+
+//can also append p tags and other elements
