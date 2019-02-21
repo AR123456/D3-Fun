@@ -1,45 +1,38 @@
-const canvas = d3.select(".canvas");
+//d3 expects data in array format, to do more that one rectangle pass more rectangle objects into the array
+// in real life may not know how many rects there will ultimatly be ..
+//d3 sees all the items in this array but as virtual selections, they still need to be joined to the DOM - Enter Selection
+const data = [
+  {
+    width: 200,
+    height: 100,
+    fill: "purple"
+  },
+  {
+    width: 100,
+    height: 60,
+    fill: "pink"
+  },
+  {
+    width: 50,
+    height: 30,
+    fill: "red"
+  }
+];
 
-const svg = canvas
-  .append("svg")
-  .attr("height", 600)
-  .attr("width", 600);
-//  creating grouping
-const group = svg
-  .append("g")
-  // changing the svg to group bellow - could now perform a transform to this group
-  // this moves the whole group down 100 px
-  .attr("transform", "translate(0,100) ");
-group
+const svg = d3.select("svg");
+//this joins the data to rects
+
+const rects = svg.selectAll("rect").data(data);
+
+//this updates the rect element in the dom
+rects
+  .attr("width", (d, i, n) => d.width)
+  .attr("height", d => d.height)
+  .attr("fill", d => d.fill);
+//this updates the stuff that has not yet entered the DOM via the enter selection
+rects
+  .enter()
   .append("rect")
-  .attr("width", 200)
-  .attr("height", 100)
-  .attr("fill", "blue")
-  .attr("x", 20)
-  .attr("y", 20);
-
-group
-  .append("circle")
-  .attr("r", 50)
-  .attr("cx", 300)
-  .attr("cy", 70)
-  .attr("fill", "pink");
-
-group
-  .append("line")
-  .attr("x1", 370)
-  .attr("x2", 400)
-  .attr("y1", 120)
-  .attr("y2", 20)
-  .attr("stroke", "red");
-// end of the group
-svg
-  .append("text")
-
-  .attr("x", 20)
-
-  .attr("y", 200)
-  .attr("fill", "grey")
-  .text("Hello world !")
-
-  .style("font-family", "arial");
+  .attr("width", (d, i, n) => d.width)
+  .attr("height", d => d.height)
+  .attr("fill", d => d.fill);
