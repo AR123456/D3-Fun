@@ -7,29 +7,59 @@ const data = [
   }
 ];
 
-//always start off with a reff to the svg - this is were will append to
 const svg = d3.select("svg");
-//select rectangle inside of the svg
+///////////// old way //////////////
+// const rect = svg.select("rect")
+//   .data(data)
+//   .attr("width", function(d, i, n) {
+//     return d.width;
+//   })
+//   .attr("height", function(d) {
+//     return d.height;
+//   })
+//   .attr("fill", function(d) {
+//     return d.fill;
+//   });
+//////////////////// explaining using es6/////////////////
+// const rect = svg.select("rect")
+//   .data(data)
+//   .attr("width", (d, i, n) => {
+//     console.log(this); //its the window- but what is needed is the rect
+//     //can use the n and i that are passed in to get to the rect
+//     console.log(n[i]); // now its the rect
+//     return d.width;
+//   })
+//   // most of the documentation on the web and d3 uses the old way bacuase of it issues with "thjs"
+//   .attr("height", function(d) {
+//     console.log(this); //its the rect
+//     return d.height;
+//   })
+//   .attr("fill", function(d) {
+//     return d.fill;
+//   });
+
+/////////////now all arrows ////////////////////
+
+// const rect = svg
+//   .select("rect")
+//   .data(data)
+
+//   .attr("width", (d, i, n) => {
+//     return d.width;
+//   })
+//   .attr("height", d => {
+//     return d.height;
+//   })
+//   .attr("fill", d => {
+//     return d.fill;
+//   });
+
+/////////further refinement of the es6////////////////////////
 const rect = svg
   .select("rect")
-  //here using the .data method from d3 and in the params is the const data above
   .data(data)
-  // create a function that returns a value instead of a hard coded number
-  //the d is for data
-  // the function can also take in  i and n
-  // i is the index of the current element inside of the array
-  //n is the current selection in this case the rectangle
-  .attr("width", function(d, i, n) {
-    // console.log(d);
-    // console.log(i);
-    // console.log(n);
-    return d.width;
-  })
-  .attr("height", function(d) {
-    return d.height;
-  })
-  .attr("fill", function(d) {
-    return d.fill;
-  });
-
-// console.log(rect);
+  // with es6 if the return is on one line dont need the return or the braces around it ,  it is implecet
+  .attr("width", (d, i, n) => d.width)
+  //dont need the parans if there is only one value being passed in
+  .attr("height", d => d.height)
+  .attr("fill", d => d.fill);
