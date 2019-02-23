@@ -1,44 +1,53 @@
-//d3 expects data in array format, to do more that one rectangle pass more rectangle objects into the array
 const data = [
   {
-    width: 200,
-    height: 100,
-    fill: "purple"
+    radius: 50,
+    distance: 110,
+    fill: "orange"
   },
   {
-    width: 100,
-    height: 60,
-    fill: "pink"
-  },
-  {
-    width: 50,
-    height: 30,
+    radius: 70,
+    distance: 260,
     fill: "red"
+  },
+  {
+    radius: 35,
+    distance: 400,
+    fill: "brown"
+  },
+  {
+    radius: 55,
+    distance: 530,
+    fill: "green"
   }
 ];
 
+/// select svg container first
 const svg = d3.select("svg");
-///////////// old way //////////////
-// const rect = svg.select("rect")
-//   .data(data)
-//   .attr("width", function(d, i, n) {
-//     return d.width;
-//   })
-//   .attr("height", function(d) {
-//     return d.height;
-//   })
-//   .attr("fill", function(d) {
-//     return d.fill;
-//   });
 
-/////////further refinement of the es6////////////////////////
-const rect = svg
-
-  // this becomes select all rectangle
-  // .select("rect")
-  .selectAll("rect")
-  .data(data)
-  .attr("width", (d, i, n) => d.width)
-  .attr("height", d => d.height)
+const circs = svg
+  .selectAll("circle")
+  // no circles so will need enter selection after join
+  //get the actual data from the json
+  .data(data);
+//add the attribute to circles already in the dom - we do not have any in this case but in future may so this is good practice
+// cy is being hard coded the y position from the top
+circs
+  .attr("cy", 200)
+  // left to right - taking distance from the left from the json object
+  .attr("cx", d => d.distance)
+  //getting radius from the json object
+  .attr("r", d => d.radius)
+  //get the fill from the json object
   .attr("fill", d => d.fill);
-console.log(rect);
+
+// repeat the attr above for what is not hard coded, what is coming from the virtual d3 storage using  enter().append()
+circs
+  .enter()
+  .append("circle")
+  .attr("cy", 200)
+  // left to right - taking distance from the left from the json object
+  .attr("cx", d => d.distance)
+  //getting radius from the json object
+  .attr("r", d => d.radius)
+  //get the fill from the json object
+  .attr("fill", d => d.fill);
