@@ -1,53 +1,51 @@
 const data = [
   {
-    radius: 50,
-    distance: 110,
-    fill: "orange"
+    name: "veg soup",
+    orders: 200
   },
   {
-    radius: 70,
-    distance: 260,
-    fill: "red"
+    name: "veg curry",
+    orders: 600
   },
   {
-    radius: 35,
-    distance: 400,
-    fill: "brown"
+    name: "veg pasta",
+    orders: 300
   },
   {
-    radius: 55,
-    distance: 530,
-    fill: "green"
+    name: "veg surprise",
+    orders: 900
   }
 ];
+//create a linear scale using d3.scaleLinear
+//pass domain - the input values between( the max values)  and   range
+const y = d3
+  .scaleLinear()
+  // this is essentialy making it 1/2 scale
+  .domain([0, 1000])
+  .range([0, 500]);
 
 /// select svg container first
 const svg = d3.select("svg");
+//join data to elements
+const rects = svg.selectAll("rect").data(data);
+//update recs in dom
+rects
+  .attr("width", 50)
+  //need to pass the height through the y scale so enclose d function into y
+  // .attr("height", d => d.orders)
+  .attr("height", d => y(d.orders))
+  .attr("fill", "orange")
+  // shifting tho the right 70 px for each rectangle
+  .attr("x", (d, i) => i * 70);
 
-const circs = svg
-  .selectAll("circle")
-  // no circles so will need enter selection after join
-  //get the actual data from the json
-  .data(data);
-//add the attribute to circles already in the dom - we do not have any in this case but in future may so this is good practice
-// cy is being hard coded the y position from the top
-circs
-  .attr("cy", 200)
-  // left to right - taking distance from the left from the json object
-  .attr("cx", d => d.distance)
-  //getting radius from the json object
-  .attr("r", d => d.radius)
-  //get the fill from the json object
-  .attr("fill", d => d.fill);
-
-// repeat the attr above for what is not hard coded, what is coming from the virtual d3 storage using  enter().append()
-circs
+//append the enter selection to the DOM
+rects
   .enter()
-  .append("circle")
-  .attr("cy", 200)
-  // left to right - taking distance from the left from the json object
-  .attr("cx", d => d.distance)
-  //getting radius from the json object
-  .attr("r", d => d.radius)
-  //get the fill from the json object
-  .attr("fill", d => d.fill);
+  .append("rect")
+  .attr("width", 50)
+  //need to pass the height through the y scale so enclose d function into y
+  // .attr("height", d => d.orders)
+  .attr("height", d => y(d.orders))
+  .attr("fill", "orange")
+  // shifting tho the right 70 px for each rectangle
+  .attr("x", (d, i) => i * 70);
