@@ -1,7 +1,5 @@
-/// band scales space out categories in a bar chart
-// the scale of the width of the rectangles so that no matter how many come in as data the all fit into the svg
-// use d3 band scale  - splits data in to bands of equeal value
-// pass  in names and x coord, where it starts on x axis  and it returns the band width based on how many items and the width avalible in the svg container
+// updating the domain range to not be hard coded with min max and extend
+//
 
 const data = [
   {
@@ -19,24 +17,33 @@ const data = [
   {
     name: "veg surprise",
     orders: 900
+  },
+  {
+    name: "veg burger",
+    orders: 1500
   }
 ];
 
 const y = d3
   .scaleLinear()
-  .domain([0, 1000])
+  // passing in d3.max
+  .domain([0, d3.max(data, d => d.orders)])
   .range([0, 500]);
+//cycle through the data and evaluate properties on each object and return the lowest ordered value
+// for each order find the lowest value and return that.
+// const min = d3.min(data, d => d.orders);
+// // console.log(min);
+// const max = d3.max(data, d => d.orders);
+// // console.log(max);
+// // extend finds the lowset and highest
+// const extent = d3.extent(data, d => d.orders);
+// // console.log(extent);
 
 const x = d3
   .scaleBand()
-  // array of the different categories use map
   .domain(data.map(item => item.name))
-  // console.log(data.map(item => item.name));
-  // now pass the range , an array of 2 points representing the x range  0-500
   .range([0, 500])
-  //put padding between bars
   .paddingInner(0.2)
-  // put padding at begging and end of the chart
   .paddingOuter(0.2);
 
 /// select svg container first
@@ -45,7 +52,6 @@ const svg = d3.select("svg");
 const rects = svg.selectAll("rect").data(data);
 //update recs in dom
 rects
-  // the bandWidth  methond returns the value of the width of each bar
   .attr("width", x.bandwidth)
   .attr("height", d => y(d.orders))
   .attr("fill", "orange")
@@ -55,7 +61,6 @@ rects
 rects
   .enter()
   .append("rect")
-  // the bandWidth  methond returns the value of the width of each bar
   .attr("width", x.bandwidth)
   .attr("height", d => y(d.orders))
   .attr("fill", "orange")
