@@ -1,5 +1,7 @@
-// updating the domain range to not be hard coded with min max and extend
-//
+//creating the svg in the javascript
+// Groups and Margins   add a margin between the rectangles and the svg edge
+// first surround the rectangles in a graph group , set width of the group and move in from the edge
+// base the group margin as width and height of svg container less the margin .
 
 const data = [
   {
@@ -26,18 +28,9 @@ const data = [
 
 const y = d3
   .scaleLinear()
-  // passing in d3.max
+
   .domain([0, d3.max(data, d => d.orders)])
   .range([0, 500]);
-//cycle through the data and evaluate properties on each object and return the lowest ordered value
-// for each order find the lowest value and return that.
-// const min = d3.min(data, d => d.orders);
-// // console.log(min);
-// const max = d3.max(data, d => d.orders);
-// // console.log(max);
-// // extend finds the lowset and highest
-// const extent = d3.extent(data, d => d.orders);
-// // console.log(extent);
 
 const x = d3
   .scaleBand()
@@ -46,10 +39,33 @@ const x = d3
   .paddingInner(0.2)
   .paddingOuter(0.2);
 
-/// select svg container first
-const svg = d3.select("svg");
-//join data to elements
-const rects = svg.selectAll("rect").data(data);
+// select the canvas and then create the svg in the javascirpt
+const svg = d3
+  .select(".canvas")
+  .append("svg")
+  .attr("width", 600)
+  .attr("height", 600);
+// create margins and dimensions
+const margin = {
+  top: 20,
+  right: 20,
+  bottom: 100, // to allow for the axis
+  left: 100 // to allow for the axis
+};
+// work out the graph width
+const graphWidth = 600 - margin.left - margin.right;
+//work out the graph height
+const graphHeight = 600 - margin.top - margin.bottom;
+// create the graph and append it to the svg
+const graph = svg
+  .append("g")
+  .attr("width", graphWidth)
+  .attr("height", graphHeight)
+  // need to translate in by margin left and margin top, need to move in ( use es6 template string to concatonate )
+  .attr("transform", `translate(${margin.left},${margin.top})`);
+
+// append the rectangles  to the graph directly
+const rects = graph.selectAll("rect").data(data);
 //update recs in dom
 rects
   .attr("width", x.bandwidth)
