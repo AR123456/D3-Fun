@@ -18,16 +18,6 @@
       header {
         margin-bottom: 40px;
       }
-      /* adding style to tool tip  */
-      .tip {
-        padding: 10px;
-        background: #333;
-        color: #fff;
-      }
-      .tip .delete {
-        color: hotpink;
-        font-size: 0.8;
-      }
     </style>
   </head>
   <body class="indigo">
@@ -71,14 +61,20 @@
 
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+
+      firebase.initializeApp(config);
+      const db = firebase.firestore();
+      const settings = { timestampsInSnapshots: true };
+      db.settings(settings);
+    </script>
 
     <script src="https://d3js.org/d3.v5.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- d3 legend plugin  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-    <!-- d3 tooltip  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 
     <script src="index.js"></script>
     <script src="graph.js"></script>

@@ -1,7 +1,5 @@
 // interactive D3 visualizaitons - onclicks, double-clicks hovers, drags, tooltips ect
-//Section 9 lecture 67 tool tips
-// using d3 tip package
-
+//Section 9 lecture 62 ,63,64,65
 // Event listenters - D3 supports most vanilla JS events
 //https://developer.mozilla.org/en-US/docs/Web/Events
 // syntax for setting up event listeners
@@ -46,24 +44,6 @@ const legend = d3
   .shapePadding(10)
   .scale(colour);
 
-// adding tool tip with the tool tip plug in
-
-const tip = d3
-  //from the plug in
-  .tip()
-  // to be able to add style using materialize card
-  .attr("class", "tip card")
-  // this is the html that will be inside of the tooltip
-  .html(d => {
-    //here return dynamic content ...
-    let content = `<div class="name"> ${d.data.name}</div>`;
-    content += `<div class="cost"> ${d.data.cost}</div>`;
-    content += `<div class="delete"> Click slice to delete</div>`;
-    return content;
-  });
-/// apply this to the graph
-graph.call(tip);
-
 ////////////////////////the update function ///////////////////
 const update = data => {
   colour.domain(data.map(d => d.name));
@@ -104,24 +84,10 @@ const update = data => {
   graph
     .selectAll("path")
     //////// adding events //////
-    // adding the tool tip have to re write this since we now need 2 functions
-    // .on("mouseover", handleMouseOver)
-    // take in d i and n
-    .on("mouseover", (d, i, n) => {
-      //specify the 2 functions
-      // if you use old school function the n[i]  is the 'this' key word
-      tip.show(d, n[i]);
-      handleMouseOver(d, i, n);
-    })
-    // adding the tool tip have to re write this since we now need 2 functions
-    //   .on("mouseout", handleMouseOut)
-    // take in d i and n
-    .on("mouseout", (d, i, n) => {
-      tip.hide(d, n[i]);
-      handleMouseOut(d, i, n);
-    })
-    // adding an on click to del a slice of the pie
-    .on("click", handleClick);
+    // then add the event listener and the call back function
+    // the call back function is being handed the 'd' (the data on the path)  as  well as the 'i'- index of that element in the selection  and 'n'- the array of elements in that selection
+    .on("mouseover", handleMouseOver)
+    .on("mouseout", handleMouseOut);
 };
 var data = [];
 
@@ -189,19 +155,11 @@ const handleMouseOut = (d, i, n) => {
   //wrap n[i] in the d3.select so that we have access to d3 methods
   d3.select(n[i])
     //adding d3 methods
-
     //maing this a named transition
     // .transition()
     .transition("changeSliceFill")
     .duration(300)
     .attr("fill", colour(d.data.name));
 };
-
-const handleClick = d => {
-  // console.log(d);
-  // in this object is the firestore of the thing that was clicked on .
-  const id = d.data.id;
-  db.collection("expenses")
-    .doc(id)
-    .delete();
-};
+// fixing the bug where the mouse over event stops the chart from fully loading
+// to fix this in d3 name the transtions inside of the transiton method
