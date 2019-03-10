@@ -1,23 +1,48 @@
-//interacting with the DOM
+// DOM elements
 const btns = document.querySelectorAll("button");
 const form = document.querySelector("form");
 const formAct = document.querySelector("form span");
 const input = document.querySelector("input");
-const error = document.querySelector("error");
+const error = document.querySelector(".error");
 
 var activity = "cycling";
-//event listoners on the buttons
+
 btns.forEach(btn => {
   btn.addEventListener("click", e => {
-    // find the activity of the button
+    // get selected activity
     activity = e.target.dataset.activity;
-    //remove the active class from prior click and add the new
+
+    // remove and add active class
     btns.forEach(btn => btn.classList.remove("active"));
-    // apply the active class to the new clicked button
     e.target.classList.add("active");
-    //set id on input field
+
+    // set id of input field
     input.setAttribute("id", activity);
-    // set text of the span in the form
+
+    // set text of form span (the activity)
     formAct.textContent = activity;
   });
+});
+
+// form submit
+form.addEventListener("submit", e => {
+  // prevent default action
+  e.preventDefault();
+
+  const distance = parseInt(input.value);
+  if (distance) {
+    db.collection("activities")
+      .add({
+        distance,
+        activity,
+        date: new Date().toString()
+      })
+      .then(() => {
+        error.textContent = "";
+        input.value = "";
+      })
+      .catch(err => console.log(err));
+  } else {
+    error.textContent = "Please enter a valid distance";
+  }
 });

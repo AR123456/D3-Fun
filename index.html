@@ -45,7 +45,7 @@
             type="text"
             class="grey-text"
             id="cycling"
-            placeholder="Time in minutes "
+            placeholder="Distance in meters "
           />
           <p class="center pink-text error text-lighten-1"></p>
         </form>
@@ -54,7 +54,21 @@
 
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
-
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCluEXpTTEKU5Ar00icHJQnNXmLU1WpVZ0",
+        authDomain: "weird-thing-three.firebaseapp.com",
+        databaseURL: "https://weird-thing-three.firebaseio.com",
+        projectId: "weird-thing-three",
+        storageBucket: "weird-thing-three.appspot.com",
+        messagingSenderId: "84374152611"
+      };
+      firebase.initializeApp(config);
+      const db = firebase.firestore();
+      const settings = { timestampsInSnapshots: true };
+      db.settings(settings);
+    </script>
     <!-- the main d3 library  -->
     <script src="https://d3js.org/d3.v5.js"></script>
     <!-- Compiled and minified JavaScript for materialize  -->
