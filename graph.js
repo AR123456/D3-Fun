@@ -17,18 +17,6 @@ const graph = svg
   .attr("height", graphHeight)
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-//set up scales
-//time
-const x = d3.scaleTime().range[(0, graphWidth)];
-const y = d3.scaleLinear().range[(graphHeight, 0)];
-// axes groups
-const xAxisGroup = graph
-  .append("g")
-  .attr("class", "x-axis")
-  // have to do a transfrom to get the x axis to start at bottom of graph instead of top
-  .attr("transform", "translate(0, " + graphHeight + ")");
-// y group
-const yAxisGroup = graph.append("g").attr("class", "y-axis");
 // function to update the vizualization when he data comes back from the db
 
 const update = data => {
