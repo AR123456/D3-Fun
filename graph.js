@@ -31,6 +31,10 @@ const xAxisGroup = graph
 const yAxisGroup = graph.append("g").attr("class", "y-axis");
 //////////////// function to update the vizualization when he data comes back from the db////////
 const update = data => {
+  //filter based on the activity button clicked loop to see if activity matches the activity button clicked
+  // using filter to determine true to stay in the array
+  data = data.filter(item => item.activity == activity);
+
   //set domains of scales
   x.domain(d3.extent(data, d => new Date(d.date)));
   y.domain([0, d3.max(data, d => d.distance)]);

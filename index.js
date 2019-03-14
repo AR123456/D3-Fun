@@ -21,6 +21,8 @@ btns.forEach(btn => {
 
     // set text of form span (the activity)
     formAct.textContent = activity;
+    // call the update function to re draw the graph with data relevant to the activity clicked
+    update(data);
   });
 });
 
