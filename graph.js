@@ -29,12 +29,37 @@ const xAxisGroup = graph
   .attr("transform", "translate(0, " + graphHeight + ")");
 // y group
 const yAxisGroup = graph.append("g").attr("class", "y-axis");
-// function to update the vizualization when he data comes back from the db
-
+//////////////// function to update the vizualization when he data comes back from the db////////
 const update = data => {
   //set domains of scales
   x.domain(d3.extent(data, d => new Date(d.date)));
   y.domain([0, d3.max(data, d => d.distance)]);
+  ///create circles for objects- jpin data to the selection
+  const circles = graph.selectAll("circle").data(data);
+  // remove unwanted points, exit selection
+  circles.exit().remove();
+  //update current points with now positions on the graph
+  circles
+    //center x coordinate of each circle driven by the data ( time )
+    //return data passed data through the x scale
+    .attr("cx", d => x(new Date(d.date)))
+    //pass in the data from y scale
+    .attr("cy", d => y(d.distance));
+
+  ////////////////////////////////////////get the enter selection and append a circle for each one
+  //add new points- apppend a circle and assign attributes
+  circles
+    .enter()
+    .append("circle")
+    //radius
+    .attr("r", 4)
+    //center x coordinate of each circle driven by the data ( time )
+    //return data passed data through the x scale
+    .attr("cx", d => x(new Date(d.date)))
+    //pass in the data from y scale
+    .attr("cy", d => y(d.distance))
+    //fill color to match axes color
+    .attr("fill", "#ccc");
   // create the axes
   const xAxis = d3
     .axisBottom(x)
