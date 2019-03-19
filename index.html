@@ -1,38 +1,72 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!--Import Google Icon Font-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!-- Compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <title>OrgChart</title>
-  </head>
-  <body>
-    <!-- scripts -->
-    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        //
-      };
-      firebase.initializeApp(config);
-      const db = firebase.firestore();
-      const settings = { timestampsInSnapshots: true };
-      db.settings(settings);
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-    <script src="https://d3js.org/d3.v5.js"></script>
-    <script src="index.js"></script>
-    <script src="graph.js"></script>
-  </body>
+html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Org Chart </title>
+</head>
+<body>
+
+    <div class="pink section">
+      <h2 class="white-text center">Org Chart </h2>
+    </div>
+    <div class="grey lighten-3 section grey-text" style="position: relative">
+      <p class="flow-text center">The Awsome Company</p>
+      <a class="btn-floating btn-large halfway-fab pink modal-trigger" href="#modal">
+        <i class="material-icons">add</i>
+      </a>
+    </div>
+    
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h4 class="pink-text center">Add a New Employee</h4>
+        <form>
+          <div class="input-field">
+            <input type="text" id="name" placeholder="Employee name" />
+          </div>
+          <div class="input-field">
+            <input type="text" id="parent" placeholder="Reports to..." />
+          </div>
+          <div class="input-field">
+            <input type="text" id="department" placeholder="Department" />
+          </div>
+          <div class="input-field center">
+            <button class="btn pink white-text">Add Employee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="canvas"></div>
+    </div>
+  
+  <!-- scripts -->
+  <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      // apiKey: "AIzaSyBimZS4KHtAzEICqMyph25tUEpKA2lJ1e0",
+      // authDomain: "d3-testing-nn.firebaseapp.com",
+      // databaseURL: "https://d3-testing-nn.firebaseio.com",
+      // projectId: "d3-testing-nn",
+      // storageBucket: "d3-testing-nn.appspot.com",
+      // messagingSenderId: "450687416936"
+    };
+    // firebase.initializeApp(config);
+    // const db = firebase.firestore();
+    // const settings = {timestampsInSnapshots: true};
+    // db.settings(settings);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script src="index.js"></script>
+  <script src="graph.js"></script>
+</body>
 </html>
