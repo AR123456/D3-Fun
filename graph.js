@@ -1,3 +1,15 @@
+//set up
+//the actual diagram dimention
+const dims = { height: 500, width: 1100 };
+// the container for the graph
+const svg = d3
+  .select(".canvas")
+  .append("svg")
+  .append("width", dims.width + 100)
+  .attr("height", dims.height + 100);
+// the the graph group
+const graph = svg.append("g").attr("transform", "translate (50, 50)");
+
 // setting up the real time event listoner
 var data = [];
 db.collection("employees").onSnapshot(res => {
