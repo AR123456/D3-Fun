@@ -1,16 +1,17 @@
-body{
+body {
   background: #fbfbfb;
 }
-text{
-  font-family: Arial;
+text {
+  font-family: Ariel;
   font-size: 22px;
 }
-h2, .flow-text{
+h2,
+.flow-text {
   margin: 0 0 10px;
 }
-.modal{
+.modal {
   max-width: 500px;
 }
-.canvas{
+.canvas {
   margin-top: 40px;
 }

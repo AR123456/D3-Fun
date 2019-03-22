@@ -20,12 +20,14 @@ const stratify = d3
 const update = data => {
   // get updated root Node data
   const rootNode = stratify(data);
-  const treeData = tree(rootNode);
+  //const treeData = tree(rootNode);
 
-  // console.log(treeData);
+  console.log(rootNode);
+  //console.log(treeData);
 
   // get nodes selection and join new data
-  const nodes = graph.selectAll(".node").data(tree(rootNode).descendants());
+  // const nodes = graph.selectAll('.node')
+  //   .data(tree(rootNode).descendants());
 };
 
 // data & firebase hook-up
