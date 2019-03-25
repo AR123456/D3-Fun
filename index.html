@@ -1,62 +1,77 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <title>Company Org Chart </title>
-</head>
-<body>
-
-    <div class="pink section">
-      <h2 class="white-text center"Cool Company </h2>
-    </div>
-    <div class="grey lighten-3 section grey-text" style="position: relative">
-      <p class="flow-text center">Company Org Chart </p>
-      <a class="btn-floating btn-large halfway-fab pink modal-trigger" href="#modal">
-        <i class="material-icons">add</i>
-      </a>
-    </div>
-    
-    <div id="modal" class="modal">
-      <div class="modal-content">
-        <h4 class="pink-text center">Add a New Employee</h4>
-        <form>
-          <div class="input-field">
-            <input type="text" id="name" placeholder="Employee name" />
-          </div>
-          <div class="input-field">
-            <input type="text" id="parent" placeholder="Reports to..." />
-          </div>
-          <div class="input-field">
-            <input type="text" id="department" placeholder="Department" />
-          </div>
-          <div class="input-field center">
-            <button class="btn pink white-text">Add Employee</button>
-          </div>
-        </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <title>Budget Visualization</title>
+    <style>
+      h2,
+      p {
+        margin: 10ps 0;
+      }
+      header {
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body class="indigo">
+    <header class="indigo darken-1 section">
+      <h2 class="center white-text">
+        <p class="flow-text grey-text center text-lighten-f2">
+          Money tracker
+        </p>
+      </h2>
+    </header>
+    <div class="container section ">
+      <div class="row">
+        <div class="col s12 m6">
+          <form class="card z-depth-0">
+            <div class="card-content">
+              <span class="card-title indigo-text">
+                Add Item:
+              </span>
+              <div class="input-field">
+                <input type="text" id="name" />
+                <label for="name">Item Name </label>
+              </div>
+              <div class="input-field">
+                <input type="text" id="cost" />
+                <label for="name">Item Cost </label>
+              </div>
+              <div class="input-field center">
+                <button class="btn-large pink white=text">Add Item</button>
+              </div>
+              <div class="input-field center">
+                <p class="red-text" id="error"></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col s12 m5 push-m1">
+          <div class="canvas"></div>
+        </div>
       </div>
     </div>
-    
-    <div class="container">
-      <div class="canvas"></div>
-    </div>
-  
-  <!-- scripts -->
-  <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-  <script>
-    // Initialize Firebase
 
-</script>
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-  <script src="https://d3js.org/d3.v5.js"></script>
-  <script src="index.js"></script>
-  <script src="graph.js"></script>
-</body>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+    </script>
+
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- d3 legend plugin  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
+    <script src="index.js"></script>
+    <script src="graph.js"></script>
+  </body>
 </html>
