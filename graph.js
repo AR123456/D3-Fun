@@ -1,5 +1,6 @@
 // interactive D3 visualizaitons - onclicks, double-clicks hovers, drags, tooltips ect
-//Section 9 lecture 66
+//Section 9 lecture 67 tool tips
+// using d3 tip package
 
 // Event listenters - D3 supports most vanilla JS events
 //https://developer.mozilla.org/en-US/docs/Web/Events
@@ -45,6 +46,24 @@ const legend = d3
   .shapePadding(10)
   .scale(colour);
 
+// adding tool tip with the tool tip plug in
+
+const tip = d3
+  //from the plug in
+  .tip()
+  // to be able to add style using materialize card
+  .attr("class", "tip card")
+  // this is the html that will be inside of the tooltip
+  .html(d => {
+    //here return dynamic content ...
+    let content = `<div class="name"> ${d.data.name}</div>`;
+    content += `<div class="cost"> ${d.data.cost}</div>`;
+    content += `<div class="delete"> Click slice to delete</div>`;
+    return content;
+  });
+/// apply this to the graph
+graph.call(tip);
+
 ////////////////////////the update function ///////////////////
 const update = data => {
   colour.domain(data.map(d => d.name));
@@ -85,10 +104,22 @@ const update = data => {
   graph
     .selectAll("path")
     //////// adding events //////
-    // then add the event listener and the call back function
-    // the call back function is being handed the 'd' (the data on the path)  as  well as the 'i'- index of that element in the selection  and 'n'- the array of elements in that selection
-    .on("mouseover", handleMouseOver)
-    .on("mouseout", handleMouseOut)
+    // adding the tool tip have to re write this since we now need 2 functions
+    // .on("mouseover", handleMouseOver)
+    // take in d i and n
+    .on("mouseover", (d, i, n) => {
+      //specify the 2 functions
+      // if you use old school function the n[i]  is the 'this' key word
+      tip.show(d, n[i]);
+      handleMouseOver(d, i, n);
+    })
+    // adding the tool tip have to re write this since we now need 2 functions
+    //   .on("mouseout", handleMouseOut)
+    // take in d i and n
+    .on("mouseout", (d, i, n) => {
+      tip.hide(d, n[i]);
+      handleMouseOut(d, i, n);
+    })
     // adding an on click to del a slice of the pie
     .on("click", handleClick);
 };
