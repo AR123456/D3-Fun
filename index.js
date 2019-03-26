@@ -1,10 +1,4 @@
-//interacting with firebase and DOM go here
-// get elements on page
-// add event listioner for submining form
-// chekc to make sure there are values enterred
-//create object
-// add the object to the dem
-
+//interacting with firebase and DOM
 const form = document.querySelector("form");
 const cost = document.querySelector("#cost");
 const name = document.querySelector("#name");
@@ -21,7 +15,6 @@ form.addEventListener("submit", e => {
       cost: parseInt(cost.value)
     };
 
-    //submit the object to the db ( use .then casue it is a promis )
     db.collection("expenses")
       .add(item)
       .then(res => {

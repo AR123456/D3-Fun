@@ -1,16 +1,3 @@
-// interactive D3 visualizaitons - onclicks, double-clicks hovers, drags, tooltips ect
-//Section 9 lecture 67 tool tips
-// using d3 tip package
-
-// Event listenters - D3 supports most vanilla JS events
-//https://developer.mozilla.org/en-US/docs/Web/Events
-// syntax for setting up event listeners
-// make selection of the ellements
-//const rects = d3.selectAll("rects")
-//then use the on metond to attach an event the first parameter is the type of event , then declare the call back function
-//  rects.on("click", function)  can be an arrow function  or if you want to use 'this' inside it can be old school function
-
-/////////////////////// adding a mouse over event
 const dims = { height: 300, width: 300, radius: 150 };
 
 const cent = { x: dims.width / 2 + 5, y: dims.height / 2 + 5 };
@@ -35,33 +22,26 @@ const arcPath = d3
   .innerRadius(dims.radius / 2);
 
 const colour = d3.scaleOrdinal(d3["schemeSet3"]);
-// //// legend set up /////////////////
+
 const legendGroup = svg
   .append("g")
   .attr("transform", `translate(${dims.width + 40}, 10)`);
-//legendColor comes from the plug in
+
 const legend = d3
   .legendColor()
   .shape("circle")
   .shapePadding(10)
   .scale(colour);
 
-// adding tool tip with the tool tip plug in
-
 const tip = d3
-  //from the plug in
   .tip()
-  // to be able to add style using materialize card
   .attr("class", "tip card")
-  // this is the html that will be inside of the tooltip
   .html(d => {
-    //here return dynamic content ...
     let content = `<div class="name"> ${d.data.name}</div>`;
     content += `<div class="cost"> ${d.data.cost}</div>`;
     content += `<div class="delete"> Click slice to delete</div>`;
     return content;
   });
-/// apply this to the graph
 graph.call(tip);
 
 ////////////////////////the update function ///////////////////
@@ -100,27 +80,18 @@ const update = data => {
     .transition()
     .duration(750)
     .attrTween("d", arcTweenEnter);
-  // first step select the elements , in this case the pies are paths so that is the element to select, need to do it in 'enter' since it is at this point where they are on the page
   graph
     .selectAll("path")
     //////// adding events //////
-    // adding the tool tip have to re write this since we now need 2 functions
-    // .on("mouseover", handleMouseOver)
-    // take in d i and n
+
     .on("mouseover", (d, i, n) => {
-      //specify the 2 functions
-      // if you use old school function the n[i]  is the 'this' key word
       tip.show(d, n[i]);
       handleMouseOver(d, i, n);
     })
-    // adding the tool tip have to re write this since we now need 2 functions
-    //   .on("mouseout", handleMouseOut)
-    // take in d i and n
     .on("mouseout", (d, i, n) => {
       tip.hide(d, n[i]);
       handleMouseOut(d, i, n);
     })
-    // adding an on click to del a slice of the pie
     .on("click", handleClick);
 };
 var data = [];
@@ -170,36 +141,20 @@ function arcTweenUpdate(d) {
     return arcPath(i(t));
   };
 }
-//// this is the call back function in the on click event
-/// event handlers
-// using es6 as an alternative
 const handleMouseOver = (d, i, n) => {
-  // console.log("this is the element being hovered over: ", n[i]);
-  //wrap n[i] in the d3.select so that we have access to d3 methods
   d3.select(n[i])
-    //adding d3 methods
-    //maing this a named transition
-    // .transition()
     .transition("changeSliceFill")
     .duration(300)
     .attr("fill", "#fff");
 };
 const handleMouseOut = (d, i, n) => {
-  // console.log("this is the element being hovered over: ", n[i]);
-  //wrap n[i] in the d3.select so that we have access to d3 methods
   d3.select(n[i])
-    //adding d3 methods
-
-    //maing this a named transition
-    // .transition()
     .transition("changeSliceFill")
     .duration(300)
     .attr("fill", colour(d.data.name));
 };
 
 const handleClick = d => {
-  // console.log(d);
-  // in this object is the firestore of the thing that was clicked on .
   const id = d.data.id;
   db.collection("expenses")
     .doc(id)
