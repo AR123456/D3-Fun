@@ -9,86 +9,31 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <title>Budget Visualization</title>
-    <style>
-      h2,
-      p {
-        margin: 10ps 0;
-      }
-      header {
-        margin-bottom: 40px;
-      }
-
-      .tip {
-        padding: 10px;
-        background: #333;
-        color: #fff;
-      }
-      .tip .delete {
-        color: hotpink;
-        font-size: 0.8;
-      }
-    </style>
-  </head>
-  <body class="indigo">
-    <header class="indigo darken-1 section">
-      <h2 class="center white-text">
-        <p class="flow-text grey-text center text-lighten-f2">
-          Money tracker
-        </p>
-      </h2>
-    </header>
-    <div class="container section ">
-      <div class="row">
-        <div class="col s12 m6">
-          <form class="card z-depth-0">
-            <div class="card-content">
-              <span class="card-title indigo-text">
-                Add Item:
-              </span>
-              <div class="input-field">
-                <input type="text" id="name" />
-                <label for="name">Item Name </label>
-              </div>
-              <div class="input-field">
-                <input type="text" id="cost" />
-                <label for="name">Item Cost </label>
-              </div>
-              <div class="input-field center">
-                <button class="btn-large pink white=text">Add Item</button>
-              </div>
-              <div class="input-field center">
-                <p class="red-text" id="error"></p>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col s12 m5 push-m1">
-          <div class="canvas"></div>
-        </div>
-      </div>
-    </div>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Circle Packing </title>
+ <style>
+ text{
+   font-family: Ariel;
+ }
+ </style>
+ </head>
+ <body>
+   <div class="canvas"></div>
+ </body>
 
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
-    <script>
+    <!-- <script>
       // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyCluEXpTTEKU5Ar00icHJQnNXmLU1WpVZ0",
-        authDomain: "weird-thing-three.firebaseapp.com",
-        databaseURL: "https://weird-thing-three.firebaseio.com",
-        projectId: "weird-thing-three",
-        storageBucket: "weird-thing-three.appspot.com",
-        messagingSenderId: "84374152611"
-      };
+  
       firebase.initializeApp(config);
       const db = firebase.firestore();
       const settings = { timestampsInSnapshots: true };
       db.settings(settings);
-    </script>
-
+    </script> -->
+    <!-- the main d3 library  -->
     <script src="https://d3js.org/d3.v5.js"></script>
-    <!-- Compiled and minified JavaScript -->
+    <!-- Compiled and minified JavaScript for materialize  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- d3 legend plugin  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
