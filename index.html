@@ -1,20 +1,64 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Data Hierarchy</title>
-    <style>
-      text {
-        font-family: Arial;
-      }
-    </style>
-  </head>
-  <body>
-    <h3>News Items</h3>
-    <div class="canvas"></div>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-    <script src="https://d3js.org/d3.v5.js"></script>
-    <script src="index.js"></script>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <title>D3</title>
+  </head>
+
+  <body>
+    <h1>D3 and the DOM</h1>
+    <h1 id="page-title">This is my first D3 example!</h1>
+    <p class="first-paragraph">Here's my first paragraph.</p>
+    <p>Here are some reasons why d3 is cool:</p>
+    <ol>
+      <li>Makes data more engaging.</li>
+      <li>Has built-in math helpers.</li>
+      <li>Supports graph animations.</li>
+      <li>Makes drawing graph axes a breeze!</li>
+    </ol>
+    <div class="outer">
+      Here's an outer div.
+      <div>
+        Here's an inner div.
+        <div>
+          Here's the last div.
+        </div>
+      </div>
+    </div>
+    <!--  d3 script tag -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- local js file  -->
+    <script src="./assets/javascript/app.js"></script>
   </body>
 </html>
