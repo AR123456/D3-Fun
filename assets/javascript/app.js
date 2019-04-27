@@ -56,6 +56,26 @@ var colors = {
   PG13: "#ff9000",
   R: "#ff0000"
 };
+// add event listioner to the button to add new  quotes
+var add = d3.select("#add");
+// add new quotes adn use D3 to add to the array of list items
+add.on("click", function() {
+  quotes = quotes.concat(newQuotes);
+  d3.select("#quotes")
+    .selectAll("li")
+    .data(quotes)
+    .enter()
+    .append("li")
+    .text(d => '"' + d.quote + '"-' + d.movie + "(" + d.year + ")")
+    .style("margin", "20px")
+    .style("padding", "20px")
+    .style("font-size", d => (d.quote.length < 25 ? "2em" : "1em"))
+    .style("background-color", d => colors[d.rating])
+    .style("border=radius", "8px");
+  //remove the add button so that they cannot be re added
+  add.remove("#add");
+});
+
 //style the list and add the movie quotes to the page
 d3.select("#quotes")
   .style("list-style", "none")
@@ -70,14 +90,14 @@ d3.select("#quotes")
   .style("background-color", d => colors[d.rating])
   .style("border=radius", "8px");
 
-// code to remove quotes 
+// code to remove quotes
 var removeBtn = d3.select("#remove");
 
-removeBtn.on('click', function() {
+removeBtn.on("click", function() {
   var nonRQuotes = quotes.filter(function(movie) {
-    return movie.rating !== 'R';
+    return movie.rating !== "R";
   });
-  
+
   d3.selectAll("li")
     .data(nonRQuotes, function(d) {
       return d.quote;
