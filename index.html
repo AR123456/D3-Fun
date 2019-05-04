@@ -33,20 +33,24 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>D3 SVG Bar Chart</title>
+    <title>D3 SVG</title>
   </head>
 
   <body>
-    <svg
-      version="1.1"
-      baseProfile="full"
-      xmlns="http://www.w3.org/2000/svg"
-    ></svg>
-
+    <h1>SVG in D3</h1>
+    <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+      <circle
+        cx="350"
+        cy="350"
+        r="100"
+        stroke="black"
+        stroke-width="3"
+        fill="red"
+      />
+    </svg>
     <!--  d3 script tag -->
     <script src="https://d3js.org/d3.v4.js"></script>
     <!-- local js file  -->
-    <script src="./assets/javascript/birthData.js"></script>
     <script src="./assets/javascript/app.js"></script>
   </body>
 </html>
