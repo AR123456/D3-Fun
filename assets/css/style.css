@@ -1,5 +1,5 @@
-svg,
-input {
-  display: block;
-  margin: 0 auto;
+svg {
+  border: 1px solid black;
+  width: 800px;
+  height: 450px;
 }
