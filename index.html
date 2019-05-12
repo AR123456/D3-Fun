@@ -33,56 +33,36 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>D3 SVG</title>
+    <title>D3 SVG The text element</title>
   </head>
 
   <body>
-    <h1>SVG in D3</h1>
+    <h1>SVG in D3 The Path element-</h1>
     <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
-      <rect
-        x="50"
-        y="50"
-        width="300"
-        height="200"
-        fill="#ffc107"
-        stroke="#2196f3"
-        stroke-width="8px"
-      ></rect>
-      <!-- if the shape  exceeds the boundrys of the svg it will get cropped , elements in an svg do not exceed the bounds of the svg -->
-      <!-- shapes on an svg are drawn in the order that they appear in the document  -->
-      <rect
-        x="100"
-        y="200"
-        width="300"
-        height="400"
-        fill="#e91e63"
-        stroke="#795548"
-        stroke-width="8px"
-      ></rect>
-      <rect
-        rx="30"
-        ry="30"
-        x="300"
-        y="100"
-        width="300"
-        height="200"
-        fill="green"
-        stroke="#795548"
-        stroke-width="8px"
-      ></rect>
-      <!-- all  rectancles are polygons  but not all  polygons are rectangles  -->
-      <polygon
-        points="100,300 400,200 200,500 100,500"
-        fill="#e91e63n"
-        stroke="#795548"
-        stroke-width="8px"
-      ></polygon>
-      <polygon
-        points="220,10 300,210 170,250 123,234"
-        fill="lime"
-        stroke="#795548"
-        stroke-width="8px"
-      ></polygon>
+      <!-- triangle  -->
+      <!-- by default have black fill  -->
+      <path
+        d="M400 100
+      L500 300
+      L300 300
+      L400 100
+      "
+        stroke="purple"
+        stroke-width="3px"
+      ></path>
+    </svg>
+    <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+      <!-- triangle  -->
+      <!-- by default have black fill  -->
+      <path
+        d="m400 100
+      l100 200
+      l-200 0
+      l100 -200
+      "
+        stroke="purple"
+        stroke-width="3px"
+      ></path>
     </svg>
     <!--  d3 script tag -->
     <script src="https://d3js.org/d3.v4.js"></script>
