@@ -33,18 +33,84 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>D3</title>
+    <title>D3 SVG Flags</title>
   </head>
 
-  <body>Exit Selections  D3 </h1>
-
-  </head>
   <body>
-    <h1>Movie quotes.</h1>
-    <ul id="quotes">
-    </ul>
-    <button id="remove">Remove quotes from R-rated movies</button>
-    <button id="add">Add more quotes</button>
+    <h1>SVG in D3 Flags</h1>
+    <svg
+      version="1.1"
+      baseProfile="full"
+      xmlns="http://www.w3.org/2000/svg"
+      id="bahamas">
+      <rect x="0" y="100" width="600" height="100" fill="#FFC72C"></rect>
+      <!-- using polygon  -->
+      <!-- <polygon points="0 0 , 260 150, 0 300 "></polygon> -->
+      <!-- using path -->
+      <path d="M 0 0
+               L 260 150
+               L 0 300
+               L 0 0"/>
+   
+
+    </svg>
+ 
+      <!-- Flag of bahama http://flagpedia.net/the-bahamas  -->
+    </svg>
+    <svg
+      version="1.1"
+      baseProfile="full"
+      xmlns="http://www.w3.org/2000/svg"
+      id="jamaica"
+    >
+    <g stroke="#fed100" fill="#009b3a" stroke-width="50">
+      <polygon points="-300 -150, 300 150, 900 -150" />
+      <polygon points="-300 450, 300 150, 900 450" />
+    </g>
+      <!-- flag of Jamaica http://flagpedia.net/jamaica  -->
+    </svg>
+    <svg
+      version="1.1"
+      baseProfile="full"
+      xmlns="http://www.w3.org/2000/svg"
+      id="macedonia"
+    >
+    <g fill="#ffe600">
+         <!-- make the edges of the triange go out beyone the edge of the svg 
+       -->
+      <polygon points="0 0, 600 300, 510 300, 90 0"/>
+   <!-- make 4 more polygons to represent the rays  -->
+      <polygon points="330 0, 270 300, 330 300, 270 0" />
+      <polygon points="600 0, 0 300, 90 300, 510 0" />
+      <polygon points="0 120, 600 180, 600 120, 0 180" />
+      <!-- place the circle in the middle of with a red stroke   -->
+      <circle cx="300" cy="150" r="50" stroke="#d20000" stroke-width="10" />
+    </g>
+      <!-- flag of macedonia http://flagpedia.net/macedonia  -->
+    </svg>
+    <svg
+      version="1.1"
+      baseProfile="full"
+      xmlns="http://www.w3.org/2000/svg"
+      id="south-korea"
+    >
+      <!-- flag of south-korea   http://flagpedia.net/south-korea -->
+      <!-- group for the black bars towrds the center of the svg  using lower case for relative movements vs absolute points  -->
+      <g stroke="black" stroke-width="15" transform="translate(300,200)">
+        <path d="M-200 -50v100m25 0v-100m25 0v100
+                 M140-50v45m0 10v45m25 0v-45m0 -10v-45m25 0v45m0 10v45" 
+              transform="rotate(30)"/>
+        <path d="M-200 -50v100m25 0v-45m0-10v-45m25 0v100
+                 M140-50v45m0 10v45m25 0v-100m25 0v45m0 10v45" 
+              transform="rotate(-30)"/>
+      </g>
+      <!-- put the circel in the center  -->
+      <circle cx="300" cy="200" fill="#cd2e3a" r="90"/>
+      <!--  drawing paths to get the ying yang in the middle  -->
+      <path fill="#0047a0" d="M300 200a45 45 0 0 1 78 45A90 90 0 1 1 300 110"/>
+      <path fill="#cd2e3a" d="M300 200a45 45 0 0 1 -78 -45A90 90 0 0 1 300 110"/>
+    </svg>
+
     <!--  d3 script tag -->
     <script src="https://d3js.org/d3.v4.js"></script>
     <!-- local js file  -->

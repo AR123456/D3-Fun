@@ -1,47 +1,22 @@
-body {
-  background-color: #e4e4e4;
+#bahamas {
+  width: 600px;
+  height: 300px;
+  background-color: #00778b;
 }
 
-h1 {
-  text-align: center;
+#jamaica {
+  width: 600px;
+  height: 300px;
+  background-color: black;
 }
 
-#notes {
-  margin: 0 auto;
-  width: 75%;
+#macedonia {
+  width: 600px;
+  height: 300px;
+  background-color: #d20000;
 }
 
-.note {
-  background-color: #fdffb7;
-  border: 8px solid #d4daa7;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-form {
-  text-align: center;
-}
-
-input {
-  width: 50%;
-}
-
-input,
-button {
-  padding: 10px;
-}
-
-button {
-  background-color: #ff9494;
-  border: none;
-  border-radius: 5px;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: #fe2222;
-}
-
-button:focus {
-  outline: none;
+#south-korea {
+  width: 600px;
+  height: 400px;
 }
