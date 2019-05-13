@@ -33,37 +33,23 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>D3 SVG The text element</title>
+    <title>D3 Letter Analizer</title>
   </head>
 
   <body>
-    <h1>SVG in D3 The Path element-</h1>
-    <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
-      <!-- triangle  -->
-      <!-- by default have black fill  -->
-      <path
-        d="M400 100
-      L500 300
-      L300 300
-      L400 100
-      "
-        stroke="purple"
-        stroke-width="3px"
-      ></path>
-    </svg>
-    <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
-      <!-- triangle  -->
-      <!-- by default have black fill  -->
-      <path
-        d="m400 100
-      l100 200
-      l-200 0
-      l100 -200
-      "
-        stroke="purple"
-        stroke-width="3px"
-      ></path>
-    </svg>
+    <header>
+      <h1>Letter Analyzer</h1>
+      <form>
+        <input type="text" />
+        <button type="submit">Count the Letters!</button>
+        <button id="reset" type="button">Reset</button>
+      </form>
+    </header>
+    <div>
+      <h2 id="phrase"></h2>
+      <h4 id="count"></h4>
+      <div id="letters"></div>
+    </div>
     <!--  d3 script tag -->
     <script src="https://d3js.org/d3.v4.js"></script>
     <!-- local js file  -->
