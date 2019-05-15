@@ -1,5 +1,8 @@
-svg,
-input {
+svg {
   margin: 0 auto 10px;
   display: block;
+}
+.tick line {
+  stroke: #ccc;
+  stroke-dasharray: 10, 5;
 }
