@@ -1,2882 +1,1255 @@
 var birthData = [
-  { 
-    "year": 1967, 
-    "month": "January", 
-    "births": 31502 
-  },
-  { 
-    "year": 1967, 
-    "month": "February", 
-    "births": 26703 
-  },
-  { 
-    "year": 1967, 
-    "month": "March", 
-    "births": 28853 
-  },
-  { 
-    "year": 1967, 
-    "month": "April", 
-    "births": 26958 
-  },
-  { 
-    "year": 1967, 
-    "month": "May", 
-    "births": 28591 
-  },
-  { 
-    "year": 1967, 
-    "month": "June", 
-    "births": 29545 
-  },
-  { 
-    "year": 1967, 
-    "month": "July", 
-    "births": 30086 
-  },
-  { 
-    "year": 1967, 
-    "month": "August", 
-    "births": 30947 
-  },
-  { 
-    "year": 1967, 
-    "month": "September", 
-    "births": 32338 
-  },
-  { 
-    "year": 1967, 
-    "month": "October", 
-    "births": 32296 
-  },
-  { 
-    "year": 1967, 
-    "month": "November", 
-    "births": 30326 
-  },
-  { 
-    "year": 1967, 
-    "month": "December", 
-    "births": 28994 
-  },
-  { 
-    "year": 1968, 
-    "month": "January", 
-    "births": 30691 
-  },
-  { 
-    "year": 1968, 
-    "month": "February", 
-    "births": 27902 
-  },
-  { 
-    "year": 1968, 
-    "month": "March", 
-    "births": 29706 
-  },
-  { 
-    "year": 1968, 
-    "month": "April", 
-    "births": 28800 
-  },
-  { 
-    "year": 1968, 
-    "month": "May", 
-    "births": 28957 
-  },
-  { 
-    "year": 1968, 
-    "month": "June", 
-    "births": 28245 
-  },
-  { 
-    "year": 1968, 
-    "month": "July", 
-    "births": 29111 
-  },
-  { 
-    "year": 1968, 
-    "month": "August", 
-    "births": 29793 
-  },
-  { 
-    "year": 1968, 
-    "month": "September", 
-    "births": 31402 
-  },
-  { 
-    "year": 1968, 
-    "month": "October", 
-    "births": 31429 
-  },
-  { 
-    "year": 1968, 
-    "month": "November", 
-    "births": 29516 
-  },
-  { 
-    "year": 1968, 
-    "month": "December", 
-    "births": 28266 
-  },
-  { 
-    "year": 1969, 
-    "month": "January", 
-    "births": 436201 
-  },
-  { 
-    "year": 1969, 
-    "month": "February", 
-    "births": 401016 
-  },
-  { 
-    "year": 1969, 
-    "month": "March", 
-    "births": 439157 
-  },
-  { 
-    "year": 1969, 
-    "month": "April", 
-    "births": 419464 
-  },
-  { 
-    "year": 1969, 
-    "month": "May", 
-    "births": 430195 
-  },
-  { 
-    "year": 1969, 
-    "month": "June", 
-    "births": 425021 
-  },
-  { 
-    "year": 1969, 
-    "month": "July", 
-    "births": 455342 
-  },
-  { 
-    "year": 1969, 
-    "month": "August", 
-    "births": 454915 
-  },
-  { 
-    "year": 1969, 
-    "month": "September", 
-    "births": 451233 
-  },
-  { 
-    "year": 1969, 
-    "month": "October", 
-    "births": 448391 
-  },
-  { 
-    "year": 1969, 
-    "month": "November", 
-    "births": 424455 
-  },
-  { 
-    "year": 1969, 
-    "month": "December", 
-    "births": 445127 
-  },
-  { 
-    "year": 1970, 
-    "month": "January", 
-    "births": 606638 
-  },
-  { 
-    "year": 1970, 
-    "month": "February", 
-    "births": 555901 
-  },
-  { 
-    "year": 1970, 
-    "month": "March", 
-    "births": 616156 
-  },
-  { 
-    "year": 1970, 
-    "month": "April", 
-    "births": 588990 
-  },
-  { 
-    "year": 1970, 
-    "month": "May", 
-    "births": 611448 
-  },
-  { 
-    "year": 1970, 
-    "month": "June", 
-    "births": 610223 
-  },
-  { 
-    "year": 1970, 
-    "month": "July", 
-    "births": 651179 
-  },
-  { 
-    "year": 1970, 
-    "month": "August", 
-    "births": 634474 
-  },
-  { 
-    "year": 1970, 
-    "month": "September", 
-    "births": 632383 
-  },
-  { 
-    "year": 1970, 
-    "month": "October", 
-    "births": 626115 
-  },
-  { 
-    "year": 1970, 
-    "month": "November", 
-    "births": 606057 
-  },
-  { 
-    "year": 1970, 
-    "month": "December", 
-    "births": 640225 
-  },
-  { 
-    "year": 1971, 
-    "month": "January", 
-    "births": 772912 
-  },
-  { 
-    "year": 1971, 
-    "month": "February", 
-    "births": 701782 
-  },
-  { 
-    "year": 1971, 
-    "month": "March", 
-    "births": 774899 
-  },
-  { 
-    "year": 1971, 
-    "month": "April", 
-    "births": 737580 
-  },
-  { 
-    "year": 1971, 
-    "month": "May", 
-    "births": 744070 
-  },
-  { 
-    "year": 1971, 
-    "month": "June", 
-    "births": 730148 
-  },
-  { 
-    "year": 1971, 
-    "month": "July", 
-    "births": 766305 
-  },
-  { 
-    "year": 1971, 
-    "month": "August", 
-    "births": 766640 
-  },
-  { 
-    "year": 1971, 
-    "month": "September", 
-    "births": 769630 
-  },
-  { 
-    "year": 1971, 
-    "month": "October", 
-    "births": 752459 
-  },
-  { 
-    "year": 1971, 
-    "month": "November", 
-    "births": 706729 
-  },
-  { 
-    "year": 1971, 
-    "month": "December", 
-    "births": 704891 
-  },
-  { 
-    "year": 1972, 
-    "month": "January", 
-    "births": 865984 
-  },
-  { 
-    "year": 1972, 
-    "month": "February", 
-    "births": 810310 
-  },
-  { 
-    "year": 1972, 
-    "month": "March", 
-    "births": 839262 
-  },
-  { 
-    "year": 1972, 
-    "month": "April", 
-    "births": 787593 
-  },
-  { 
-    "year": 1972, 
-    "month": "May", 
-    "births": 822215 
-  },
-  { 
-    "year": 1972, 
-    "month": "June", 
-    "births": 787560 
-  },
-  { 
-    "year": 1972, 
-    "month": "July", 
-    "births": 836589 
-  },
-  { 
-    "year": 1972, 
-    "month": "August", 
-    "births": 843072 
-  },
-  { 
-    "year": 1972, 
-    "month": "September", 
-    "births": 826383 
-  },
-  { 
-    "year": 1972, 
-    "month": "October", 
-    "births": 825844 
-  },
-  { 
-    "year": 1972, 
-    "month": "November", 
-    "births": 793550 
-  },
-  { 
-    "year": 1972, 
-    "month": "December", 
-    "births": 829920 
-  },
-  { 
-    "year": 1973, 
-    "month": "January", 
-    "births": 1284263 
-  },
-  { 
-    "year": 1973, 
-    "month": "February", 
-    "births": 1163476 
-  },
-  { 
-    "year": 1973, 
-    "month": "March", 
-    "births": 1269554 
-  },
-  { 
-    "year": 1973, 
-    "month": "April", 
-    "births": 1190172 
-  },
-  { 
-    "year": 1973, 
-    "month": "May", 
-    "births": 1252020 
-  },
-  { 
-    "year": 1973, 
-    "month": "June", 
-    "births": 1213324 
-  },
-  { 
-    "year": 1973, 
-    "month": "July", 
-    "births": 1255946 
-  },
-  { 
-    "year": 1973, 
-    "month": "August", 
-    "births": 1234225 
-  },
-  { 
-    "year": 1973, 
-    "month": "September", 
-    "births": 1197786 
-  },
-  { 
-    "year": 1973, 
-    "month": "October", 
-    "births": 1202094 
-  },
-  { 
-    "year": 1973, 
-    "month": "November", 
-    "births": 1178727 
-  },
-  { 
-    "year": 1973, 
-    "month": "December", 
-    "births": 1200428 
-  },
-  { 
-    "year": 1974, 
-    "month": "January", 
-    "births": 1447620 
-  },
-  { 
-    "year": 1974, 
-    "month": "February", 
-    "births": 1308820 
-  },
-  { 
-    "year": 1974, 
-    "month": "March", 
-    "births": 1421592 
-  },
-  { 
-    "year": 1974, 
-    "month": "April", 
-    "births": 1360550 
-  },
-  { 
-    "year": 1974, 
-    "month": "May", 
-    "births": 1426671 
-  },
-  { 
-    "year": 1974, 
-    "month": "June", 
-    "births": 1348098 
-  },
-  { 
-    "year": 1974, 
-    "month": "July", 
-    "births": 1436553 
-  },
-  { 
-    "year": 1974, 
-    "month": "August", 
-    "births": 1417208 
-  },
-  { 
-    "year": 1974, 
-    "month": "September", 
-    "births": 1415418 
-  },
-  { 
-    "year": 1974, 
-    "month": "October", 
-    "births": 1429290 
-  },
-  { 
-    "year": 1974, 
-    "month": "November", 
-    "births": 1360852 
-  },
-  { 
-    "year": 1974, 
-    "month": "December", 
-    "births": 1382966 
-  },
-  { 
-    "year": 1975, 
-    "month": "January", 
-    "births": 1425037 
-  },
-  { 
-    "year": 1975, 
-    "month": "February", 
-    "births": 1252361 
-  },
-  { 
-    "year": 1975, 
-    "month": "March", 
-    "births": 1338514 
-  },
-  { 
-    "year": 1975, 
-    "month": "April", 
-    "births": 1308722 
-  },
-  { 
-    "year": 1975, 
-    "month": "May", 
-    "births": 1337299 
-  },
-  { 
-    "year": 1975, 
-    "month": "June", 
-    "births": 1265112 
-  },
-  { 
-    "year": 1975, 
-    "month": "July", 
-    "births": 1337945 
-  },
-  { 
-    "year": 1975, 
-    "month": "August", 
-    "births": 1309965 
-  },
-  { 
-    "year": 1975, 
-    "month": "September", 
-    "births": 1295007 
-  },
-  { 
-    "year": 1975, 
-    "month": "October", 
-    "births": 1304303 
-  },
-  { 
-    "year": 1975, 
-    "month": "November", 
-    "births": 1241775 
-  },
-  { 
-    "year": 1975, 
-    "month": "December", 
-    "births": 1289993 
-  },
-  { 
-    "year": 1976, 
-    "month": "January", 
-    "births": 1401355 
-  },
-  { 
-    "year": 1976, 
-    "month": "February", 
-    "births": 1193161 
-  },
-  { 
-    "year": 1976, 
-    "month": "March", 
-    "births": 1303980 
-  },
-  { 
-    "year": 1976, 
-    "month": "April", 
-    "births": 1134449 
-  },
-  { 
-    "year": 1976, 
-    "month": "May", 
-    "births": 1231512 
-  },
-  { 
-    "year": 1976, 
-    "month": "June", 
-    "births": 1123976 
-  },
-  { 
-    "year": 1976, 
-    "month": "July", 
-    "births": 1261414 
-  },
-  { 
-    "year": 1976, 
-    "month": "August", 
-    "births": 1259787 
-  },
-  { 
-    "year": 1976, 
-    "month": "September", 
-    "births": 1341210 
-  },
-  { 
-    "year": 1976, 
-    "month": "October", 
-    "births": 1259843 
-  },
-  { 
-    "year": 1976, 
-    "month": "November", 
-    "births": 1280965 
-  },
-  { 
-    "year": 1976, 
-    "month": "December", 
-    "births": 1266801 
-  },
-  { 
-    "year": 1977, 
-    "month": "January", 
-    "births": 1196521 
-  },
-  { 
-    "year": 1977, 
-    "month": "February", 
-    "births": 1029024 
-  },
-  { 
-    "year": 1977, 
-    "month": "March", 
-    "births": 1098310 
-  },
-  { 
-    "year": 1977, 
-    "month": "April", 
-    "births": 1060384 
-  },
-  { 
-    "year": 1977, 
-    "month": "May", 
-    "births": 1051844 
-  },
-  { 
-    "year": 1977, 
-    "month": "June", 
-    "births": 1019354 
-  },
-  { 
-    "year": 1977, 
-    "month": "July", 
-    "births": 1084718 
-  },
-  { 
-    "year": 1977, 
-    "month": "August", 
-    "births": 1125125 
-  },
-  { 
-    "year": 1977, 
-    "month": "September", 
-    "births": 1114416 
-  },
-  { 
-    "year": 1977, 
-    "month": "October", 
-    "births": 1130601 
-  },
-  { 
-    "year": 1977, 
-    "month": "November", 
-    "births": 1127436 
-  },
-  { 
-    "year": 1977, 
-    "month": "December", 
-    "births": 1122787 
-  },
-  { 
-    "year": 1978, 
-    "month": "January", 
-    "births": 1820075 
-  },
-  { 
-    "year": 1978, 
-    "month": "February", 
-    "births": 1560763 
-  },
-  { 
-    "year": 1978, 
-    "month": "March", 
-    "births": 1672336 
-  },
-  { 
-    "year": 1978, 
-    "month": "April", 
-    "births": 1583735 
-  },
-  { 
-    "year": 1978, 
-    "month": "May", 
-    "births": 1635426 
-  },
-  { 
-    "year": 1978, 
-    "month": "June", 
-    "births": 1579583 
-  },
-  { 
-    "year": 1978, 
-    "month": "July", 
-    "births": 1729607 
-  },
-  { 
-    "year": 1978, 
-    "month": "August", 
-    "births": 1780269 
-  },
-  { 
-    "year": 1978, 
-    "month": "September", 
-    "births": 1767779 
-  },
-  { 
-    "year": 1978, 
-    "month": "October", 
-    "births": 1751645 
-  },
-  { 
-    "year": 1978, 
-    "month": "November", 
-    "births": 1682864 
-  },
-  { 
-    "year": 1978, 
-    "month": "December", 
-    "births": 1748570 
-  },
-  { 
-    "year": 1979, 
-    "month": "January", 
-    "births": 1861071 
-  },
-  { 
-    "year": 1979, 
-    "month": "February", 
-    "births": 1615460 
-  },
-  { 
-    "year": 1979, 
-    "month": "March", 
-    "births": 1718853 
-  },
-  { 
-    "year": 1979, 
-    "month": "April", 
-    "births": 1640850 
-  },
-  { 
-    "year": 1979, 
-    "month": "May", 
-    "births": 1691832 
-  },
-  { 
-    "year": 1979, 
-    "month": "June", 
-    "births": 1643999 
-  },
-  { 
-    "year": 1979, 
-    "month": "July", 
-    "births": 1771735 
-  },
-  { 
-    "year": 1979, 
-    "month": "August", 
-    "births": 1783699 
-  },
-  { 
-    "year": 1979, 
-    "month": "September", 
-    "births": 1769943 
-  },
-  { 
-    "year": 1979, 
-    "month": "October", 
-    "births": 1787396 
-  },
-  { 
-    "year": 1979, 
-    "month": "November", 
-    "births": 1747487 
-  },
-  { 
-    "year": 1979, 
-    "month": "December", 
-    "births": 1788560 
-  },
-  { 
-    "year": 1980, 
-    "month": "January", 
-    "births": 1559687 
-  },
-  { 
-    "year": 1980, 
-    "month": "February", 
-    "births": 1425412 
-  },
-  { 
-    "year": 1980, 
-    "month": "March", 
-    "births": 1523202 
-  },
-  { 
-    "year": 1980, 
-    "month": "April", 
-    "births": 1465247 
-  },
-  { 
-    "year": 1980, 
-    "month": "May", 
-    "births": 1487739 
-  },
-  { 
-    "year": 1980, 
-    "month": "June", 
-    "births": 1432243 
-  },
-  { 
-    "year": 1980, 
-    "month": "July", 
-    "births": 1526175 
-  },
-  { 
-    "year": 1980, 
-    "month": "August", 
-    "births": 1503961 
-  },
-  { 
-    "year": 1980, 
-    "month": "September", 
-    "births": 1534699 
-  },
-  { 
-    "year": 1980, 
-    "month": "October", 
-    "births": 1503836 
-  },
-  { 
-    "year": 1980, 
-    "month": "November", 
-    "births": 1425491 
-  },
-  { 
-    "year": 1980, 
-    "month": "December", 
-    "births": 1444812 
-  },
-  { 
-    "year": 1981, 
-    "month": "January", 
-    "births": 1589693 
-  },
-  { 
-    "year": 1981, 
-    "month": "February", 
-    "births": 1436027 
-  },
-  { 
-    "year": 1981, 
-    "month": "March", 
-    "births": 1542987 
-  },
-  { 
-    "year": 1981, 
-    "month": "April", 
-    "births": 1471433 
-  },
-  { 
-    "year": 1981, 
-    "month": "May", 
-    "births": 1500732 
-  },
-  { 
-    "year": 1981, 
-    "month": "June", 
-    "births": 1457374 
-  },
-  { 
-    "year": 1981, 
-    "month": "July", 
-    "births": 1526383 
-  },
-  { 
-    "year": 1981, 
-    "month": "August", 
-    "births": 1545815 
-  },
-  { 
-    "year": 1981, 
-    "month": "September", 
-    "births": 1524067 
-  },
-  { 
-    "year": 1981, 
-    "month": "October", 
-    "births": 1488438 
-  },
-  { 
-    "year": 1981, 
-    "month": "November", 
-    "births": 1444605 
-  },
-  { 
-    "year": 1981, 
-    "month": "December", 
-    "births": 1456012 
-  },
-  { 
-    "year": 1982, 
-    "month": "January", 
-    "births": 1545846 
-  },
-  { 
-    "year": 1982, 
-    "month": "February", 
-    "births": 1372925 
-  },
-  { 
-    "year": 1982, 
-    "month": "March", 
-    "births": 1482208 
-  },
-  { 
-    "year": 1982, 
-    "month": "April", 
-    "births": 1403749 
-  },
-  { 
-    "year": 1982, 
-    "month": "May", 
-    "births": 1452232 
-  },
-  { 
-    "year": 1982, 
-    "month": "June", 
-    "births": 1411795 
-  },
-  { 
-    "year": 1982, 
-    "month": "July", 
-    "births": 1490291 
-  },
-  { 
-    "year": 1982, 
-    "month": "August", 
-    "births": 1498716 
-  },
-  { 
-    "year": 1982, 
-    "month": "September", 
-    "births": 1474219 
-  },
-  { 
-    "year": 1982, 
-    "month": "October", 
-    "births": 1498551 
-  },
-  { 
-    "year": 1982, 
-    "month": "November", 
-    "births": 1411959 
-  },
-  { 
-    "year": 1982, 
-    "month": "December", 
-    "births": 1430900 
-  },
-  { 
-    "year": 1983, 
-    "month": "January", 
-    "births": 1460380 
-  },
-  { 
-    "year": 1983, 
-    "month": "February", 
-    "births": 1312670 
-  },
-  { 
-    "year": 1983, 
-    "month": "March", 
-    "births": 1437104 
-  },
-  { 
-    "year": 1983, 
-    "month": "April", 
-    "births": 1372296 
-  },
-  { 
-    "year": 1983, 
-    "month": "May", 
-    "births": 1378918 
-  },
-  { 
-    "year": 1983, 
-    "month": "June", 
-    "births": 1334205 
-  },
-  { 
-    "year": 1983, 
-    "month": "July", 
-    "births": 1418214 
-  },
-  { 
-    "year": 1983, 
-    "month": "August", 
-    "births": 1439626 
-  },
-  { 
-    "year": 1983, 
-    "month": "September", 
-    "births": 1406289 
-  },
-  { 
-    "year": 1983, 
-    "month": "October", 
-    "births": 1397566 
-  },
-  { 
-    "year": 1983, 
-    "month": "November", 
-    "births": 1334389 
-  },
-  { 
-    "year": 1983, 
-    "month": "December", 
-    "births": 1374164 
-  },
-  { 
-    "year": 1984, 
-    "month": "January", 
-    "births": 1774902 
-  },
-  { 
-    "year": 1984, 
-    "month": "February", 
-    "births": 1557976 
-  },
-  { 
-    "year": 1984, 
-    "month": "March", 
-    "births": 1570117 
-  },
-  { 
-    "year": 1984, 
-    "month": "April", 
-    "births": 1490749 
-  },
-  { 
-    "year": 1984, 
-    "month": "May", 
-    "births": 1550072 
-  },
-  { 
-    "year": 1984, 
-    "month": "June", 
-    "births": 1576631 
-  },
-  { 
-    "year": 1984, 
-    "month": "July", 
-    "births": 1716579 
-  },
-  { 
-    "year": 1984, 
-    "month": "August", 
-    "births": 1696403 
-  },
-  { 
-    "year": 1984, 
-    "month": "September", 
-    "births": 1699432 
-  },
-  { 
-    "year": 1984, 
-    "month": "October", 
-    "births": 1681519 
-  },
-  { 
-    "year": 1984, 
-    "month": "November", 
-    "births": 1695117 
-  },
-  { 
-    "year": 1984, 
-    "month": "December", 
-    "births": 1488975 
-  },
-  { 
-    "year": 1985, 
-    "month": "January", 
-    "births": 1946031 
-  },
-  { 
-    "year": 1985, 
-    "month": "February", 
-    "births": 1610243 
-  },
-  { 
-    "year": 1985, 
-    "month": "March", 
-    "births": 1770693 
-  },
-  { 
-    "year": 1985, 
-    "month": "April", 
-    "births": 1631864 
-  },
-  { 
-    "year": 1985, 
-    "month": "May", 
-    "births": 1751239 
-  },
-  { 
-    "year": 1985, 
-    "month": "June", 
-    "births": 1688948 
-  },
-  { 
-    "year": 1985, 
-    "month": "July", 
-    "births": 1876423 
-  },
-  { 
-    "year": 1985, 
-    "month": "August", 
-    "births": 1830213 
-  },
-  { 
-    "year": 1985, 
-    "month": "September", 
-    "births": 1874594 
-  },
-  { 
-    "year": 1985, 
-    "month": "October", 
-    "births": 1761009 
-  },
-  { 
-    "year": 1985, 
-    "month": "November", 
-    "births": 1815434 
-  },
-  { 
-    "year": 1985, 
-    "month": "December", 
-    "births": 1545086 
-  },
-  { 
-    "year": 1986, 
-    "month": "January", 
-    "births": 1792823 
-  },
-  { 
-    "year": 1986, 
-    "month": "February", 
-    "births": 1525180 
-  },
-  { 
-    "year": 1986, 
-    "month": "March", 
-    "births": 1624191 
-  },
-  { 
-    "year": 1986, 
-    "month": "April", 
-    "births": 1519805 
-  },
-  { 
-    "year": 1986, 
-    "month": "May", 
-    "births": 1585106 
-  },
-  { 
-    "year": 1986, 
-    "month": "June", 
-    "births": 1539429 
-  },
-  { 
-    "year": 1986, 
-    "month": "July", 
-    "births": 1653884 
-  },
-  { 
-    "year": 1986, 
-    "month": "August", 
-    "births": 1681926 
-  },
-  { 
-    "year": 1986, 
-    "month": "September", 
-    "births": 1763870 
-  },
-  { 
-    "year": 1986, 
-    "month": "October", 
-    "births": 1724202 
-  },
-  { 
-    "year": 1986, 
-    "month": "November", 
-    "births": 1715982 
-  },
-  { 
-    "year": 1986, 
-    "month": "December", 
-    "births": 1501011 
-  },
-  { 
-    "year": 1987, 
-    "month": "January", 
-    "births": 1780902 
-  },
-  { 
-    "year": 1987, 
-    "month": "February", 
-    "births": 1526080 
-  },
-  { 
-    "year": 1987, 
-    "month": "March", 
-    "births": 1602016 
-  },
-  { 
-    "year": 1987, 
-    "month": "April", 
-    "births": 1546850 
-  },
-  { 
-    "year": 1987, 
-    "month": "May", 
-    "births": 1570042 
-  },
-  { 
-    "year": 1987, 
-    "month": "June", 
-    "births": 1640475 
-  },
-  { 
-    "year": 1987, 
-    "month": "July", 
-    "births": 1656050 
-  },
-  { 
-    "year": 1987, 
-    "month": "August", 
-    "births": 1687480 
-  },
-  { 
-    "year": 1987, 
-    "month": "September", 
-    "births": 1713786 
-  },
-  { 
-    "year": 1987, 
-    "month": "October", 
-    "births": 1675968 
-  },
-  { 
-    "year": 1987, 
-    "month": "November", 
-    "births": 1595339 
-  },
-  { 
-    "year": 1987, 
-    "month": "December", 
-    "births": 1632575 
-  },
-  { 
-    "year": 1988, 
-    "month": "January", 
-    "births": 1764351 
-  },
-  { 
-    "year": 1988, 
-    "month": "February", 
-    "births": 1615966 
-  },
-  { 
-    "year": 1988, 
-    "month": "March", 
-    "births": 1669681 
-  },
-  { 
-    "year": 1988, 
-    "month": "April", 
-    "births": 1564921 
-  },
-  { 
-    "year": 1988, 
-    "month": "May", 
-    "births": 1584373 
-  },
-  { 
-    "year": 1988, 
-    "month": "June", 
-    "births": 1603947 
-  },
-  { 
-    "year": 1988, 
-    "month": "July", 
-    "births": 1701648 
-  },
-  { 
-    "year": 1988, 
-    "month": "August", 
-    "births": 1816461 
-  },
-  { 
-    "year": 1988, 
-    "month": "September", 
-    "births": 1802298 
-  },
-  { 
-    "year": 1988, 
-    "month": "October", 
-    "births": 1703464 
-  },
-  { 
-    "year": 1988, 
-    "month": "November", 
-    "births": 1616175 
-  },
-  { 
-    "year": 1988, 
-    "month": "December", 
-    "births": 1649942 
-  },
-  { 
-    "year": 1989, 
-    "month": "January", 
-    "births": 1703468 
-  },
-  { 
-    "year": 1989, 
-    "month": "February", 
-    "births": 1514004 
-  },
-  { 
-    "year": 1989, 
-    "month": "March", 
-    "births": 1584168 
-  },
-  { 
-    "year": 1989, 
-    "month": "April", 
-    "births": 1491408 
-  },
-  { 
-    "year": 1989, 
-    "month": "May", 
-    "births": 1530114 
-  },
-  { 
-    "year": 1989, 
-    "month": "June", 
-    "births": 1585168 
-  },
-  { 
-    "year": 1989, 
-    "month": "July", 
-    "births": 1661177 
-  },
-  { 
-    "year": 1989, 
-    "month": "August", 
-    "births": 1799917 
-  },
-  { 
-    "year": 1989, 
-    "month": "September", 
-    "births": 1770300 
-  },
-  { 
-    "year": 1989, 
-    "month": "October", 
-    "births": 1725268 
-  },
-  { 
-    "year": 1989, 
-    "month": "November", 
-    "births": 1598867 
-  },
-  { 
-    "year": 1989, 
-    "month": "December", 
-    "births": 1685840 
-  },
-  { 
-    "year": 1990, 
-    "month": "January", 
-    "births": 1849981 
-  },
-  { 
-    "year": 1990, 
-    "month": "February", 
-    "births": 1668811 
-  },
-  { 
-    "year": 1990, 
-    "month": "March", 
-    "births": 1728321 
-  },
-  { 
-    "year": 1990, 
-    "month": "April", 
-    "births": 1646334 
-  },
-  { 
-    "year": 1990, 
-    "month": "May", 
-    "births": 1697611 
-  },
-  { 
-    "year": 1990, 
-    "month": "June", 
-    "births": 1672538 
-  },
-  { 
-    "year": 1990, 
-    "month": "July", 
-    "births": 1783366 
-  },
-  { 
-    "year": 1990, 
-    "month": "August", 
-    "births": 1788355 
-  },
-  { 
-    "year": 1990, 
-    "month": "September", 
-    "births": 1809461 
-  },
-  { 
-    "year": 1990, 
-    "month": "October", 
-    "births": 1805676 
-  },
-  { 
-    "year": 1990, 
-    "month": "November", 
-    "births": 1620122 
-  },
-  { 
-    "year": 1990, 
-    "month": "December", 
-    "births": 1696378 
-  },
-  { 
-    "year": 1991, 
-    "month": "January", 
-    "births": 1981529 
-  },
-  { 
-    "year": 1991, 
-    "month": "February", 
-    "births": 1695949 
-  },
-  { 
-    "year": 1991, 
-    "month": "March", 
-    "births": 1840497 
-  },
-  { 
-    "year": 1991, 
-    "month": "April", 
-    "births": 1774342 
-  },
-  { 
-    "year": 1991, 
-    "month": "May", 
-    "births": 1793564 
-  },
-  { 
-    "year": 1991, 
-    "month": "June", 
-    "births": 1807628 
-  },
-  { 
-    "year": 1991, 
-    "month": "July", 
-    "births": 1956422 
-  },
-  { 
-    "year": 1991, 
-    "month": "August", 
-    "births": 1929143 
-  },
-  { 
-    "year": 1991, 
-    "month": "September", 
-    "births": 1975772 
-  },
-  { 
-    "year": 1991, 
-    "month": "October", 
-    "births": 1951147 
-  },
-  { 
-    "year": 1991, 
-    "month": "November", 
-    "births": 1805314 
-  },
-  { 
-    "year": 1991, 
-    "month": "December", 
-    "births": 1799906 
-  },
-  { 
-    "year": 1992, 
-    "month": "January", 
-    "births": 2112308 
-  },
-  { 
-    "year": 1992, 
-    "month": "February", 
-    "births": 1948415 
-  },
-  { 
-    "year": 1992, 
-    "month": "March", 
-    "births": 2015278 
-  },
-  { 
-    "year": 1992, 
-    "month": "April", 
-    "births": 1952098 
-  },
-  { 
-    "year": 1992, 
-    "month": "May", 
-    "births": 1949071 
-  },
-  { 
-    "year": 1992, 
-    "month": "June", 
-    "births": 1960223 
-  },
-  { 
-    "year": 1992, 
-    "month": "July", 
-    "births": 2099139 
-  },
-  { 
-    "year": 1992, 
-    "month": "August", 
-    "births": 2047642 
-  },
-  { 
-    "year": 1992, 
-    "month": "September", 
-    "births": 2103440 
-  },
-  { 
-    "year": 1992, 
-    "month": "October", 
-    "births": 2042788 
-  },
-  { 
-    "year": 1992, 
-    "month": "November", 
-    "births": 1878906 
-  },
-  { 
-    "year": 1992, 
-    "month": "December", 
-    "births": 1907207 
-  },
-  { 
-    "year": 1993, 
-    "month": "January", 
-    "births": 1954035 
-  },
-  { 
-    "year": 1993, 
-    "month": "February", 
-    "births": 1758970 
-  },
-  { 
-    "year": 1993, 
-    "month": "March", 
-    "births": 1851327 
-  },
-  { 
-    "year": 1993, 
-    "month": "April", 
-    "births": 1749581 
-  },
-  { 
-    "year": 1993, 
-    "month": "May", 
-    "births": 1705133 
-  },
-  { 
-    "year": 1993, 
-    "month": "June", 
-    "births": 1782656 
-  },
-  { 
-    "year": 1993, 
-    "month": "July", 
-    "births": 1853701 
-  },
-  { 
-    "year": 1993, 
-    "month": "August", 
-    "births": 1850306 
-  },
-  { 
-    "year": 1993, 
-    "month": "September", 
-    "births": 1912691 
-  },
-  { 
-    "year": 1993, 
-    "month": "October", 
-    "births": 1853870 
-  },
-  { 
-    "year": 1993, 
-    "month": "November", 
-    "births": 1679033 
-  },
-  { 
-    "year": 1993, 
-    "month": "December", 
-    "births": 1781490 
-  },
-  { 
-    "year": 1994, 
-    "month": "January", 
-    "births": 2110270 
-  },
-  { 
-    "year": 1994, 
-    "month": "February", 
-    "births": 1877707 
-  },
-  { 
-    "year": 1994, 
-    "month": "March", 
-    "births": 2007540 
-  },
-  { 
-    "year": 1994, 
-    "month": "April", 
-    "births": 1926651 
-  },
-  { 
-    "year": 1994, 
-    "month": "May", 
-    "births": 1943600 
-  },
-  { 
-    "year": 1994, 
-    "month": "June", 
-    "births": 1988881 
-  },
-  { 
-    "year": 1994, 
-    "month": "July", 
-    "births": 2046041 
-  },
-  { 
-    "year": 1994, 
-    "month": "August", 
-    "births": 2013459 
-  },
-  { 
-    "year": 1994, 
-    "month": "September", 
-    "births": 2052841 
-  },
-  { 
-    "year": 1994, 
-    "month": "October", 
-    "births": 2006166 
-  },
-  { 
-    "year": 1994, 
-    "month": "November", 
-    "births": 1841733 
-  },
-  { 
-    "year": 1994, 
-    "month": "December", 
-    "births": 1961224 
-  },
-  { 
-    "year": 1995, 
-    "month": "January", 
-    "births": 1780872 
-  },
-  { 
-    "year": 1995, 
-    "month": "February", 
-    "births": 1556593 
-  },
-  { 
-    "year": 1995, 
-    "month": "March", 
-    "births": 1716116 
-  },
-  { 
-    "year": 1995, 
-    "month": "April", 
-    "births": 1618297 
-  },
-  { 
-    "year": 1995, 
-    "month": "May", 
-    "births": 1691192 
-  },
-  { 
-    "year": 1995, 
-    "month": "June", 
-    "births": 1657298 
-  },
-  { 
-    "year": 1995, 
-    "month": "July", 
-    "births": 1737553 
-  },
-  { 
-    "year": 1995, 
-    "month": "August", 
-    "births": 1742849 
-  },
-  { 
-    "year": 1995, 
-    "month": "September", 
-    "births": 1755931 
-  },
-  { 
-    "year": 1995, 
-    "month": "October", 
-    "births": 1698877 
-  },
-  { 
-    "year": 1995, 
-    "month": "November", 
-    "births": 1581276 
-  },
-  { 
-    "year": 1995, 
-    "month": "December", 
-    "births": 1540029 
-  },
-  { 
-    "year": 1996, 
-    "month": "January", 
-    "births": 1581212 
-  },
-  { 
-    "year": 1996, 
-    "month": "February", 
-    "births": 1455811 
-  },
-  { 
-    "year": 1996, 
-    "month": "March", 
-    "births": 1526181 
-  },
-  { 
-    "year": 1996, 
-    "month": "April", 
-    "births": 1457251 
-  },
-  { 
-    "year": 1996, 
-    "month": "May", 
-    "births": 1529635 
-  },
-  { 
-    "year": 1996, 
-    "month": "June", 
-    "births": 1480824 
-  },
-  { 
-    "year": 1996, 
-    "month": "July", 
-    "births": 1588992 
-  },
-  { 
-    "year": 1996, 
-    "month": "August", 
-    "births": 1571914 
-  },
-  { 
-    "year": 1996, 
-    "month": "September", 
-    "births": 1604097 
-  },
-  { 
-    "year": 1996, 
-    "month": "October", 
-    "births": 1557536 
-  },
-  { 
-    "year": 1996, 
-    "month": "November", 
-    "births": 1455868 
-  },
-  { 
-    "year": 1996, 
-    "month": "December", 
-    "births": 1457153 
-  },
-  { 
-    "year": 1997, 
-    "month": "January", 
-    "births": 1725902 
-  },
-  { 
-    "year": 1997, 
-    "month": "February", 
-    "births": 1521881 
-  },
-  { 
-    "year": 1997, 
-    "month": "March", 
-    "births": 1647500 
-  },
-  { 
-    "year": 1997, 
-    "month": "April", 
-    "births": 1613689 
-  },
-  { 
-    "year": 1997, 
-    "month": "May", 
-    "births": 1663025 
-  },
-  { 
-    "year": 1997, 
-    "month": "June", 
-    "births": 1608018 
-  },
-  { 
-    "year": 1997, 
-    "month": "July", 
-    "births": 1720325 
-  },
-  { 
-    "year": 1997, 
-    "month": "August", 
-    "births": 1678913 
-  },
-  { 
-    "year": 1997, 
-    "month": "September", 
-    "births": 1734275 
-  },
-  { 
-    "year": 1997, 
-    "month": "October", 
-    "births": 1682288 
-  },
-  { 
-    "year": 1997, 
-    "month": "November", 
-    "births": 1567004 
-  },
-  { 
-    "year": 1997, 
-    "month": "December", 
-    "births": 1618605 
-  },
-  { 
-    "year": 1998, 
-    "month": "January", 
-    "births": 1594045 
-  },
-  { 
-    "year": 1998, 
-    "month": "February", 
-    "births": 1445726 
-  },
-  { 
-    "year": 1998, 
-    "month": "March", 
-    "births": 1538587 
-  },
-  { 
-    "year": 1998, 
-    "month": "April", 
-    "births": 1485738 
-  },
-  { 
-    "year": 1998, 
-    "month": "May", 
-    "births": 1513528 
-  },
-  { 
-    "year": 1998, 
-    "month": "June", 
-    "births": 1494679 
-  },
-  { 
-    "year": 1998, 
-    "month": "July", 
-    "births": 1567064 
-  },
-  { 
-    "year": 1998, 
-    "month": "August", 
-    "births": 1558563 
-  },
-  { 
-    "year": 1998, 
-    "month": "September", 
-    "births": 1640963 
-  },
-  { 
-    "year": 1998, 
-    "month": "October", 
-    "births": 1552849 
-  },
-  { 
-    "year": 1998, 
-    "month": "November", 
-    "births": 1457279 
-  },
-  { 
-    "year": 1998, 
-    "month": "December", 
-    "births": 1482435 
-  },
-  { 
-    "year": 1999, 
-    "month": "January", 
-    "births": 1990411 
-  },
-  { 
-    "year": 1999, 
-    "month": "February", 
-    "births": 1785883 
-  },
-  { 
-    "year": 1999, 
-    "month": "March", 
-    "births": 1907601 
-  },
-  { 
-    "year": 1999, 
-    "month": "April", 
-    "births": 1846948 
-  },
-  { 
-    "year": 1999, 
-    "month": "May", 
-    "births": 1891162 
-  },
-  { 
-    "year": 1999, 
-    "month": "June", 
-    "births": 1879578 
-  },
-  { 
-    "year": 1999, 
-    "month": "July", 
-    "births": 1978761 
-  },
-  { 
-    "year": 1999, 
-    "month": "August", 
-    "births": 1980812 
-  },
-  { 
-    "year": 1999, 
-    "month": "September", 
-    "births": 2017111 
-  },
-  { 
-    "year": 1999, 
-    "month": "October", 
-    "births": 1887356 
-  },
-  { 
-    "year": 1999, 
-    "month": "November", 
-    "births": 1819724 
-  },
-  { 
-    "year": 1999, 
-    "month": "December", 
-    "births": 1867906 
-  },
-  { 
-    "year": 2000, 
-    "month": "January", 
-    "births": 1706192 
-  },
-  { 
-    "year": 2000, 
-    "month": "February", 
-    "births": 1592270 
-  },
-  { 
-    "year": 2000, 
-    "month": "March", 
-    "births": 1689963 
-  },
-  { 
-    "year": 2000, 
-    "month": "April", 
-    "births": 1608083 
-  },
-  { 
-    "year": 2000, 
-    "month": "May", 
-    "births": 1696311 
-  },
-  { 
-    "year": 2000, 
-    "month": "June", 
-    "births": 1635645 
-  },
-  { 
-    "year": 2000, 
-    "month": "July", 
-    "births": 1704153 
-  },
-  { 
-    "year": 2000, 
-    "month": "August", 
-    "births": 1735710 
-  },
-  { 
-    "year": 2000, 
-    "month": "September", 
-    "births": 1715424 
-  },
-  { 
-    "year": 2000, 
-    "month": "October", 
-    "births": 1697231 
-  },
-  { 
-    "year": 2000, 
-    "month": "November", 
-    "births": 1641209 
-  },
-  { 
-    "year": 2000, 
-    "month": "December", 
-    "births": 1646911 
-  },
-  { 
-    "year": 2001, 
-    "month": "January", 
-    "births": 2026650 
-  },
-  { 
-    "year": 2001, 
-    "month": "February", 
-    "births": 1768088 
-  },
-  { 
-    "year": 2001, 
-    "month": "March", 
-    "births": 1918053 
-  },
-  { 
-    "year": 2001, 
-    "month": "April", 
-    "births": 1850979 
-  },
-  { 
-    "year": 2001, 
-    "month": "May", 
-    "births": 1970004 
-  },
-  { 
-    "year": 2001, 
-    "month": "June", 
-    "births": 1873835 
-  },
-  { 
-    "year": 2001, 
-    "month": "July", 
-    "births": 1983479 
-  },
-  { 
-    "year": 2001, 
-    "month": "August", 
-    "births": 2003957 
-  },
-  { 
-    "year": 2001, 
-    "month": "September", 
-    "births": 1932335 
-  },
-  { 
-    "year": 2001, 
-    "month": "October", 
-    "births": 1939835 
-  },
-  { 
-    "year": 2001, 
-    "month": "November", 
-    "births": 1825434 
-  },
-  { 
-    "year": 2001, 
-    "month": "December", 
-    "births": 1797292 
-  },
-  { 
-    "year": 2002, 
-    "month": "January", 
-    "births": 1694241 
-  },
-  { 
-    "year": 2002, 
-    "month": "February", 
-    "births": 1516607 
-  },
-  { 
-    "year": 2002, 
-    "month": "March", 
-    "births": 1618252 
-  },
-  { 
-    "year": 2002, 
-    "month": "April", 
-    "births": 1597103 
-  },
-  { 
-    "year": 2002, 
-    "month": "May", 
-    "births": 1647621 
-  },
-  { 
-    "year": 2002, 
-    "month": "June", 
-    "births": 1581705 
-  },
-  { 
-    "year": 2002, 
-    "month": "July", 
-    "births": 1720909 
-  },
-  { 
-    "year": 2002, 
-    "month": "August", 
-    "births": 1701305 
-  },
-  { 
-    "year": 2002, 
-    "month": "September", 
-    "births": 1687364 
-  },
-  { 
-    "year": 2002, 
-    "month": "October", 
-    "births": 1693835 
-  },
-  { 
-    "year": 2002, 
-    "month": "November", 
-    "births": 1577254 
-  },
-  { 
-    "year": 2002, 
-    "month": "December", 
-    "births": 1559821 
-  },
-  { 
-    "year": 2003, 
-    "month": "January", 
-    "births": 2041580 
-  },
-  { 
-    "year": 2003, 
-    "month": "February", 
-    "births": 1799068 
-  },
-  { 
-    "year": 2003, 
-    "month": "March", 
-    "births": 1857821 
-  },
-  { 
-    "year": 2003, 
-    "month": "April", 
-    "births": 1814271 
-  },
-  { 
-    "year": 2003, 
-    "month": "May", 
-    "births": 1904004 
-  },
-  { 
-    "year": 2003, 
-    "month": "June", 
-    "births": 1928936 
-  },
-  { 
-    "year": 2003, 
-    "month": "July", 
-    "births": 2045983 
-  },
-  { 
-    "year": 2003, 
-    "month": "August", 
-    "births": 2041779 
-  },
-  { 
-    "year": 2003, 
-    "month": "September", 
-    "births": 2046867 
-  },
-  { 
-    "year": 2003, 
-    "month": "October", 
-    "births": 2075745 
-  },
-  { 
-    "year": 2003, 
-    "month": "November", 
-    "births": 1936597 
-  },
-  { 
-    "year": 2003, 
-    "month": "December", 
-    "births": 1952819 
-  },
-  { 
-    "year": 2004, 
-    "month": "January", 
-    "births": 1947408 
-  },
-  { 
-    "year": 2004, 
-    "month": "February", 
-    "births": 1743579 
-  },
-  { 
-    "year": 2004, 
-    "month": "March", 
-    "births": 1889793 
-  },
-  { 
-    "year": 2004, 
-    "month": "April", 
-    "births": 1823129 
-  },
-  { 
-    "year": 2004, 
-    "month": "May", 
-    "births": 1863599 
-  },
-  { 
-    "year": 2004, 
-    "month": "June", 
-    "births": 1876894 
-  },
-  { 
-    "year": 2004, 
-    "month": "July", 
-    "births": 1970684 
-  },
-  { 
-    "year": 2004, 
-    "month": "August", 
-    "births": 1950419 
-  },
-  { 
-    "year": 2004, 
-    "month": "September", 
-    "births": 1984899 
-  },
-  { 
-    "year": 2004, 
-    "month": "October", 
-    "births": 1904544 
-  },
-  { 
-    "year": 2004, 
-    "month": "November", 
-    "births": 1847766 
-  },
-  { 
-    "year": 2004, 
-    "month": "December", 
-    "births": 1824427 
-  },
-  { 
-    "year": 2005, 
-    "month": "January", 
-    "births": 1911929 
-  },
-  { 
-    "year": 2005, 
-    "month": "February", 
-    "births": 1737533 
-  },
-  { 
-    "year": 2005, 
-    "month": "March", 
-    "births": 1852068 
-  },
-  { 
-    "year": 2005, 
-    "month": "April", 
-    "births": 1755874 
-  },
-  { 
-    "year": 2005, 
-    "month": "May", 
-    "births": 1822887 
-  },
-  { 
-    "year": 2005, 
-    "month": "June", 
-    "births": 1860334 
-  },
-  { 
-    "year": 2005, 
-    "month": "July", 
-    "births": 1931631 
-  },
-  { 
-    "year": 2005, 
-    "month": "August", 
-    "births": 2001599 
-  },
-  { 
-    "year": 2005, 
-    "month": "September", 
-    "births": 2038622 
-  },
-  { 
-    "year": 2005, 
-    "month": "October", 
-    "births": 2036210 
-  },
-  { 
-    "year": 2005, 
-    "month": "November", 
-    "births": 1880338 
-  },
-  { 
-    "year": 2005, 
-    "month": "December", 
-    "births": 1876831 
-  },
-  { 
-    "year": 2006, 
-    "month": "January", 
-    "births": 1843647 
-  },
-  { 
-    "year": 2006, 
-    "month": "February", 
-    "births": 1644099 
-  },
-  { 
-    "year": 2006, 
-    "month": "March", 
-    "births": 1826699 
-  },
-  { 
-    "year": 2006, 
-    "month": "April", 
-    "births": 1784033 
-  },
-  { 
-    "year": 2006, 
-    "month": "May", 
-    "births": 1825856 
-  },
-  { 
-    "year": 2006, 
-    "month": "June", 
-    "births": 1857224 
-  },
-  { 
-    "year": 2006, 
-    "month": "July", 
-    "births": 1882672 
-  },
-  { 
-    "year": 2006, 
-    "month": "August", 
-    "births": 2010149 
-  },
-  { 
-    "year": 2006, 
-    "month": "September", 
-    "births": 2035826 
-  },
-  { 
-    "year": 2006, 
-    "month": "October", 
-    "births": 2038343 
-  },
-  { 
-    "year": 2006, 
-    "month": "November", 
-    "births": 1894503 
-  },
-  { 
-    "year": 2006, 
-    "month": "December", 
-    "births": 1820392 
-  },
-  { 
-    "year": 2007, 
-    "month": "January", 
-    "births": 1869203 
-  },
-  { 
-    "year": 2007, 
-    "month": "February", 
-    "births": 1665660 
-  },
-  { 
-    "year": 2007, 
-    "month": "March", 
-    "births": 1722784 
-  },
-  { 
-    "year": 2007, 
-    "month": "April", 
-    "births": 1653870 
-  },
-  { 
-    "year": 2007, 
-    "month": "May", 
-    "births": 1751671 
-  },
-  { 
-    "year": 2007, 
-    "month": "June", 
-    "births": 1715557 
-  },
-  { 
-    "year": 2007, 
-    "month": "July", 
-    "births": 1867257 
-  },
-  { 
-    "year": 2007, 
-    "month": "August", 
-    "births": 1944836 
-  },
-  { 
-    "year": 2007, 
-    "month": "September", 
-    "births": 1957689 
-  },
-  { 
-    "year": 2007, 
-    "month": "October", 
-    "births": 1988351 
-  },
-  { 
-    "year": 2007, 
-    "month": "November", 
-    "births": 1784955 
-  },
-  { 
-    "year": 2007, 
-    "month": "December", 
-    "births": 1772881 
-  },
-  { 
-    "year": 2008, 
-    "month": "January", 
-    "births": 1781296 
-  },
-  { 
-    "year": 2008, 
-    "month": "February", 
-    "births": 1592639 
-  },
-  { 
-    "year": 2008, 
-    "month": "March", 
-    "births": 1643730 
-  },
-  { 
-    "year": 2008, 
-    "month": "April", 
-    "births": 1632762 
-  },
-  { 
-    "year": 2008, 
-    "month": "May", 
-    "births": 1690628 
-  },
-  { 
-    "year": 2008, 
-    "month": "June", 
-    "births": 1662889 
-  },
-  { 
-    "year": 2008, 
-    "month": "July", 
-    "births": 1824074 
-  },
-  { 
-    "year": 2008, 
-    "month": "August", 
-    "births": 1803495 
-  },
-  { 
-    "year": 2008, 
-    "month": "September", 
-    "births": 1831159 
-  },
-  { 
-    "year": 2008, 
-    "month": "October", 
-    "births": 1760090 
-  },
-  { 
-    "year": 2008, 
-    "month": "November", 
-    "births": 1624875 
-  },
-  { 
-    "year": 2008, 
-    "month": "December", 
-    "births": 1647198 
-  },
-  { 
-    "year": 2009, 
-    "month": "January", 
-    "births": 1852305 
-  },
-  { 
-    "year": 2009, 
-    "month": "February", 
-    "births": 1655890 
-  },
-  { 
-    "year": 2009, 
-    "month": "March", 
-    "births": 1799392 
-  },
-  { 
-    "year": 2009, 
-    "month": "April", 
-    "births": 1753970 
-  },
-  { 
-    "year": 2009, 
-    "month": "May", 
-    "births": 1779302 
-  },
-  { 
-    "year": 2009, 
-    "month": "June", 
-    "births": 1783755 
-  },
-  { 
-    "year": 2009, 
-    "month": "July", 
-    "births": 1929930 
-  },
-  { 
-    "year": 2009, 
-    "month": "August", 
-    "births": 1886460 
-  },
-  { 
-    "year": 2009, 
-    "month": "September", 
-    "births": 1959277 
-  },
-  { 
-    "year": 2009, 
-    "month": "October", 
-    "births": 1879313 
-  },
-  { 
-    "year": 2009, 
-    "month": "November", 
-    "births": 1730255 
-  },
-  { 
-    "year": 2009, 
-    "month": "December", 
-    "births": 1771421 
-  },
-  { 
-    "year": 2010, 
-    "month": "January", 
-    "births": 1582292 
-  },
-  { 
-    "year": 2010, 
-    "month": "February", 
-    "births": 1411823 
-  },
-  { 
-    "year": 2010, 
-    "month": "March", 
-    "births": 1533146 
-  },
-  { 
-    "year": 2010, 
-    "month": "April", 
-    "births": 1425243 
-  },
-  { 
-    "year": 2010, 
-    "month": "May", 
-    "births": 1466488 
-  },
-  { 
-    "year": 2010, 
-    "month": "June", 
-    "births": 1484135 
-  },
-  { 
-    "year": 2010, 
-    "month": "July", 
-    "births": 1581774 
-  },
-  { 
-    "year": 2010, 
-    "month": "August", 
-    "births": 1590913 
-  },
-  { 
-    "year": 2010, 
-    "month": "September", 
-    "births": 1629803 
-  },
-  { 
-    "year": 2010, 
-    "month": "October", 
-    "births": 1581412 
-  },
-  { 
-    "year": 2010, 
-    "month": "November", 
-    "births": 1503825 
-  },
-  { 
-    "year": 2010, 
-    "month": "December", 
-    "births": 1457334 
-  },
-  { 
-    "year": 2011, 
-    "month": "January", 
-    "births": 2024751 
-  },
-  { 
-    "year": 2011, 
-    "month": "February", 
-    "births": 1825281 
-  },
-  { 
-    "year": 2011, 
-    "month": "March", 
-    "births": 1990748 
-  },
-  { 
-    "year": 2011, 
-    "month": "April", 
-    "births": 1897783 
-  },
-  { 
-    "year": 2011, 
-    "month": "May", 
-    "births": 1973507 
-  },
-  { 
-    "year": 2011, 
-    "month": "June", 
-    "births": 2010779 
-  },
-  { 
-    "year": 2011, 
-    "month": "July", 
-    "births": 2132714 
-  },
-  { 
-    "year": 2011, 
-    "month": "August", 
-    "births": 2184785 
-  },
-  { 
-    "year": 2011, 
-    "month": "September", 
-    "births": 2174935 
-  },
-  { 
-    "year": 2011, 
-    "month": "October", 
-    "births": 2083543 
-  },
-  { 
-    "year": 2011, 
-    "month": "November", 
-    "births": 2013040 
-  },
-  { 
-    "year": 2011, 
-    "month": "December", 
-    "births": 2000289 
-  },
-  { 
-    "year": 2012, 
-    "month": "January", 
-    "births": 2064502 
-  },
-  { 
-    "year": 2012, 
-    "month": "February", 
-    "births": 1898086 
-  },
-  { 
-    "year": 2012, 
-    "month": "March", 
-    "births": 1987819 
-  },
-  { 
-    "year": 2012, 
-    "month": "April", 
-    "births": 1905725 
-  },
-  { 
-    "year": 2012, 
-    "month": "May", 
-    "births": 2013922 
-  },
-  { 
-    "year": 2012, 
-    "month": "June", 
-    "births": 1966146 
-  },
-  { 
-    "year": 2012, 
-    "month": "July", 
-    "births": 2114918 
-  },
-  { 
-    "year": 2012, 
-    "month": "August", 
-    "births": 2159476 
-  },
-  { 
-    "year": 2012, 
-    "month": "September", 
-    "births": 2100707 
-  },
-  { 
-    "year": 2012, 
-    "month": "October", 
-    "births": 2124859 
-  },
-  { 
-    "year": 2012, 
-    "month": "November", 
-    "births": 1981257 
-  },
-  { 
-    "year": 2012, 
-    "month": "December", 
-    "births": 1905524 
-  },
-  { 
-    "year": 2013, 
-    "month": "January", 
-    "births": 2139487 
-  },
-  { 
-    "year": 2013, 
-    "month": "February", 
-    "births": 1872108 
-  },
-  { 
-    "year": 2013, 
-    "month": "March", 
-    "births": 1994330 
-  },
-  { 
-    "year": 2013, 
-    "month": "April", 
-    "births": 1940785 
-  },
-  { 
-    "year": 2013, 
-    "month": "May", 
-    "births": 2015568 
-  },
-  { 
-    "year": 2013, 
-    "month": "June", 
-    "births": 2014303 
-  },
-  { 
-    "year": 2013, 
-    "month": "July", 
-    "births": 2255345 
-  },
-  { 
-    "year": 2013, 
-    "month": "August", 
-    "births": 2241201 
-  },
-  { 
-    "year": 2013, 
-    "month": "September", 
-    "births": 2212583 
-  },
-  { 
-    "year": 2013, 
-    "month": "October", 
-    "births": 2225223 
-  },
-  { 
-    "year": 2013, 
-    "month": "November", 
-    "births": 2042948 
-  },
-  { 
-    "year": 2013, 
-    "month": "December", 
-    "births": 2046773 
-  },
-  { 
-    "year": 2014, 
-    "month": "January", 
-    "births": 1967833 
-  },
-  { 
-    "year": 2014, 
-    "month": "February", 
-    "births": 1539619 
-  },
-  { 
-    "year": 2014, 
-    "month": "March", 
-    "births": 1671682 
-  },
-  { 
-    "year": 2014, 
-    "month": "April", 
-    "births": 1635576 
-  },
-  { 
-    "year": 2014, 
-    "month": "May", 
-    "births": 1703917 
-  },
-  { 
-    "year": 2014, 
-    "month": "June", 
-    "births": 1707418 
-  },
-  { 
-    "year": 2014, 
-    "month": "July", 
-    "births": 1855275 
-  },
-  { 
-    "year": 2014, 
-    "month": "August", 
-    "births": 2151242 
-  },
-  { 
-    "year": 2014, 
-    "month": "September", 
-    "births": 2097706 
-  },
-  { 
-    "year": 2014, 
-    "month": "October", 
-    "births": 2008599 
-  },
-  { 
-    "year": 2014, 
-    "month": "November", 
-    "births": 1908065 
-  },
-  { 
-    "year": 2014, 
-    "month": "December", 
-    "births": 1889740 
-  },
-]
+  {
+    region: "Afghanistan",
+    births: 1408000,
+    population: 32358260,
+    area: 652860,
+    lifeExpectancy: 49
+  },
+  {
+    region: "Albania",
+    births: 41000,
+    population: 3215988,
+    area: 27400,
+    lifeExpectancy: 77
+  },
+  {
+    region: "Algeria",
+    births: 712000,
+    population: 35980193,
+    area: 2381741,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Angola",
+    births: 803000,
+    population: 19618432,
+    area: 1246700,
+    lifeExpectancy: 51
+  },
+  {
+    region: "Argentina",
+    births: 693000,
+    population: 40764561,
+    area: 2736690,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Armenia",
+    births: 47000,
+    population: 3100236,
+    area: 28470,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Australia",
+    births: 307000,
+    population: 22605732,
+    area: 7682300,
+    lifeExpectancy: 82
+  },
+  {
+    region: "Austria",
+    births: 74000,
+    population: 8413429,
+    area: 82523,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Azerbaijan",
+    births: 184000,
+    population: 9306023,
+    area: 82663,
+    lifeExpectancy: 71
+  },
+  {
+    region: "Bahamas",
+    births: 5000,
+    population: 347176,
+    area: 10010,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Bahrain",
+    births: 23000,
+    population: 1323535,
+    area: 771,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Bangladesh",
+    births: 3016000,
+    population: 150493658,
+    area: 130170,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Barbados",
+    births: 3000,
+    population: 273925,
+    area: 430,
+    lifeExpectancy: 77
+  },
+  {
+    region: "Belarus",
+    births: 107000,
+    population: 9559441,
+    area: 202910,
+    lifeExpectancy: 70
+  },
+  {
+    region: "Belgium",
+    births: 123000,
+    population: 10754056,
+    area: 30280,
+    lifeExpectancy: 80
+  },
+  {
+    region: "Belize",
+    births: 8000,
+    population: 317928,
+    area: 22810,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Benin",
+    births: 356000,
+    population: 9099922,
+    area: 112760,
+    lifeExpectancy: 56
+  },
+  {
+    region: "Bhutan",
+    births: 15000,
+    population: 738267,
+    area: 38117,
+    lifeExpectancy: 67
+  },
+  {
+    region: "Bolivia (Plurinational State of)",
+    births: 264000,
+    population: 10088108,
+    area: 1083300,
+    lifeExpectancy: 67
+  },
+  {
+    region: "Bosnia and Herzegovina",
+    births: 32000,
+    population: 3752228,
+    area: 51200,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Botswana",
+    births: 47000,
+    population: 2030738,
+    area: 566730,
+    lifeExpectancy: 53
+  },
+  {
+    region: "Brazil",
+    births: 2996000,
+    population: 196655014,
+    area: 8358140,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Brunei Darussalam",
+    births: 8000,
+    population: 405938,
+    area: 5270,
+    lifeExpectancy: 78
+  },
+  {
+    region: "Bulgaria",
+    births: 75000,
+    population: 7446135,
+    area: 108560,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Burkina Faso",
+    births: 730000,
+    population: 16967845,
+    area: 273600,
+    lifeExpectancy: 55
+  },
+  {
+    region: "Burundi",
+    births: 288000,
+    population: 8575172,
+    area: 25680,
+    lifeExpectancy: 50
+  },
+  {
+    region: "Cambodia",
+    births: 317000,
+    population: 14305183,
+    area: 176520,
+    lifeExpectancy: 63
+  },
+  {
+    region: "Cameroon",
+    births: 716000,
+    population: 20030362,
+    area: 472710,
+    lifeExpectancy: 52
+  },
+  {
+    region: "Canada",
+    births: 388000,
+    population: 34349561,
+    area: 9093510,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Cape Verde",
+    births: 10000,
+    population: 500585,
+    area: 4030,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Central African Republic",
+    births: 156000,
+    population: 4486837,
+    area: 622980,
+    lifeExpectancy: 48
+  },
+  {
+    region: "Chad",
+    births: 511000,
+    population: 11525496,
+    area: 1259200,
+    lifeExpectancy: 50
+  },
+  {
+    region: "Chile",
+    births: 245000,
+    population: 17269525,
+    area: 743532,
+    lifeExpectancy: 79
+  },
+  {
+    region: "China",
+    births: 16364000,
+    population: 1347565324,
+    area: 9388211,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Colombia",
+    births: 910000,
+    population: 46927125,
+    area: 1109500,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Comoros",
+    births: 28000,
+    population: 753943,
+    area: 1861,
+    lifeExpectancy: 61
+  },
+  {
+    region: "Congo",
+    births: 145000,
+    population: 4139748,
+    area: 341500,
+    lifeExpectancy: 57
+  },
+  {
+    region: "Costa Rica",
+    births: 73000,
+    population: 4726575,
+    area: 51060,
+    lifeExpectancy: 79
+  },
+  {
+    region: "Côte d'Ivoire",
+    births: 679000,
+    population: 20152894,
+    area: 318000,
+    lifeExpectancy: 55
+  },
+  {
+    region: "Croatia",
+    births: 43000,
+    population: 4395560,
+    area: 55960,
+    lifeExpectancy: 77
+  },
+  {
+    region: "Cuba",
+    births: 110000,
+    population: 11253665,
+    area: 104020,
+    lifeExpectancy: 79
+  },
+  {
+    region: "Cyprus",
+    births: 13000,
+    population: 1116564,
+    area: 9240,
+    lifeExpectancy: 80
+  },
+  {
+    region: "Czech Republic",
+    births: 116000,
+    population: 10534293,
+    area: 77210,
+    lifeExpectancy: 78
+  },
+  {
+    region: "Democratic People's Republic of Korea",
+    births: 348000,
+    population: 24451285,
+    area: 120410,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Democratic Republic of the Congo",
+    births: 2912000,
+    population: 67757577,
+    area: 2267050,
+    lifeExpectancy: 48
+  },
+  {
+    region: "Denmark",
+    births: 64000,
+    population: 5572594,
+    area: 42262,
+    lifeExpectancy: 79
+  },
+  {
+    region: "Djibouti",
+    births: 26000,
+    population: 905564,
+    area: 23180,
+    lifeExpectancy: 58
+  },
+  {
+    region: "Dominican Republic",
+    births: 216000,
+    population: 10056181,
+    area: 48310,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Ecuador",
+    births: 298000,
+    population: 14666055,
+    area: 248360,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Egypt",
+    births: 1886000,
+    population: 82536770,
+    area: 995450,
+    lifeExpectancy: 73
+  },
+  {
+    region: "El Salvador",
+    births: 126000,
+    population: 6227491,
+    area: 20720,
+    lifeExpectancy: 72
+  },
+  {
+    region: "Equatorial Guinea",
+    births: 26000,
+    population: 720213,
+    area: 28050,
+    lifeExpectancy: 51
+  },
+  {
+    region: "Eritrea",
+    births: 193000,
+    population: 5415280,
+    area: 101000,
+    lifeExpectancy: 62
+  },
+  {
+    region: "Estonia",
+    births: 16000,
+    population: 1340537,
+    area: 42390,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Ethiopia",
+    births: 2613000,
+    population: 84734262,
+    area: 1000000,
+    lifeExpectancy: 59
+  },
+  {
+    region: "Fiji",
+    births: 18000,
+    population: 868406,
+    area: 18270,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Finland",
+    births: 61000,
+    population: 5384770,
+    area: 303890,
+    lifeExpectancy: 80
+  },
+  {
+    region: "France",
+    births: 792000,
+    population: 63125894,
+    area: 547557,
+    lifeExpectancy: 82
+  },
+  {
+    region: "Gabon",
+    births: 42000,
+    population: 1534262,
+    area: 257670,
+    lifeExpectancy: 63
+  },
+  {
+    region: "Gambia",
+    births: 67000,
+    population: 1776103,
+    area: 10120,
+    lifeExpectancy: 58
+  },
+  {
+    region: "Georgia",
+    births: 51000,
+    population: 4329026,
+    area: 69490,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Germany",
+    births: 699000,
+    population: 82162512,
+    area: 348900,
+    lifeExpectancy: 80
+  },
+  {
+    region: "Ghana",
+    births: 776000,
+    population: 24965816,
+    area: 227540,
+    lifeExpectancy: 64
+  },
+  {
+    region: "Greece",
+    births: 117000,
+    population: 11390031,
+    area: 128900,
+    lifeExpectancy: 80
+  },
+  {
+    region: "Grenada",
+    births: 2000,
+    population: 104890,
+    area: 340,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Guatemala",
+    births: 473000,
+    population: 14757316,
+    area: 107160,
+    lifeExpectancy: 71
+  },
+  {
+    region: "Guinea",
+    births: 394000,
+    population: 10221808,
+    area: 245720,
+    lifeExpectancy: 54
+  },
+  {
+    region: "Guinea-Bissau",
+    births: 59000,
+    population: 1547061,
+    area: 28120,
+    lifeExpectancy: 48
+  },
+  {
+    region: "Guyana",
+    births: 13000,
+    population: 756040,
+    area: 196850,
+    lifeExpectancy: 70
+  },
+  {
+    region: "Haiti",
+    births: 266000,
+    population: 10123787,
+    area: 27560,
+    lifeExpectancy: 62
+  },
+  {
+    region: "Honduras",
+    births: 205000,
+    population: 7754687,
+    area: 111890,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Hungary",
+    births: 100000,
+    population: 9966116,
+    area: 90530,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Iceland",
+    births: 5000,
+    population: 324366,
+    area: 100250,
+    lifeExpectancy: 82
+  },
+  {
+    region: "India",
+    births: 27098000,
+    population: 1241491960,
+    area: 2973190,
+    lifeExpectancy: 65
+  },
+  {
+    region: "Indonesia",
+    births: 4331000,
+    population: 242325638,
+    area: 1811570,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Iran (Islamic Republic of)",
+    births: 1255000,
+    population: 74798599,
+    area: 1628760,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Iraq",
+    births: 1144000,
+    population: 32664942,
+    area: 434320,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Ireland",
+    births: 72000,
+    population: 4525802,
+    area: 68890,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Israel",
+    births: 156000,
+    population: 7562194,
+    area: 21640,
+    lifeExpectancy: 82
+  },
+  {
+    region: "Italy",
+    births: 557000,
+    population: 60788694,
+    area: 294140,
+    lifeExpectancy: 82
+  },
+  {
+    region: "Jamaica",
+    births: 50000,
+    population: 2751273,
+    area: 10830,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Japan",
+    births: 1073000,
+    population: 126497241,
+    area: 364560,
+    lifeExpectancy: 83
+  },
+  {
+    region: "Jordan",
+    births: 154000,
+    population: 6330169,
+    area: 88780,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Kazakhstan",
+    births: 345000,
+    population: 16206750,
+    area: 2699700,
+    lifeExpectancy: 67
+  },
+  {
+    region: "Kenya",
+    births: 1560000,
+    population: 41609728,
+    area: 569140,
+    lifeExpectancy: 57
+  },
+  {
+    region: "Kuwait",
+    births: 50000,
+    population: 2818042,
+    area: 17820,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Kyrgyzstan",
+    births: 131000,
+    population: 5392580,
+    area: 191800,
+    lifeExpectancy: 68
+  },
+  {
+    region: "Lao People's Democratic Republic",
+    births: 140000,
+    population: 6288037,
+    area: 230800,
+    lifeExpectancy: 67
+  },
+  {
+    region: "Latvia",
+    births: 24000,
+    population: 2243142,
+    area: 62180,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Lebanon",
+    births: 65000,
+    population: 4259405,
+    area: 10230,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Lesotho",
+    births: 60000,
+    population: 2193843,
+    area: 30360,
+    lifeExpectancy: 48
+  },
+  {
+    region: "Liberia",
+    births: 157000,
+    population: 4128572,
+    area: 96320,
+    lifeExpectancy: 57
+  },
+  {
+    region: "Libya",
+    births: 144000,
+    population: 6422772,
+    area: 1759540,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Lithuania",
+    births: 35000,
+    population: 3307481,
+    area: 62650,
+    lifeExpectancy: 72
+  },
+  {
+    region: "Luxembourg",
+    births: 6000,
+    population: 515941,
+    area: 2590,
+    lifeExpectancy: 80
+  },
+  {
+    region: "Madagascar",
+    births: 747000,
+    population: 21315135,
+    area: 581800,
+    lifeExpectancy: 67
+  },
+  {
+    region: "Malawi",
+    births: 686000,
+    population: 15380888,
+    area: 94280,
+    lifeExpectancy: 54
+  },
+  {
+    region: "Malaysia",
+    births: 579000,
+    population: 28859154,
+    area: 328550,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Maldives",
+    births: 5000,
+    population: 320081,
+    area: 300,
+    lifeExpectancy: 77
+  },
+  {
+    region: "Mali",
+    births: 728000,
+    population: 15839538,
+    area: 1220190,
+    lifeExpectancy: 51
+  },
+  {
+    region: "Malta",
+    births: 4000,
+    population: 417855,
+    area: 320,
+    lifeExpectancy: 80
+  },
+  {
+    region: "Mauritania",
+    births: 118000,
+    population: 3541540,
+    area: 1030700,
+    lifeExpectancy: 59
+  },
+  {
+    region: "Mauritius",
+    births: 16000,
+    population: 1306593,
+    area: 2030,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Mexico",
+    births: 2195000,
+    population: 114793341,
+    area: 1943950,
+    lifeExpectancy: 77
+  },
+  {
+    region: "Micronesia (Federated States of)",
+    births: 3000,
+    population: 111542,
+    area: 700,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Mongolia",
+    births: 65000,
+    population: 2800114,
+    area: 1553560,
+    lifeExpectancy: 68
+  },
+  {
+    region: "Montenegro",
+    births: 8000,
+    population: 632261,
+    area: 13450,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Morocco",
+    births: 620000,
+    population: 32272974,
+    area: 446300,
+    lifeExpectancy: 72
+  },
+  {
+    region: "Mozambique",
+    births: 889000,
+    population: 23929708,
+    area: 786380,
+    lifeExpectancy: 50
+  },
+  {
+    region: "Myanmar",
+    births: 824000,
+    population: 48336763,
+    area: 653080,
+    lifeExpectancy: 65
+  },
+  {
+    region: "Namibia",
+    births: 60000,
+    population: 2324004,
+    area: 823290,
+    lifeExpectancy: 62
+  },
+  {
+    region: "Nepal",
+    births: 722000,
+    population: 30485798,
+    area: 143350,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Netherlands",
+    births: 181000,
+    population: 16664746,
+    area: 33690,
+    lifeExpectancy: 81
+  },
+  {
+    region: "New Zealand",
+    births: 64000,
+    population: 4414509,
+    area: 263310,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Nicaragua",
+    births: 138000,
+    population: 5869859,
+    area: 120340,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Niger",
+    births: 777000,
+    population: 16068994,
+    area: 1266700,
+    lifeExpectancy: 55
+  },
+  {
+    region: "Nigeria",
+    births: 6458000,
+    population: 162470737,
+    area: 910770,
+    lifeExpectancy: 52
+  },
+  {
+    region: "Norway",
+    births: 61000,
+    population: 4924848,
+    area: 365245,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Oman",
+    births: 50000,
+    population: 2846145,
+    area: 309500,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Pakistan",
+    births: 4764000,
+    population: 176745364,
+    area: 770880,
+    lifeExpectancy: 65
+  },
+  {
+    region: "Panama",
+    births: 70000,
+    population: 3571185,
+    area: 74340,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Papua New Guinea",
+    births: 208000,
+    population: 7013829,
+    area: 452860,
+    lifeExpectancy: 63
+  },
+  {
+    region: "Paraguay",
+    births: 158000,
+    population: 6568290,
+    area: 397300,
+    lifeExpectancy: 72
+  },
+  {
+    region: "Peru",
+    births: 591000,
+    population: 29399817,
+    area: 1280000,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Philippines",
+    births: 2358000,
+    population: 94852030,
+    area: 298170,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Poland",
+    births: 410000,
+    population: 38298949,
+    area: 306190,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Portugal",
+    births: 97000,
+    population: 10689663,
+    area: 91605,
+    lifeExpectancy: 79
+  },
+  {
+    region: "Qatar",
+    births: 21000,
+    population: 1870041,
+    area: 11610,
+    lifeExpectancy: 78
+  },
+  {
+    region: "Republic of Korea",
+    births: 479000,
+    population: 48391343,
+    area: 97480,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Republic of Moldova",
+    births: 44000,
+    population: 3544864,
+    area: 32870,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Romania",
+    births: 221000,
+    population: 21436495,
+    area: 230080,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Russian Federation",
+    births: 1689000,
+    population: 142835555,
+    area: 16376870,
+    lifeExpectancy: 69
+  },
+  {
+    region: "Rwanda",
+    births: 449000,
+    population: 10942950,
+    area: 24670,
+    lifeExpectancy: 55
+  },
+  {
+    region: "Saint Lucia",
+    births: 3000,
+    population: 176044,
+    area: 610,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Saint Vincent and the Grenadines",
+    births: 2000,
+    population: 109365,
+    area: 390,
+    lifeExpectancy: 72
+  },
+  {
+    region: "Samoa",
+    births: 4000,
+    population: 183874,
+    area: 2830,
+    lifeExpectancy: 72
+  },
+  {
+    region: "Sao Tome and Principe",
+    births: 5000,
+    population: 168526,
+    area: 960,
+    lifeExpectancy: 65
+  },
+  {
+    region: "Saudi Arabia",
+    births: 605000,
+    population: 28082541,
+    area: 2149690,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Senegal",
+    births: 471000,
+    population: 12767556,
+    area: 192530,
+    lifeExpectancy: 59
+  },
+  {
+    region: "Serbia",
+    births: 110000,
+    population: 9853969,
+    area: 87460,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Sierra Leone",
+    births: 227000,
+    population: 5997486,
+    area: 72180,
+    lifeExpectancy: 48
+  },
+  {
+    region: "Singapore",
+    births: 47000,
+    population: 5187933,
+    area: 709,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Slovakia",
+    births: 58000,
+    population: 5471502,
+    area: 48086,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Slovenia",
+    births: 20000,
+    population: 2035012,
+    area: 20140,
+    lifeExpectancy: 79
+  },
+  {
+    region: "Solomon Islands",
+    births: 17000,
+    population: 552267,
+    area: 27990,
+    lifeExpectancy: 68
+  },
+  {
+    region: "Somalia",
+    births: 416000,
+    population: 9556873,
+    area: 627340,
+    lifeExpectancy: 51
+  },
+  {
+    region: "Spain",
+    births: 499000,
+    population: 46454895,
+    area: 500210,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Sri Lanka",
+    births: 373000,
+    population: 21045394,
+    area: 62710,
+    lifeExpectancy: 75
+  },
+  {
+    region: "State of Palestine",
+    births: 137000,
+    population: 4152369,
+    area: 6020,
+    lifeExpectancy: 73
+  },
+  {
+    region: "Sudan (pre-cession)",
+    births: 1447000,
+    population: 44632410,
+    area: 2376000,
+    lifeExpectancy: 61
+  },
+  {
+    region: "Suriname",
+    births: 10000,
+    population: 529419,
+    area: 156000,
+    lifeExpectancy: 71
+  },
+  {
+    region: "Swaziland",
+    births: 35000,
+    population: 1203330,
+    area: 17200,
+    lifeExpectancy: 49
+  },
+  {
+    region: "Sweden",
+    births: 113000,
+    population: 9440747,
+    area: 407310,
+    lifeExpectancy: 81
+  },
+  {
+    region: "Switzerland",
+    births: 77000,
+    population: 7701690,
+    area: 39516,
+    lifeExpectancy: 82
+  },
+  {
+    region: "Syrian Arab Republic",
+    births: 466000,
+    population: 20766037,
+    area: 183630,
+    lifeExpectancy: 76
+  },
+  {
+    region: "Tajikistan",
+    births: 194000,
+    population: 6976958,
+    area: 138786,
+    lifeExpectancy: 68
+  },
+  {
+    region: "Thailand",
+    births: 824000,
+    population: 69518555,
+    area: 510890,
+    lifeExpectancy: 74
+  },
+  {
+    region: "The former Yugoslav Republic of Macedonia",
+    births: 22000,
+    population: 2063893,
+    area: 25220,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Timor-Leste",
+    births: 44000,
+    population: 1153834,
+    area: 14870,
+    lifeExpectancy: 62
+  },
+  {
+    region: "Togo",
+    births: 195000,
+    population: 6154813,
+    area: 54390,
+    lifeExpectancy: 57
+  },
+  {
+    region: "Tonga",
+    births: 3000,
+    population: 104509,
+    area: 720,
+    lifeExpectancy: 72
+  },
+  {
+    region: "Trinidad and Tobago",
+    births: 20000,
+    population: 1346350,
+    area: 5130,
+    lifeExpectancy: 70
+  },
+  {
+    region: "Tunisia",
+    births: 179000,
+    population: 10594057,
+    area: 155360,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Turkey",
+    births: 1289000,
+    population: 73639596,
+    area: 769630,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Turkmenistan",
+    births: 109000,
+    population: 5105301,
+    area: 469930,
+    lifeExpectancy: 65
+  },
+  {
+    region: "Uganda",
+    births: 1545000,
+    population: 34509205,
+    area: 200520,
+    lifeExpectancy: 54
+  },
+  {
+    region: "Ukraine",
+    births: 494000,
+    population: 45190180,
+    area: 579290,
+    lifeExpectancy: 68
+  },
+  {
+    region: "United Arab Emirates",
+    births: 94000,
+    population: 7890924,
+    area: 83600,
+    lifeExpectancy: 77
+  },
+  {
+    region: "United Kingdom",
+    births: 761000,
+    population: 62417431,
+    area: 241930,
+    lifeExpectancy: 80
+  },
+  {
+    region: "United Republic of Tanzania",
+    births: 1913000,
+    population: 46218486,
+    area: 885800,
+    lifeExpectancy: 58
+  },
+  {
+    region: "United States",
+    births: 4322000,
+    population: 313085380,
+    area: 9147420,
+    lifeExpectancy: 79
+  },
+  {
+    region: "Uruguay",
+    births: 49000,
+    population: 3380008,
+    area: 175020,
+    lifeExpectancy: 77
+  },
+  {
+    region: "Uzbekistan",
+    births: 589000,
+    population: 27760267,
+    area: 425400,
+    lifeExpectancy: 68
+  },
+  {
+    region: "Vanuatu",
+    births: 7000,
+    population: 245619,
+    area: 12190,
+    lifeExpectancy: 71
+  },
+  {
+    region: "Venezuela (Bolivarian Republic of)",
+    births: 598000,
+    population: 29436891,
+    area: 882050,
+    lifeExpectancy: 74
+  },
+  {
+    region: "Viet Nam",
+    births: 1458000,
+    population: 88791996,
+    area: 310070,
+    lifeExpectancy: 75
+  },
+  {
+    region: "Yemen",
+    births: 940000,
+    population: 24799880,
+    area: 527970,
+    lifeExpectancy: 65
+  },
+  {
+    region: "Zambia",
+    births: 622000,
+    population: 13474959,
+    area: 743390,
+    lifeExpectancy: 49
+  },
+  {
+    region: "Zimbabwe",
+    births: 377000,
+    population: 12754378,
+    area: 386850,
+    lifeExpectancy: 51
+  }
+];
