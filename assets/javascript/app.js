@@ -1,88 +1,102 @@
-var width = 500;
-var height = 500;
-var padding = 30;
-// use extent for this
-// var yMax = d3.max(birthData, d => d.lifeExpectancy);
-// var yMin = d3.min(birthData, d => d.lifeExpectancy);
-var yScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData, d => d.lifeExpectancy))
-  .range([height - padding, padding]);
+var width = 600;
+var height = 600;
+var padding = 50;
+// feed in the regionData  object and apply the filer method to the data coming back from the musHaveKeys function
+var data = regionData.filter(mustHaveKeys);
+//literacy rate
 var xScale = d3
   .scaleLinear()
-  .domain(d3.extent(birthData, d => d.births / d.population))
+  //finding the smallest and largest literacy rates using extent
+  .domain(d3.extent(data, d => d.adultLiteracyRate))
+  // using ragne methond to pass array - map to svg bounds
   .range([padding, width - padding]);
+//cell subscriber per 100
+var yScale = d3
+  .scaleLinear()
+  .domain(d3.extent(data, d => d.subscribersPer100))
+  .range([height - padding, padding]);
+// using radious to vizualize the median age- need a scale for this
+var rScale = d3
+  .scaleLinear()
+  .domain(d3.extent(data, d => d.medianAge))
+  .range([5, 30]);
+// fill to vizualize the urban population rate - need a scale for this
+var fScale = d3
+  .scaleLinear()
+  .domain(d3.extent(data, d => d.urbanPopulationRate))
+  .range(["green", "blue"]);
+// axis variables to store d3 Axis s
 var xAxis = d3
   .axisBottom(xScale)
-  //this adds grid lines by extending the tick lines out
   .tickSize(-height + 2 * padding)
   .tickSizeOuter(0);
+
 var yAxis = d3
   .axisLeft(yScale)
-  //this adds grid lines by extending the tick lines out
   .tickSize(-width + 2 * padding)
   .tickSizeOuter(0);
-var colorScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData, d => d.population / d.area))
-  .range(["lightgreen", "black"]);
-var radiusScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData, d => d.births))
-  .range([2, 40]);
-d3.select("svg")
+// setting the SVG variable
+var svg = d3
+  .select("svg")
+  .attr("width", width)
+  .attr("height", height);
+// append group  to the page for the x axis
+svg
   .append("g")
-  // move the axi to lower left
-  .attr("transform", "translate(0, " + (height - padding) + ")")
+  .attr("transform", "translate(0," + (height - padding) + ")")
   .call(xAxis);
-d3.select("svg")
+//append group to page for the y axis
+svg
   .append("g")
-  // move the axi to lower left
   .attr("transform", "translate(" + padding + ",0)")
   .call(yAxis);
-
-d3.select("svg")
-  .attr("width", width)
-  .attr("height", height)
-  .selectAll("circle")
-  .data(birthData)
-
-  .enter()
-  .append("circle")
-  .attr("cx", d => xScale(d.births / d.population))
-  .attr("cy", d => yScale(d.lifeExpectancy))
-  .attr("fill", d => colorScale(d.population / d.area))
-
-  .attr("r", d => radiusScale(d.births));
-// adding text, no secret sauce for this need to use d3 fundementals
-//select SVG, append text element, position correclty  and set inner text
-d3.select("svg")
-  // center horizontally and verticaly with the x axis
+// adding text label to x
+svg
   .append("text")
   .attr("x", width / 2)
   .attr("y", height - padding)
-  // D-y attribute to push down relative ot the x axis
-  .attr("dy", "1.5em")
+  .attr("dy", padding / 2)
   .style("text-anchor", "middle")
-  .text("Births per Capita ");
-// center text relative to x attribute  and set text inside
-d3.select("svg")
-  // center horizontally and verticaly  with the x axis
-  .append("text")
-  .attr("x", width / 2)
-  .attr("y", padding)
-  .style("text-anchor", "middle")
-  .style("font-size", "1.5em")
-  .text("Data on Births by Country in 2011 ");
-
-// setting the y axis - need to rotate text 90 degrees
-d3.select("svg")
+  .text("Literacy Rate, Aged 15 and Up");
+// add text label to y - need to rotate the y
+svg
   .append("text")
   .attr("transform", "rotate(-90)")
-
-  // x attribute will move text element in vertical direction
   .attr("x", -height / 2)
-  .attr("y", padding)
-  .attr("dy", "-1.1em")
+  .attr("dy", padding / 2)
   .style("text-anchor", "middle")
-  .text("Life Expectancy");
+  .text("Cellular Subscribers per 100 People");
+// using the D3 "pattern" to add circles to the page from the SVG
+svg
+  .selectAll("circle")
+  .data(data)
+  .enter()
+  .append("circle")
+  // using scales already built inside the callbacks
+  .attr("cx", d => xScale(d.adultLiteracyRate))
+  .attr("cy", d => yScale(d.subscribersPer100))
+  .attr("r", d => rScale(d.medianAge))
+  .attr("fill", d => fScale(d.urbanPopulationRate))
+  //giving circles a white outline
+  .attr("stroke", "#fff");
+// adding the title to the graph
+svg
+  .append("text")
+  .attr("x", width / 2)
+  .attr("dy", "1em")
+  .style("text-anchor", "middle")
+  .style("font-size", "2em")
+  .text("Cellular Subscriptions vs. Literacy Rate");
+// a helper function to handle  the 4 objects on intrest and check for objects without values on each key , if no  value return false
+function mustHaveKeys(obj) {
+  var keys = [
+    "subscribersPer100",
+    "adultLiteracyRate",
+    "medianAge",
+    "urbanPopulationRate"
+  ];
+  for (var i = 0; i < keys.length; i++) {
+    if (obj[keys[i]] === null) return false;
+  }
+  return true;
+}
