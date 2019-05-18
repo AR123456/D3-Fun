@@ -33,7 +33,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>D3 SVG Histogram</title>
+    <title>D3 SVG Histogram Regional data</title>
   </head>
 
   <body>
@@ -42,12 +42,12 @@
       baseProfile="full"
       xmlns="http://www.w3.org/2000/svg"
     ></svg>
-    <input type="range" step="1" />
-
+    <p class="bin-count"></p>
+    <input type="range" min="1" step="1" max="50" />
     <!--  d3 script tag -->
     <script src="https://d3js.org/d3.v4.js"></script>
     <!-- local js file  -->
-    <script src="./assets/javascript/birthData.js"></script>
+    <script src="./assets/javascript/regionData.js"></script>
     <script src="./assets/javascript/app.js"></script>
   </body>
 </html>
