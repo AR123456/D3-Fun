@@ -1,5 +1,6 @@
-svg {
-  margin: 0 auto 10px;
+svg,
+input {
+  margin: 0 auto;
   display: block;
 }
 /* .tick line {
