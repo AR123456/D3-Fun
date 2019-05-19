@@ -3,7 +3,7 @@ input {
   margin: 0 auto;
   display: block;
 }
-/* .tick line {
-  stroke: #ccc;
-  stroke-dasharray: 10, 5;
-} */
+
+.arc {
+  stroke: black;
+}
