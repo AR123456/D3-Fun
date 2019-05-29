@@ -1,135 +1,68 @@
-// http://data.un.org/Data.aspx?d=POP&f=tableCode%3a22
+var svg = d3.select("svg"),
+  margin = { top: 20, right: 20, bottom: 30, left: 40 },
+  width = +svg.attr("width") - margin.left - margin.right,
+  height = +svg.attr("height") - margin.top - margin.bottom;
 
-var width = 600;
-var height = 600;
-var minYear = d3.min(birthData, d => d.year);
-var maxYear = d3.max(birthData, d => d.year);
-var orderedMonths = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-var colors = [
-  "#aec7e8",
-  "#a7cfc9",
-  "#9fd7a9",
-  "#98df8a",
-  "#bac78e",
-  "#ddb092",
-  "#ff9896",
-  "#ffa48c",
-  "#ffaf82",
-  "#ffbb78",
-  "#e4bf9d",
-  "#c9c3c3"
-];
+var x = d3
+    .scaleBand()
+    .rangeRound([0, width])
+    .padding(0.1),
+  y = d3.scaleLinear().rangeRound([height, 0]);
 
-var quarterColors = ["#1f77b4", "#2ca02c", "#d62728", "#ff7f0e"];
-
-var colorScale = d3
-  .scaleOrdinal()
-  .domain(orderedMonths)
-  .range(colors);
-
-var svg = d3
-  .select("svg")
-  .attr("width", width)
-  .attr("height", height);
-
-svg
+var g = svg
   .append("g")
-  .attr("transform", "translate(" + width / 2 + ", " + height / 2 + ")")
-  .classed("chart", true);
+  .attr("transform", "translate(" + margin.left + "," + margin.top + "😉");
 
-svg
-  .append("g")
-  .attr("transform", "translate(" + width / 2 + ", " + height / 2 + ")")
-  .classed("inner-chart", true);
+d3.tsv(
+  "../../data.tsv",
+  function(d) {
+    d.frequency = +d.frequency;
+    return d;
+  },
+  function(error, data) {
+    if (error) throw error;
 
-svg
-  .append("text")
-  .classed("title", true)
-  .attr("x", width / 2)
-  .attr("y", 30)
-  .style("font-size", "2em")
-  .style("text-anchor", "middle");
-
-drawGraph(minYear);
-
-d3.select("input")
-  .property("min", minYear)
-  .property("max", maxYear)
-  .property("value", minYear)
-  .on("input", () => drawGraph(+d3.event.target.value));
-
-function drawGraph(year) {
-  var yearData = birthData.filter(d => d.year === year);
-  var arcs = d3
-    .pie()
-    .value(d => d.births)
-    .sort(
-      (a, b) => orderedMonths.indexOf(a.month) - orderedMonths.indexOf(b.month)
+    x.domain(
+      data.map(function(d) {
+        return d.letter;
+      })
     );
+    y.domain([
+      0,
+      d3.max(data, function(d) {
+        return d.frequency;
+      })
+    ]);
 
-  var innerArcs = d3
-    .pie()
-    .value(d => d.births)
-    .sort((a, b) => a.quarter - b.quarter);
+    g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + "😉")
+      .call(d3.axisBottom(x));
 
-  var path = d3
-    .arc()
-    .innerRadius(width / 4)
-    .outerRadius(width / 2 - 40);
+    g.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y).ticks(10, "%"))
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Frequency");
 
-  var innerPath = d3
-    .arc()
-    .innerRadius(0)
-    .outerRadius(width / 4);
-
-  var outer = d3
-    .select(".chart")
-    .selectAll(".arc")
-    .data(arcs(yearData));
-
-  var inner = d3
-    .select(".inner-chart")
-    .selectAll(".arc")
-    .data(innerArcs(getDataByQuarter(yearData)));
-
-  outer
-    .enter()
-    .append("path")
-    .classed("arc", true)
-    .attr("fill", d => colorScale(d.data.month))
-    .merge(outer)
-    .attr("d", path);
-
-  inner
-    .enter()
-    .append("path")
-    .classed("arc", true)
-    .attr("fill", (d, i) => quarterColors[i])
-    .merge(inner)
-    .attr("d", innerPath);
-
-  d3.select(".title").text("Births by months and quarter for " + year);
-}
-
-function getDataByQuarter(data) {
-  var quarterTallies = [0, 1, 2, 3].map(n => ({ quarter: n, births: 0 }));
-  for (var i = 0; i < data.length; i++) {
-    var row = data[i];
-    var quarter = Math.floor(orderedMonths.indexOf(row.month) / 3);
-    quarterTallies[quarter].births += row.births;
+    g.selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) {
+        return x(d.letter);
+      })
+      .attr("y", function(d) {
+        return y(d.frequency);
+      })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) {
+        return height - y(d.frequency);
+      });
   }
-  return quarterTallies;
-}
+);

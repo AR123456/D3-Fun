@@ -1,9 +1,11 @@
-svg,
-input {
-  margin: 0 auto;
-  display: block;
+.bar {
+  fill: steelblue;
 }
 
-.arc {
-  stroke: black;
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
 }
