@@ -1,110 +1,86 @@
-var width = 500;
-var height = 500;
-var padding = 30;
-
+var minYear = d3.min(birthData, function(d) {
+  return d.year;
+});
+var maxYear = d3.max(birthData, function(d) {
+  return d.year;
+});
+var width = 600;
+var height = 600;
+var barPadding = 10;
+var numBars = 12;
+var barWidth = width / numBars - barPadding;
+var maxBirths = d3.max(birthData, function(d) {
+  return d.births;
+});
 var yScale = d3
   .scaleLinear()
-  .domain(d3.extent(birthData2011, d => d.lifeExpectancy))
-  .range([height - padding, padding]);
+  .domain([0, maxBirths])
+  .range([height, 0]);
 
-var xScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData2011, d => d.births / d.population))
-  .range([padding, width - padding]);
-
-var xAxis = d3
-  .axisBottom(xScale)
-  .tickSize(-height + 2 * padding)
-  .tickSizeOuter(0);
-
-var yAxis = d3
-  .axisLeft(yScale)
-  .tickSize(-width + 2 * padding)
-  .tickSizeOuter(0);
-
-var colorScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData2011, d => d.population / d.area))
-  .range(["lightgreen", "black"]);
-
-var radiusScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData2011, d => d.births))
-  .range([2, 40]);
-// append a div to the page with class of tooltip
-var tooltip = d3
-  .select("body")
-  .append("div")
-  .classed("tooltip", true);
-
-d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(0," + (height - padding) + ")")
-  .call(xAxis);
-
-d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(" + padding + ",0)")
-  .call(yAxis);
+d3.select("input")
+  .property("min", minYear)
+  .property("max", maxYear)
+  .property("value", minYear);
 
 d3.select("svg")
   .attr("width", width)
   .attr("height", height)
-  .selectAll("circle")
-  .data(birthData2011)
+  .selectAll("rect")
+  .data(
+    birthData.filter(function(d) {
+      return d.year === minYear;
+    })
+  )
   .enter()
-  .append("circle")
-  .attr("cx", d => xScale(d.births / d.population))
-  .attr("cy", d => yScale(d.lifeExpectancy))
-  .attr("fill", d => colorScale(d.population / d.area))
-  .attr("r", d => radiusScale(d.births))
-  // listener to go with tool tip
-  // pulled callback into a named function so that the tooltip works on touch screen
-  .on("mousemove", showTooltip)
-  .on("touchstart", showTooltip)
-  // add a listener for moving out ot the circle
-  .on("mouseout", hideTooltip)
-  .on("touchend", hideTooltip);
-
+  .append("rect")
+  .attr("width", barWidth)
+  .attr("height", function(d) {
+    return height - yScale(d.births);
+  })
+  .attr("y", function(d) {
+    return yScale(d.births);
+  })
+  .attr("x", function(d, i) {
+    return (barWidth + barPadding) * i;
+  })
+  .attr("fill", "purple");
+// adding title the will show the year being displayed
 d3.select("svg")
   .append("text")
+  .classed("title", true)
+  .text("Birth data in " + minYear)
   .attr("x", width / 2)
-  .attr("y", height - padding)
-  .attr("dy", "1.5em")
+  .attr("y", 30)
   .style("text-anchor", "middle")
-  .text("Births per Capita");
+  .style("font-size", "2em");
 
-d3.select("svg")
-  .append("text")
-  .attr("x", width / 2)
-  .attr("y", padding)
-  .style("text-anchor", "middle")
-  .style("font-size", "1.5em")
-  .text("Data on Births by Country in 2011");
-
-d3.select("svg")
-  .append("text")
-  .attr("transform", "rotate(-90)")
-  .attr("x", -height / 2)
-  .attr("y", padding)
-  .attr("dy", "-1.1em")
-  .style("text-anchor", "middle")
-  .text("Life Expectancy");
-
-function showTooltip(d) {
-  // get the data to appear in the text
-  tooltip
-    .style("opacity", 1)
-    //location of tool tip
-    .style("left", d3.event.x - tooltip.node().offsetWidth / 2 + "px")
-    .style("top", d3.event.y + 25 + "px").html(`
-      <p>Region: ${d.region}</p>
-      <p>Births: ${d.births.toLocaleString()}</p>
-      <p> Population: ${d.population.toLocaleString()}</p>
-      <p> Area: ${d.area.toLocaleString()}</p>
-      <p>Life Expectancy: ${d.lifeExpectancy}</p>
-      `);
-}
-function hideTooltip() {
-  tooltip.style("opacity", 0);
-}
+d3.select("input").on("input", function() {
+  var year = +d3.event.target.value;
+  d3.selectAll("rect")
+    .data(
+      birthData.filter(function(d) {
+        return d.year === year;
+      })
+    )
+    .transition()
+    .duration(2000)
+    .ease(d3.easeLinear)
+    .delay((d, i) => i * 250)
+    // adding title
+    .on("start", function(d, i) {
+      if (i === 0) {
+        d3.select(".title").text("Updating to " + year + " data...");
+      }
+    })
+    .on("end", function(d, i, nodes) {
+      if (i === nodes.length - 1) {
+        d3.select(".title").text("Birth Data in " + year);
+      }
+    })
+    .attr("height", function(d) {
+      return height - yScale(d.births);
+    })
+    .attr("y", function(d) {
+      return yScale(d.births);
+    });
+});
