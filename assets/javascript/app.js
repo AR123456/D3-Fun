@@ -1,68 +1,110 @@
-var svg = d3.select("svg"),
-  margin = { top: 20, right: 20, bottom: 30, left: 40 },
-  width = +svg.attr("width") - margin.left - margin.right,
-  height = +svg.attr("height") - margin.top - margin.bottom;
+var width = 500;
+var height = 500;
+var padding = 30;
 
-var x = d3
-    .scaleBand()
-    .rangeRound([0, width])
-    .padding(0.1),
-  y = d3.scaleLinear().rangeRound([height, 0]);
+var yScale = d3
+  .scaleLinear()
+  .domain(d3.extent(birthData2011, d => d.lifeExpectancy))
+  .range([height - padding, padding]);
 
-var g = svg
+var xScale = d3
+  .scaleLinear()
+  .domain(d3.extent(birthData2011, d => d.births / d.population))
+  .range([padding, width - padding]);
+
+var xAxis = d3
+  .axisBottom(xScale)
+  .tickSize(-height + 2 * padding)
+  .tickSizeOuter(0);
+
+var yAxis = d3
+  .axisLeft(yScale)
+  .tickSize(-width + 2 * padding)
+  .tickSizeOuter(0);
+
+var colorScale = d3
+  .scaleLinear()
+  .domain(d3.extent(birthData2011, d => d.population / d.area))
+  .range(["lightgreen", "black"]);
+
+var radiusScale = d3
+  .scaleLinear()
+  .domain(d3.extent(birthData2011, d => d.births))
+  .range([2, 40]);
+// append a div to the page with class of tooltip
+var tooltip = d3
+  .select("body")
+  .append("div")
+  .classed("tooltip", true);
+
+d3.select("svg")
   .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + "😉");
+  .attr("transform", "translate(0," + (height - padding) + ")")
+  .call(xAxis);
 
-d3.tsv(
-  "../../data.tsv",
-  function(d) {
-    d.frequency = +d.frequency;
-    return d;
-  },
-  function(error, data) {
-    if (error) throw error;
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(" + padding + ",0)")
+  .call(yAxis);
 
-    x.domain(
-      data.map(function(d) {
-        return d.letter;
-      })
-    );
-    y.domain([
-      0,
-      d3.max(data, function(d) {
-        return d.frequency;
-      })
-    ]);
+d3.select("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .selectAll("circle")
+  .data(birthData2011)
+  .enter()
+  .append("circle")
+  .attr("cx", d => xScale(d.births / d.population))
+  .attr("cy", d => yScale(d.lifeExpectancy))
+  .attr("fill", d => colorScale(d.population / d.area))
+  .attr("r", d => radiusScale(d.births))
+  // listener to go with tool tip
+  // pulled callback into a named function so that the tooltip works on touch screen
+  .on("mousemove", showTooltip)
+  .on("touchstart", showTooltip)
+  // add a listener for moving out ot the circle
+  .on("mouseout", hideTooltip)
+  .on("touchend", hideTooltip);
 
-    g.append("g")
-      .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height + "😉")
-      .call(d3.axisBottom(x));
+d3.select("svg")
+  .append("text")
+  .attr("x", width / 2)
+  .attr("y", height - padding)
+  .attr("dy", "1.5em")
+  .style("text-anchor", "middle")
+  .text("Births per Capita");
 
-    g.append("g")
-      .attr("class", "axis axis--y")
-      .call(d3.axisLeft(y).ticks(10, "%"))
-      .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
-      .attr("text-anchor", "end")
-      .text("Frequency");
+d3.select("svg")
+  .append("text")
+  .attr("x", width / 2)
+  .attr("y", padding)
+  .style("text-anchor", "middle")
+  .style("font-size", "1.5em")
+  .text("Data on Births by Country in 2011");
 
-    g.selectAll(".bar")
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) {
-        return x(d.letter);
-      })
-      .attr("y", function(d) {
-        return y(d.frequency);
-      })
-      .attr("width", x.bandwidth())
-      .attr("height", function(d) {
-        return height - y(d.frequency);
-      });
-  }
-);
+d3.select("svg")
+  .append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("x", -height / 2)
+  .attr("y", padding)
+  .attr("dy", "-1.1em")
+  .style("text-anchor", "middle")
+  .text("Life Expectancy");
+
+function showTooltip(d) {
+  // get the data to appear in the text
+  tooltip
+    .style("opacity", 1)
+    //location of tool tip
+    .style("left", d3.event.x - tooltip.node().offsetWidth / 2 + "px")
+    .style("top", d3.event.y + 25 + "px").html(`
+      <p>Region: ${d.region}</p>
+      <p>Births: ${d.births.toLocaleString()}</p>
+      <p> Population: ${d.population.toLocaleString()}</p>
+      <p> Area: ${d.area.toLocaleString()}</p>
+      <p>Life Expectancy: ${d.lifeExpectancy}</p>
+      `);
+}
+function hideTooltip() {
+  tooltip.style("opacity", 0);
+}
