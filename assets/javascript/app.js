@@ -1,110 +1,77 @@
-var width = 500;
-var height = 500;
-var padding = 30;
+// creating queue to hold the request to the world atlas json and hte country data csv
+d3.queue()
+  //   .defer(d3.json, "../data/country_data.csv")
+  .defer(d3.json, "//unpkg.com/world-atlas@1.1.4/world/50m.json")
+  .defer(d3.csv, "/assets/data/country_data.csv", function(row) {
+    //   passing in formatter to convert stats to numbers
+    return {
+      country: row.country,
+      countryCode: row.countryCode,
+      population: +row.population,
+      medianAge: +row.medianAge,
+      fertilityRate: +row.fertilityRate,
+      //calculating population density
+      populationDensity: +row.population / +row.landArea
+    };
+  })
+  // wait for the data to come back
+  .await(function(error, mapData, populationData) {
+    // inside the await function is where there is access to the data
+    if (error) throw error;
 
-var yScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData2011, d => d.lifeExpectancy))
-  .range([height - padding, padding]);
+    var geoData = topojson.feature(mapData, mapData.objects.countries).features;
 
-var xScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData2011, d => d.births / d.population))
-  .range([padding, width - padding]);
+    populationData.forEach(row => {
+      var countries = geoData.filter(d => d.id === row.countryCode);
+      countries.forEach(country => (country.properties = row));
+    });
 
-var xAxis = d3
-  .axisBottom(xScale)
-  .tickSize(-height + 2 * padding)
-  .tickSizeOuter(0);
+    var width = 960;
+    var height = 600;
 
-var yAxis = d3
-  .axisLeft(yScale)
-  .tickSize(-width + 2 * padding)
-  .tickSizeOuter(0);
+    var projection = d3
+      .geoMercator()
+      .scale(125)
+      .translate([width / 2, height / 1.4]);
 
-var colorScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData2011, d => d.population / d.area))
-  .range(["lightgreen", "black"]);
+    var path = d3.geoPath().projection(projection);
 
-var radiusScale = d3
-  .scaleLinear()
-  .domain(d3.extent(birthData2011, d => d.births))
-  .range([2, 40]);
-// append a div to the page with class of tooltip
-var tooltip = d3
-  .select("body")
-  .append("div")
-  .classed("tooltip", true);
+    d3.select("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .selectAll(".country")
+      .data(geoData)
+      .enter()
+      .append("path")
+      .classed("country", true)
+      .attr("d", path);
 
-d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(0," + (height - padding) + ")")
-  .call(xAxis);
+    var select = d3.select("select");
 
-d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(" + padding + ",0)")
-  .call(yAxis);
+    select.on("change", d => setColor(d3.event.target.value));
 
-d3.select("svg")
-  .attr("width", width)
-  .attr("height", height)
-  .selectAll("circle")
-  .data(birthData2011)
-  .enter()
-  .append("circle")
-  .attr("cx", d => xScale(d.births / d.population))
-  .attr("cy", d => yScale(d.lifeExpectancy))
-  .attr("fill", d => colorScale(d.population / d.area))
-  .attr("r", d => radiusScale(d.births))
-  // listener to go with tool tip
-  // pulled callback into a named function so that the tooltip works on touch screen
-  .on("mousemove", showTooltip)
-  .on("touchstart", showTooltip)
-  // add a listener for moving out ot the circle
-  .on("mouseout", hideTooltip)
-  .on("touchend", hideTooltip);
+    setColor(select.property("value"));
 
-d3.select("svg")
-  .append("text")
-  .attr("x", width / 2)
-  .attr("y", height - padding)
-  .attr("dy", "1.5em")
-  .style("text-anchor", "middle")
-  .text("Births per Capita");
+    function setColor(val) {
+      var colorRanges = {
+        population: ["white", "purple"],
+        populationDensity: ["white", "red"],
+        medianAge: ["white", "black"],
+        fertilityRate: ["black", "orange"]
+      };
 
-d3.select("svg")
-  .append("text")
-  .attr("x", width / 2)
-  .attr("y", padding)
-  .style("text-anchor", "middle")
-  .style("font-size", "1.5em")
-  .text("Data on Births by Country in 2011");
+      var scale = d3
+        .scaleLinear()
+        .domain([0, d3.max(populationData, d => d[val])])
+        .range(colorRanges[val]);
 
-d3.select("svg")
-  .append("text")
-  .attr("transform", "rotate(-90)")
-  .attr("x", -height / 2)
-  .attr("y", padding)
-  .attr("dy", "-1.1em")
-  .style("text-anchor", "middle")
-  .text("Life Expectancy");
-
-function showTooltip(d) {
-  // get the data to appear in the text
-  tooltip
-    .style("opacity", 1)
-    //location of tool tip
-    .style("left", d3.event.x - tooltip.node().offsetWidth / 2 + "px")
-    .style("top", d3.event.y + 25 + "px").html(`
-      <p>Region: ${d.region}</p>
-      <p>Births: ${d.births.toLocaleString()}</p>
-      <p> Population: ${d.population.toLocaleString()}</p>
-      <p> Area: ${d.area.toLocaleString()}</p>
-      <p>Life Expectancy: ${d.lifeExpectancy}</p>
-      `);
-}
-function hideTooltip() {
-  tooltip.style("opacity", 0);
-}
+      d3.selectAll(".country")
+        .transition()
+        .duration(750)
+        .ease(d3.easeBackIn)
+        .attr("fill", d => {
+          var data = d.properties[val];
+          return data ? scale(data) : "#ccc";
+        });
+    }
+  });
