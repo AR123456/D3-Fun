@@ -1,11 +1,5 @@
-/* centering the svg and select elements  */
 svg,
-select {
-  margin: 0 auto;
+input {
   display: block;
-}
-/* adding thin grey boarder to all the paths  */
-path {
-  stroke: #ccc;
-  stroke-width: 0.25px;
+  margin: 0 auto;
 }

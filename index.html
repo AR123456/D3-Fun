@@ -33,20 +33,19 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>D3 SVG Histogram Regional data</title>
+    <title>Force Directed Graphs</title>
   </head>
 
   <body>
-    <select>
-      <!-- the value selection will be used later in the js  -->
-      <option value="population">Population</option>
-      <option value="populationDensity">Population Density</option>
-      <option value="medianAge">Median Age</option>
-      <option value="fertilityRate">Fertility Rate</option>
-    </select>
+    <svg
+      version="1.1"
+      baseProfile="full"
+      xmlns="http://www.w3.org/2000/svg"
+    ></svg>
+
+    <!--  d3 script tag -->
     <script src="https://d3js.org/d3.v4.js"></script>
-    <!-- link to topojson -->
-    <script src="https://unpkg.com/topojson@3"></script>
+    <!-- local js file  -->
 
     <script src="./assets/javascript/app.js"></script>
   </body>

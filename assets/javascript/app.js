@@ -1,77 +1,39 @@
-// creating queue to hold the request to the world atlas json and hte country data csv
-d3.queue()
-  //   .defer(d3.json, "../data/country_data.csv")
-  .defer(d3.json, "//unpkg.com/world-atlas@1.1.4/world/50m.json")
-  .defer(d3.csv, "/assets/data/country_data.csv", function(row) {
-    //   passing in formatter to convert stats to numbers
-    return {
-      country: row.country,
-      countryCode: row.countryCode,
-      population: +row.population,
-      medianAge: +row.medianAge,
-      fertilityRate: +row.fertilityRate,
-      //calculating population density
-      populationDensity: +row.population / +row.landArea
-    };
-  })
-  // wait for the data to come back
-  .await(function(error, mapData, populationData) {
-    // inside the await function is where there is access to the data
-    if (error) throw error;
+var width = 600;
+var height = 600;
+// array of node data
+var nodes = [
+  { color: "red", size: 5 },
+  { color: "orange", size: 10 },
+  { color: "yellow", size: 15 },
+  { color: "green", size: 20 },
+  { color: "blue", size: 25 },
+  { color: "purple", size: 30 }
+];
 
-    var geoData = topojson.feature(mapData, mapData.objects.countries).features;
+var svg = d3
+  .select("svg")
+  .attr("width", width)
+  .attr("height", height);
+//joined and appended - in a foced directed graph a node corresponse to some data point
+//the relationship between nodes > visualized links makes a force graph interesting to look at
+var nodeSelection = svg
+  .selectAll("circle")
+  .data(nodes)
+  .enter()
+  .append("circle")
+  .attr("r", d => d.size)
+  .attr("fill", d => d.color);
+// this adds vx and vy to the simulation x and y are based on the nodes current position and its velocity
+var simulation = d3.forceSimulation(nodes);
+// adding force ans seting equal to the new center force  passing in the middle point of the SVG
+simulation
+  .force("center", d3.forceCenter(width / 2, height / 2))
+  // adding force many
+  .force("nodes", d3.forceManyBody())
+  // function that will specify how the positions of nodes should update based on the velocities and positions calculated by the simulation
+  // pass the function in as a callback to the method for the simulation
 
-    populationData.forEach(row => {
-      var countries = geoData.filter(d => d.id === row.countryCode);
-      countries.forEach(country => (country.properties = row));
-    });
-
-    var width = 960;
-    var height = 600;
-
-    var projection = d3
-      .geoMercator()
-      .scale(125)
-      .translate([width / 2, height / 1.4]);
-
-    var path = d3.geoPath().projection(projection);
-
-    d3.select("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .selectAll(".country")
-      .data(geoData)
-      .enter()
-      .append("path")
-      .classed("country", true)
-      .attr("d", path);
-
-    var select = d3.select("select");
-
-    select.on("change", d => setColor(d3.event.target.value));
-
-    setColor(select.property("value"));
-
-    function setColor(val) {
-      var colorRanges = {
-        population: ["white", "purple"],
-        populationDensity: ["white", "red"],
-        medianAge: ["white", "black"],
-        fertilityRate: ["black", "orange"]
-      };
-
-      var scale = d3
-        .scaleLinear()
-        .domain([0, d3.max(populationData, d => d[val])])
-        .range(colorRanges[val]);
-
-      d3.selectAll(".country")
-        .transition()
-        .duration(750)
-        .ease(d3.easeBackIn)
-        .attr("fill", d => {
-          var data = d.properties[val];
-          return data ? scale(data) : "#ccc";
-        });
-    }
+  .on("tick", () => {
+    //  with ever tick grab nodes and update cx and cy properties assigned by simulation
+    nodeSelection.attr("cx", d => d.x).attr("cy", d => d.y);
   });
