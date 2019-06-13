@@ -9,45 +9,64 @@
     />
 
     <!-- Bootstrap CSS -->
+
     <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
     />
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>Force Directed Graphs Update Selection</title>
+    <title>D3 CO2 Dashboard</title>
   </head>
-
+  <div id="nav">
+    <h2>CO<sub>2</sub> Dashboard</h2>
+    <p>
+      Explore CO<sub>2</sub> emissions by year. Current year:
+      <span id="year-val"></span>
+      <input id="year" type="range" step="1" />
+    </p>
+    <p>
+      Choose between total emissions or emissions per capita.
+      <input type="radio" name="data-type" value="emissions" checked />
+      <label>Emissions</label>
+      <input type="radio" name="data-type" value="emissionsPerCapita" />
+      <label>Emissions Per Capita</label>
+    </p>
+    <p>Click on a country to see its trends by year.</p>
+  </div>
+  <section class="container">
+    <div class="chart-container">
+      <svg
+        version="1.1"
+        baseProfile="full"
+        xmlns="http://www.w3.org/2000/svg"
+        id="map"
+      ></svg>
+    </div>
+    <div class="chart-container right">
+      <svg
+        version="1.1"
+        baseProfile="full"
+        xmlns="http://www.w3.org/2000/svg"
+        id="pie"
+      ></svg>
+      <svg
+        version="1.1"
+        baseProfile="full"
+        xmlns="http://www.w3.org/2000/svg"
+        id="bar"
+      ></svg>
+    </div>
+  </section>
+  <div class="tooltip"></div>
   <body>
-    <div class="tooltip"></div>
-    <svg
-      version="1.1"
-      baseProfile="full"
-      xmlns="http://www.w3.org/2000/svg"
-    ></svg>
-    <div id="checkboxes"></div>
-
     <!--  d3 script tag -->
     <script src="https://d3js.org/d3.v4.js"></script>
     <!-- local js file  -->
+    <script src="https://unpkg.com/topojson@3"></script>
+
+    <script src="./assets/javascript/pie.js"></script>
+    <script src="./assets/javascript/bar.js"></script>
+    <script src="./assets/javascript/map.js"></script>
 
     <script src="./assets/javascript/app.js"></script>
   </body>
