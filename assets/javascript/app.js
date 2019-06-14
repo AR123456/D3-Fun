@@ -1,7 +1,7 @@
 //js  get data into JS
 d3.queue()
   .defer(d3.json, "https://unpkg.com/world-atlas@1.1.4/world/50m.json")
-  .defer(d3.csv, "https://ar123456.github.io/d3Data//all_data.csv", function(
+  .defer(d3.csv, "https://ar123456.github.io/d3Data/who_data.csv", function(
     row
   ) {
     // this is the data object that D3 will work with
@@ -9,8 +9,8 @@ d3.queue()
       continent: row.Continent,
       country: row.Country,
       countryCode: row["Country Code"],
-      emissions: +row["Emissions"],
-      emissionsPerCapita: +row["Emissions Per Capita"],
+      healthyLifeExpectancy: +row["Healthy Life Expectancy"],
+      bodyMassIndex: +row["Body Mass Index"],
       region: row.Region,
       year: +row.Year
     };
@@ -64,18 +64,15 @@ d3.queue()
       var isBar = tgt.classed("bar");
       var isArc = tgt.classed("arc");
       var dataType = d3.select("input:checked").property("value");
-      var units =
-        dataType === "emissions"
-          ? "thousand metric tons"
-          : "metric tons per capita";
+      var units = dataType === "healthyLifeExpectancy" ? "years" : " ";
       var data;
-      var percentage = "";
+      // var percentage = "";
       if (isCountry) data = tgt.data()[0].properties;
       if (isArc) {
         data = tgt.data()[0].data;
-        percentage = `<p>Percentage of total: ${getPercentage(
-          tgt.data()[0]
-        )}</p>`;
+        // percentage = `<p>Percentage of total: ${getPercentage(
+        //   tgt.data()[0]
+        // )}</p>`;
       }
       if (isBar) data = tgt.data()[0];
       tooltip
@@ -90,7 +87,7 @@ d3.queue()
               <p>Country: ${data.country}</p>
               <p>${formatDataType(dataType)}: ${dataValue}</p>
               <p>Year: ${data.year || d3.select("#year").property("value")}</p>
-              ${percentage}
+         
             `);
       }
     }
@@ -100,8 +97,8 @@ function formatDataType(key) {
   return key[0].toUpperCase() + key.slice(1).replace(/[A-Z]/g, c => " " + c);
 }
 
-function getPercentage(d) {
-  var angle = d.endAngle - d.startAngle;
-  var fraction = (100 * angle) / (Math.PI * 2);
-  return fraction.toFixed(2) + "%";
-}
+// function getPercentage(d) {
+//   var angle = d.endAngle - d.startAngle;
+//   var fraction = (100 * angle) / (Math.PI * 2);
+//   return fraction.toFixed(2) + "%";
+// }

@@ -29,9 +29,9 @@ function drawPie(data, currentYear) {
     .sort((a, b) => {
       if (a.continent < b.continent) return -1;
       if (a.continent > b.continent) return 1;
-      return a.emissions - b.emissions;
+      return a.healthyLifeExpectancy - b.healthyLifeExpectancy;
     })
-    .value(d => d.emissions);
+    .value(d => d.healthyLifeExpectancy);
 
   var path = d3
     .arc()
@@ -69,7 +69,5 @@ function drawPie(data, currentYear) {
     .attr("fill", d => colorScale(d.data.continent))
     .attr("d", path);
 
-  pie
-    .select(".pie-title")
-    .text("Total emissions by continent and region, " + currentYear);
+  pie.select(".pie-title").text("Data continent and region, " + currentYear);
 }

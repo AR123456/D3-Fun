@@ -15,21 +15,26 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>D3 CO2 Dashboard</title>
+    <title>D3 WHO Dashboard</title>
   </head>
   <div id="nav">
-    <h2>CO<sub>2</sub> Dashboard</h2>
+    <h2>Healthy Life Expectancy and BMI Dashboard</h2>
     <p>
-      Explore CO<sub>2</sub> emissions by year. Current year:
+      Slide to change year :
       <span id="year-val"></span>
-      <input id="year" type="range" step="1" />
+      <input id="year" type="range" step="2" />
     </p>
     <p>
-      Choose between total emissions or emissions per capita.
-      <input type="radio" name="data-type" value="emissions" checked />
-      <label>Emissions</label>
-      <input type="radio" name="data-type" value="emissionsPerCapita" />
-      <label>Emissions Per Capita</label>
+      Choose between healthy life expectancy and BMI.
+      <input
+        type="radio"
+        name="data-type"
+        value="healthyLifeExpectancy"
+        checked
+      />
+      <label>Healthy Life Expectancy</label>
+      <input type="radio" name="data-type" value="bodyMassIndex" />
+      <label>Body Mass Index</label>
     </p>
     <p>Click on a country to see its trends by year.</p>
   </div>

@@ -32,8 +32,8 @@ function drawMap(geoData, climateData, year, dataType) {
   var colors = ["#f1c40f", "#e67e22", "#e74c3c", "#c0392b"];
 
   var domains = {
-    emissions: [0, 2.5e5, 1e6, 5e6],
-    emissionsPerCapita: [0, 0.5, 2, 10]
+    healthyLifeExpectancy: [0, 2.5e5, 1e6, 5e6],
+    bodyMassIndex: [0, 0.5, 2, 10]
   };
 
   var mapColorScale = d3
@@ -67,7 +67,7 @@ function drawMap(geoData, climateData, year, dataType) {
     });
 
   d3.select(".map-title").text(
-    "Carbon dioxide " + graphTitle(dataType) + ", " + year
+    "Healthy Life Expectancy " + graphTitle(dataType) + ", " + year
   );
 }
 
