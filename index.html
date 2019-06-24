@@ -1,78 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+<style>
 
-    <!-- Bootstrap CSS -->
+.states :hover {
+  fill: red;
+}
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>D3 WHO Dashboard</title>
-  </head>
-  <div id="nav">
-    <h2>Healthy Life Expectancy and BMI Dashboard</h2>
-    <p>
-      Slide to change year :
-      <span id="year-val"></span>
-      <input id="year" type="range" step="2" />
-    </p>
-    <p>
-      Choose between healthy life expectancy and BMI.
-      <input
-        type="radio"
-        name="data-type"
-        value="healthyLifeExpectancy"
-        checked
-      />
-      <label>Healthy Life Expectancy</label>
-      <input type="radio" name="data-type" value="bodyMassIndex" />
-      <label>Body Mass Index</label>
-    </p>
-    <p>Click on a country to see its trends by year.</p>
-  </div>
-  <section class="container">
-    <div class="chart-container">
-      <svg
-        version="1.1"
-        baseProfile="full"
-        xmlns="http://www.w3.org/2000/svg"
-        id="map"
-      ></svg>
-    </div>
-    <div class="chart-container right">
-      <svg
-        version="1.1"
-        baseProfile="full"
-        xmlns="http://www.w3.org/2000/svg"
-        id="pie"
-      ></svg>
-      <svg
-        version="1.1"
-        baseProfile="full"
-        xmlns="http://www.w3.org/2000/svg"
-        id="bar"
-      ></svg>
-    </div>
-  </section>
-  <div class="tooltip"></div>
-  <body>
-    <!--  d3 script tag -->
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <!-- local js file  -->
-    <script src="https://unpkg.com/topojson@3"></script>
+.state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
 
-    <script src="./assets/javascript/pie.js"></script>
-    <script src="./assets/javascript/bar.js"></script>
-    <script src="./assets/javascript/map.js"></script>
+</style>
+<svg width="960" height="600"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script>
 
-    <script src="./assets/javascript/app.js"></script>
-  </body>
-</html>
+var svg = d3.select("svg");
+
+var path = d3.geoPath();
+
+d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
+  if (error) throw error;
+
+  svg.append("g")
+      .attr("class", "states")
+    .selectAll("path")
+    .data(topojson.feature(us, us.objects.states).features)
+    .enter().append("path")
+      .attr("d", path);
+
+  svg.append("path")
+      .attr("class", "state-borders")
+      .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
+});
+
+</script>
