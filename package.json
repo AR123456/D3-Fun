@@ -1,22 +1,24 @@
 {
-  "name": "d3blackbox-example",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "main": "src/index.js",
+  "name": "car-pics",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "d3": "5.7.0",
-    "d3blackbox": "1.0.0",
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
-    "react-scripts": "2.0.3"
+    "axios": "^0.18.0",
+    "d3": "latest",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "2.1.8",
+    "react-transition-group": "1.x",
+    "topojson": "^3.0.2"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
