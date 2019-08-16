@@ -24,6 +24,7 @@
   d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
     if (error) throw error;
     console.log(us.objects.states.geometries[1].id);
+
     svg
       .append("g")
       .attr("class", "states")
@@ -32,6 +33,17 @@
       .enter()
       .append("path")
       .attr("d", path);
+    svg
+      .apped("g")
+      .attr("class", "states-names")
+      .selectAll("text")
+      .data(data)
+      .enter()
+      .append("svg:text")
+      .text(function(d) {
+        return names[d.id];
+        console.log(names);
+      });
 
     svg
       .append("path")
