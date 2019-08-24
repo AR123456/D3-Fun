@@ -12,6 +12,7 @@ class Controls extends React.Component {
   };
 
   componentDidMount() {
+    // doing this instead of react router , in reality react router should be used.
     let [year, USstate, jobTitle] = window.location.hash
       .replace("#", "")
       .split("-");
