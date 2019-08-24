@@ -8,12 +8,14 @@ import CountyMap from "./components/CountyMap";
 import Histogram from "./components/Histogram";
 import { Title, Description } from "./components/Meta";
 import MedianLine from "./components/MedianLine";
+import Controls from "./components/Controls";
 
 class App extends React.Component {
   state = {
     techSalaries: [],
     medianIncomes: [],
     countyNames: [],
+    salariesFilter: () => true,
     filteredBy: {
       USstate: "*",
       year: "*",
@@ -38,6 +40,12 @@ class App extends React.Component {
       value: median - medianHousehold.medianIncome
     };
   }
+  updateDataFilter = (filter, filteredBy) => {
+    this.setState({
+      salariesFilter: filter,
+      filteredBy: filteredBy
+    });
+  };
   render() {
     const {
       techSalaries,
@@ -50,7 +58,7 @@ class App extends React.Component {
     if (techSalaries.length < 1) {
       return <Preloader />;
     }
-    const filteredSalaries = techSalaries,
+    const filteredSalaries = techSalaries.filter(this.state.salariesFilter),
       filteredSalariesMap = _.groupBy(filteredSalaries, "countyID"),
       countyValues = countyNames
         .map(county => this.countyValue(county, filteredSalariesMap))
@@ -87,6 +95,13 @@ class App extends React.Component {
             height={500}
             zoom={null}
           />
+          <rect
+            x="500"
+            y="0"
+            width="600"
+            height="500"
+            style={{ fill: "white" }}
+          />
           <Histogram
             bins={10}
             width={500}
@@ -109,6 +124,10 @@ class App extends React.Component {
             value={d => d.base_salary}
           />
         </svg>
+        <Controls
+          data={techSalaries}
+          updateDataFilter={this.updateDataFilter}
+        />
       </div>
     );
   }
