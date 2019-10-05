@@ -1,17 +1,12 @@
 {
-  "name": "tech-salaries",
-  "homepage": "https://ar123456.github.io/D3-Fun/",
+  "name": "example-d3",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "d3": "^5.9.7",
-    "lodash": "^4.17.15",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.0.1",
-    "string": "^3.3.3",
-    "topojson": "^3.0.2"
+    "d3": "^5.9.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,16 +17,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
