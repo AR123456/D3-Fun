@@ -1,58 +1,117 @@
 import * as d3 from "d3";
-// inspiraton  http://bl.ocks.org/yonester/6472779
 
-// make a class
+const MARGIN = { TOP: 10, BOTTOM: 50, LEFT: 70, RIGHT: 10 };
+const WIDTH = 800 - MARGIN.LEFT - MARGIN.RIGHT;
+const HEIGHT = 500 - MARGIN.TOP - MARGIN.BOTTOM;
 class D3Chart {
-  // class must have  a constructor function which is run whenever a class is first initialized
   constructor(element) {
-    var w = 500,
-      h = 500,
-      n = 65,
-      s = h / n;
-
-    d3.select("body")
+    const vis = this;
+    // store in svg
+    vis.svg = d3
+      .select(element)
       .append("svg")
-      .attr("width", w)
-      .attr("height", h)
-      .selectAll("line")
-      .data(d3.range(n))
+      .attr("width", WIDTH + MARGIN.LEFT + MARGIN.RIGHT)
+      .attr("height", HEIGHT + MARGIN.TOP + MARGIN.BOTTOM)
+      .append("g")
+      .attr("transform", `translate(${MARGIN.LEFT}, ${MARGIN.TOP})`);
+
+    vis.xLabel = vis.svg
+      .append("text")
+      .attr("x", WIDTH / 2)
+      .attr("y", HEIGHT + 50)
+      .attr("text-anchor", "middle");
+
+    vis.svg
+      .append("text")
+      .attr("x", -(HEIGHT / 2))
+      .attr("y", -50)
+      .attr("text-anchor", "middle")
+      .text("Height in cm")
+      .attr("transform", "rotate(-90)");
+
+    vis.xAxisGroup = vis.svg
+      .append("g")
+      .attr("transform", `translate(0, ${HEIGHT})`);
+
+    vis.yAxisGroup = vis.svg.append("g");
+    // update gender based on what is passed from app.js
+    Promise.all([
+      d3.json("https://udemy-react-d3.firebaseio.com/tallest_men.json"),
+      d3.json("https://udemy-react-d3.firebaseio.com/tallest_women.json")
+    ]).then(datasets => {
+      vis.menData = datasets[0];
+      vis.womenData = datasets[1];
+      vis.update("men");
+    });
+  }
+
+  update(gender) {
+    const vis = this;
+    // logic to pass in men or women
+    vis.data = gender === "men" ? vis.menData : vis.womenData;
+    vis.xLabel.text(`The world's tallest ${gender}`);
+
+    const y = d3
+      .scaleLinear()
+      .domain([
+        d3.min(vis.data, d => d.height) * 0.95,
+        d3.max(vis.data, d => d.height)
+      ])
+      .range([HEIGHT, 0]);
+
+    const x = d3
+      .scaleBand()
+      .domain(vis.data.map(d => d.name))
+      .range([0, WIDTH])
+      .padding(0.4);
+
+    const xAxisCall = d3.axisBottom(x);
+    vis.xAxisGroup
+      .transition()
+      .duration(500)
+      .call(xAxisCall);
+
+    const yAxisCall = d3.axisLeft(y);
+    vis.yAxisGroup
+      .transition()
+      .duration(500)
+      .call(yAxisCall);
+
+    // DATA JOIN
+    const rects = vis.svg.selectAll("rect").data(vis.data);
+
+    // EXIT
+    rects
+      .exit()
+      .transition()
+      .duration(500)
+      .attr("height", 0)
+      .attr("y", HEIGHT)
+      .remove();
+
+    // UPDATE
+    rects
+      .transition()
+      .duration(500)
+      .attr("x", d => x(d.name))
+      .attr("y", d => y(d.height))
+      .attr("width", x.bandwidth)
+      .attr("height", d => HEIGHT - y(d.height));
+
+    // ENTER
+    rects
       .enter()
-      .append("line")
-      .attr("x1", 0)
-      .attr("y1", function(d) {
-        return d * s;
-      })
-      .attr("x2", function(d) {
-        return d * s;
-      })
-      .attr("y2", h);
-    // const svg = d3
-    //   .select(element)
-    //   .append("svg")
-    //   .attr("width", 500)
-    //   .attr("height", 500);
-    // // can be json, csv or tsv the first param is the path to the data file,
-    // // this returns a promis whihc can be resovled using the l then method.
-    // // then provide a callback method to execurre onnce data is loaded(agesData)
-    // d3.json(url).then(agesData => {
-    //   const rects = svg.selectAll("rect").data(agesData);
-    //   rects
-    //     .enter()
-    //     .append("rect")
-    //     .attr("x", (d, i) => i * 100)
-    //     .attr("y", 50)
-    //     .attr("width", 50)
-    //     // setting height to the value of age in the json object *10
-    //     .attr("height", d => d.age * 10)
-    //     // setting fill with a funciton if age is greater than 10 return red, else return green
-    //     .attr("fill", d => {
-    //       if (d.age > 10) {
-    //         return "red";
-    //       }
-    //       return "green";
-    //     });
-    // });
+      .append("rect")
+      .attr("x", d => x(d.name))
+      .attr("width", x.bandwidth)
+      .attr("fill", "grey")
+      .attr("y", HEIGHT)
+      .transition()
+      .duration(500)
+      .attr("height", d => HEIGHT - y(d.height))
+      .attr("y", d => y(d.height));
+
+    console.log(rects);
   }
 }
-
 export default D3Chart;
