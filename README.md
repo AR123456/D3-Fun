@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+svg Paths
+<path d="M150 0 L75 200 L225 200 Z"/>
+the d tells the svg how to draw
 
-## Available Scripts
+M - moveto - moves the "pen" to the starting position " x 150 , y 0
+L - lineto - draw line to a point L x75, y 200 then to x225, y 200
+Z - closepath - go back to the starting point and stop drawing
 
-In the project directory, you can run:
+SVG paths -MDN
+https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+W3 schools
+https://www.w3schools.com/graphics/svg_path.asp
 
-### `npm start`
+L = lineto
+H = horizontal lineto
+V = vertical lineto
+C = curveto - takes 3 sets of 2 start point, position of control stick and end point - see mdm generator
+https://developer.mozilla.org/en-US/docs/Web/CSS/Tools/Cubic_Bezier_Generator
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+S = smooth curveto
+Q = quadratic Bézier curve
+T = smooth quadratic Bézier curveto
+A = elliptical Arc
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+data operator in d3
+joins an array of data (which can be numbers, objects or other arrays) with the current selection.
+The D3.js Data Operator returns three virtual selections rather than just the regular one like other methods.
 
-### `npm test`
+The three virtual selections are enter, update and exit.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The enter selection contains placeholders for any missing elements.
 
-### `npm run build`
+The update selection contains existing elements, bound to data.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Any remaining elements end up in the exit selection for removal.
+Thinking with Joins by Mike Bostock https://bost.ocks.org/mike/join/
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+inverting the bars - need to find the correct start possition of the rectancle which is the top of the rectangle y axies y(d.orders) in the code
