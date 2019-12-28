@@ -9,18 +9,33 @@ var w = window.innerWidth > 960 ? 960 : window.innerWidth || 960,
     .quantize()
     .domain([10000, 7250])
     .range([
-      "#dadaeb",
-      "#bcbddc",
-      "#9e9ac8",
-      "#807dba",
-      "#6a51a3",
-      "#54278f",
-      "#3f007d"
+      // "#dadaeb",
+      // "#bcbddc",
+      // "#9e9ac8",
+      // "#807dba",
+      // "#6a51a3",
+      // "#54278f",
+      // "#3f007d"
+      // adding some differant colors
+      //red
+      "#ff0000",
+      //blue
+      "#0000ff",
+      //yellow
+      "#ffff00",
+      //green
+      "#00cc44",
+      //purple
+      "#9900ff",
+      // orange
+      "#ffa500"
     ]);
 
 var numVertices = (w * h) / 3000;
+
 var vertices = d3.range(numVertices).map(function(i) {
   angle = radius * (i + 10);
+
   return {
     x: angle * Math.cos(angle) + w / 2,
     y: angle * Math.sin(angle) + h / 2
