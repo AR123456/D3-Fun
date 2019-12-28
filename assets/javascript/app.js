@@ -1,5 +1,5 @@
 var w = window.innerWidth > 960 ? 960 : window.innerWidth || 960,
-  h = window.innerHeight > 500 ? 500 : window.innerHeight || 500,
+  h = window.innerHeight > 960 ? 960 : window.innerHeight || 960,
   radius = 5.25,
   links = [],
   simulate = true,
@@ -131,6 +131,7 @@ function update(e) {
     .style("fill", function(d, i) {
       return color(d3.geom.polygon(d).area());
     });
+
   path.exit().remove();
 
   circle = circle.data(vertices);
@@ -155,6 +156,7 @@ function update(e) {
     .remove();
 
   link = link.data(d3_geom_voronoi.links(vertices));
+
   link.enter().append("line");
   link
     .attr("x1", function(d) {
