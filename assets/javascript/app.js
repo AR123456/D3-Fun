@@ -6,7 +6,6 @@ var w = window.innerWidth,
   links = [],
   simulate = true,
   zoomToAdd = true,
-  // https://github.com/mbostock/d3/blob/master/lib/colorbrewer/colorbrewer.js#L105
   color = d3.scale
     .quantize()
     .domain([10000, 7250])
