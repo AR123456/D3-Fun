@@ -1,5 +1,7 @@
-var w = window.innerWidth > 960 ? 960 : window.innerWidth || 960,
-  h = window.innerHeight > 960 ? 960 : window.innerHeight || 960,
+// var w = window.innerWidth > 960 ? 960 : window.innerWidth || 960,
+//   h = window.innerHeight > 960 ? 960 : window.innerHeight || 960,
+var w = window.innerWidth,
+  h = window.innerHeight,
   radius = 5.25,
   links = [],
   simulate = true,
@@ -16,19 +18,25 @@ var w = window.innerWidth > 960 ? 960 : window.innerWidth || 960,
       // "#6a51a3",
       // "#54278f",
       // "#3f007d"
+      "#12cad6",
+      "#beebe9",
+      "#9be3de",
+      "#0fabbc",
+      "#cc0066"
+
       // adding some differant colors
       //red
-      "#ff0000",
-      //blue
-      "#0000ff",
-      //yellow
-      "#ffff00",
-      //green
-      "#00cc44",
-      //purple
-      "#9900ff",
-      // orange
-      "#ffa500"
+      // "#ff0000",
+      // //blue
+      // "#0000ff",
+      // //yellow
+      // "#ffff00",
+      // //green
+      // "#00cc44",
+      // //purple
+      // "#9900ff",
+      // // orange
+      // "#ffa500"
     ]);
 
 var numVertices = (w * h) / 3000;
