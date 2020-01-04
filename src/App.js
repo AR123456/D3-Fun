@@ -1,42 +1,74 @@
-// https://www.youtube.com/watch?v=hR8xtl_IbCw
+// https://www.youtube.com/watch?v=yhwHUmjqxQw
 import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
-// adding line and curvedCardian for the line
-import { select, line, curveCardinal } from "d3";
+// axis bottom,linear scale and axis right
+import {
+  select,
+  line,
+  curveCardinal,
+  axisBottom,
+  scaleLinear,
+  axisRight
+} from "d3";
 
 function App() {
   const [data, setData] = useState([25, 30, 45, 60, 20, 65, 75]);
   const svgRef = useRef();
+  // ////use effect will be called initially an don every data change
   useEffect(() => {
     const svg = select(svgRef.current);
-    // using line from D3
-    const myLine = line()
-      // tell line based on data where to render each dot on line, based on value index in data array use x to be the index of the value
-      .x((value, index) => index * 50)
-      // y will be the value of the element in the array
-      .y(value => 150 - value)
-      // thi makes a nice curved line
-      .curve(curveCardinal);
-    // select the path elements in svg and sync with data
+    const xScale = scaleLinear()
+      // the domain is the input values, need to scale up or down, range of index values
+      .domain([0, data.length - 1])
+      // also visual representation of data
+      .range([0, 300]);
+    // a function from d3 needs domain- input values and range - output values
+    const yScale = scaleLinear()
+      .domain([0, 150])
+      .range([150, 0]);
+    // takes in scale to use- a function helper that transforms an input value to something that is needed. Ususaly for the visual representation for that value
+    // pass in the xScale defined previously
+    const xAxis = axisBottom(xScale)
+      .ticks(data.length)
+      // formating the x axi to show 1-7
+      .tickFormat(index => index + 1);
     svg
-      .selectAll("path")
-      // need to wrap array in another array so d3 doesnt generate a new path element for every element in the array.  We just need one path of all the elements
+      .select(".x-axis")
+      // making use of the g or group with class name x-axis down in the return.
+      .style("transform", "translateY(150px)")
+      .call(xAxis);
+    const yAxis = axisRight(yScale);
+    svg
+      // making use of the g or group with class name y-axis down in the return.
+      .select(".y-axis")
+      .style("transform", "translateX(300px)")
+      .call(yAxis);
+    ////// generates the "d" attribute of a path element ////////////////
+    const myLine = line()
+      //scale to use in visual representation of the data, pass the index value into the scale
+      .x((value, index) => xScale(index))
+      .y(yScale)
+      .curve(curveCardinal);
+    ///// renders path element, and attaches
+    ///// the "d" attribute from line generator abobe
+    svg
+      .selectAll(".line")
       .data([data])
-      // create update remove with new join api
       .join("path")
-      // attahced the attribute for every entering and updating element
-      // value is a callback in this case- gets the entier data array as an argument foward to myLine
-      // returns the d attribute and attahces it
-      .attr("d", value => myLine(value))
-      // clean up with no fill  and stoke bule
+      .attr("class", "line")
+      .attr("d", myLine)
       .attr("fill", "none")
       .attr("stroke", "blue");
   }, [data]);
   return (
     <React.Fragment>
       <svg ref={svgRef}>
-        {/* <path d="M0,150,100,100,150,120" stroke="blue" fill="none" /> */}
+        <g className="x-axis"></g>
+        <g className="y-axis"></g>
       </svg>
+      <br />
+      <br />
+      <br />
       <br />
       <button onClick={() => setData(data.map(value => value + 5))}>
         Update data
