@@ -1,6 +1,6 @@
 {
   "homepage": "https://ar123456.github.io/D3-Fun/",
-  "name": "line-chart",
+  "name": "d3-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
