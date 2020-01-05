@@ -1,5 +1,5 @@
 # Using React (Hooks) with D3
 
-## Getting started with the D3 General update pattern and React Hooks curved line chart
+## an Animated and colored bar chart using D3 and React hooks
 
 ## see the deployed app here https://ar123456.github.io/D3-Fun/
