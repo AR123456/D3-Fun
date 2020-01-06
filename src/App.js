@@ -1,7 +1,6 @@
-// https://www.youtube.com/watch?v=LQHt0wr3ybw&t=2s
+// https://www.youtube.com/watch?v=BS5VU0gFgE0
 import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
-// axis bottom,linear scale and axis right
 import { select, axisBottom, scaleLinear, axisRight, scaleBand } from "d3";
 
 function App() {
@@ -10,26 +9,17 @@ function App() {
   useEffect(() => {
     const svg = select(svgRef.current);
     const xScale = scaleBand()
-      //scaleBand takes the range and divides it into 5 equaldistant bands
-      // scale band maps abitrary values to a range of linier values in the range
-      // .domain([0, 1, 2, 3, 4, 5, 6])
-      // better way to write
       .domain(data.map((value, index) => index))
       .range([0, 300])
-      //outer and inner padding also adjusts the x axis
       .padding(0.5);
     const yScale = scaleLinear()
-      //linear range of input to linear range of input values
       .domain([0, 150])
       .range([150, 0]);
-    // colorizing the bars
     const colorScale = scaleLinear()
-      //linear range of input to linear range of input values
       .domain([75, 100, 150])
       .range(["green", "orange", "red"])
       .clamp(true);
     const xAxis = axisBottom(xScale).ticks(data.length);
-
     svg
       .select(".x-axis")
       .style("transform", "translateY(150px)")
@@ -39,35 +29,52 @@ function App() {
       .select(".y-axis")
       .style("transform", "translateX(300px)")
       .call(yAxis);
-
-    // drawing the bars for the bar chart
-    // the general update pattern of D3
-    //
-    //
+    // draw the bars
     svg
-      //select the bar class elements
       .selectAll(".bar")
-      //syncronize with data array
       .data(data)
-      // create a rect element for each piece of daata
       .join("rect")
-      // class bar attr to every entering and updating element in svg,  r elements update
       .attr("class", "bar")
-
-      // using a trick to flip them upside down on the y axis
       .style("transform", "scale(1,-1")
-      // position bars on the x axis, index value gets passed to the x scale
       .attr("x", (value, index) => xScale(index))
-      // transform values of the data array to their respective y values
       .attr("y", -150)
-      //add width to the rectangles 7 equaly wide bands
       .attr("width", xScale.bandwidth())
-      // adding animation with transition
-      .transition()
-      //adding height so we ca see the bars, have to do some math here so bars done fall off the bottom edge of graph
-      // adding custom colorization
-      .attr("fill", colorScale)
+      // add the text on hover- pass into "on", it is important to do this before the transition
+      // define handler function that recives the value and index of the current bar.
 
+      .on("mouseenter", (value, index) => {
+        // with the selected argument tell D3 I want to....
+        // with every mouse enter select the elements with calss tooltip and sync with data passed in IE the value of the bar
+        svg
+          .selectAll(".tooltip")
+          .data([value])
+          // create new text element for each piece of data
+          // .join("text")
+          // updating this to  a join so that the y transiiton from the top is more subtel
+          .join(enter => enter.append("text").attr("y", yScale(value) - 4))
+          // add attr so tooltip can update
+          .attr("class", "tooltip")
+          // define content of the element to be the value of the bar
+          .text(value)
+          // postiion the text on the x axis
+          // getting the value of index from the on mounseenter not the index of the xscale above it.  that index ref to the element in the data array. we need the index of the element in the data array
+          // adding 1/2 of the width of element to help with centering text over SVG  as data changes
+          .attr("x", xScale(index) + xScale.bandwidth() / 2)
+
+          // center the text on top of the bar
+          // this centers on top of left edge- need to do one more step - add 1/2 the width of the x scale so this moves over
+          .attr("text-anchor", "middle")
+          .transition()
+          //now position the text on the y axis- puts text on top of bar,  the d-8 adds a bit of margin
+          // putting this under transition to it looks nice as well
+          .attr("y", yScale(value) - 8)
+          // transition the opacity of the text element when it comes in
+          .attr("opacity", 1);
+      })
+      //need to remove the transition onmouse leave so that effects can be applyed to next element hovered over
+      .on("mouseleave", () => svg.select(".tooltip").remove())
+      .transition()
+      .attr("fill", colorScale)
       .attr("height", value => 150 - yScale(value));
   }, [data]);
   return (
@@ -76,15 +83,18 @@ function App() {
         <g className="x-axis"></g>
         <g className="y-axis"></g>
       </svg>
-      <br />
-      <br />
-      <br />
-      <br />
+
       <button onClick={() => setData(data.map(value => value + 5))}>
         Update data
       </button>
       <button onClick={() => setData(data.filter(value => value < 35))}>
         Filter data
+      </button>
+      <button
+        //add data to the chart randomly
+        onClick={() => setData([...data, Math.round(Math.random() * 100)])}
+      >
+        Add data
       </button>
     </React.Fragment>
   );
