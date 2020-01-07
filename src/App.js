@@ -8,6 +8,7 @@ function App() {
 
   return (
     <React.Fragment>
+      {/* passing data above into the BarChart component  */}
       <BarChart data={data} />
       <button onClick={() => setData(data.map(value => value + 5))}>
         Update data
