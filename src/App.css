@@ -1,26 +1,32 @@
 svg {
-  background: #eee;
   overflow: visible;
-  /*  take this out of the SVG and add it to the DIV in the BarChart */
-  /* margin-bottom: 2rem; */
   display: block;
-  /* changing the defalut width of svg form 300 px   */
+  /* background: #eee; */
   width: 100%;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  /* need to change from center to stretch  */
   align-items: stretch;
   justify-content: center;
   height: 100vh;
-  /*  adding padding to the root element so that when the chart becomes responsive the y axis can be seen  */
-  padding: 0 50px;
+  padding: 0 50px 150px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 button {
-  margin-bottom: 5px;
   width: 100px;
+  border: 1px solid black;
   margin: 0 auto 5px;
+}
+
+video {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: auto;
+  width: 100%;
 }
