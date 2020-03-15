@@ -72,7 +72,7 @@ function App() {
         COVID-19 Cases in US by date of Illness January 12th 2020 to March 7th
         2020
       </h2>
-      <h3>
+      <h7>
         <a
           href="https://www.cdc.gov/coronavirus/2019-ncov/cases-in-us.html"
           target="_blank"
@@ -80,7 +80,8 @@ function App() {
         >
           From CDC.Gov
         </a>
-      </h3>
+      </h7>
+      <h4>Drag or resize the brush for closer look.</h4>
 
       <BrushChart data={data} />
 

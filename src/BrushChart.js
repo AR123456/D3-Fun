@@ -20,7 +20,7 @@ function BrushChart({ data }) {
   const dimensions = useResizeObserver(wrapperRef);
   // pass into state the default range for brush in index values
   // find length of array and start the brush at the end of it by default
-  const [selection, setSelection] = useState([40, 55]);
+  const [selection, setSelection] = useState([45, 55]);
   // making use of usePrevious to hve the prevousSelection at desposal
   const previousSelection = usePrevious(selection);
 
@@ -136,7 +136,7 @@ function BrushChart({ data }) {
       {/* added this small tag to show selected values  */}
       {/*  similar check to  if value is in brush range filter over values */}
       <small style={{ marginBottom: "1rem" }}>
-        Selected values: [
+        Numbers in selected time period: [
         {data
           .filter(
             (value, index) => index >= selection[0] && index <= selection[1]
