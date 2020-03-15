@@ -4,4 +4,4 @@
 
 # Here is my spin with some Data about COVID19 from the CDC
 
-# see it at https://ar123456.github.io/D3-Fun/
+# see it at https://powerful-bastion-30341.herokuapp.com/
