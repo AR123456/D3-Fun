@@ -136,7 +136,7 @@ function BrushChart({ data }) {
       {/* added this small tag to show selected values  */}
       {/*  similar check to  if value is in brush range filter over values */}
       <small style={{ marginBottom: "1rem" }}>
-        Numbers in selected time period: [
+        Numbers in selected number of days: [
         {data
           .filter(
             (value, index) => index >= selection[0] && index <= selection[1]
