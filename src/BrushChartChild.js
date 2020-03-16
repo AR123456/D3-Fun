@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   select,
   scaleLinear,
@@ -6,48 +6,52 @@ import {
   max,
   curveCardinal,
   axisBottom,
-  axisLeft,
-  brushX,
-  event
+  axisLeft
 } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
-import usePrevious from "./usePrevious";
-
-function BrushChart({ data, children }) {
+/**
+ * Component that renders a BrushChart
+ */
+// defaulting in the id to be myClip path
+function BrushChartChild({ data, selection, id = "myClipPath" }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
-  const [selection, setSelection] = useState([45, 55]);
-  const previousSelection = usePrevious(selection);
 
   useEffect(() => {
     const svg = select(svgRef.current);
+    const content = svg.select(".content");
     const { width, height } =
       dimensions || wrapperRef.current.getBoundingClientRect();
 
     // scales + line generator
+
     const xScale = scaleLinear()
-      .domain([0, data.length - 1])
-      .range([0, width]);
+      .domain(selection)
+      .range([10, width - 10]);
+
     const yScale = scaleLinear()
       .domain([0, max(data)])
-      .range([height, 0]);
+
+      .range([height - 10, 10]);
+
     const lineGenerator = line()
       .x((d, index) => xScale(index))
       .y(d => yScale(d))
       .curve(curveCardinal);
 
     // render the line
-    svg
+    content
       .selectAll(".myLine")
       .data([data])
       .join("path")
       .attr("class", "myLine")
-      .attr("stroke", "blue")
+      .attr("stroke", "black")
       .attr("fill", "none")
       .attr("d", lineGenerator);
-    svg
+
+    content
       .selectAll(".myDot")
       .data(data)
       .join("circle")
@@ -57,12 +61,12 @@ function BrushChart({ data, children }) {
         index >= selection[0] && index <= selection[1] ? 4 : 2
       )
       .attr("fill", (value, index) =>
-        index >= selection[0] && index <= selection[1] ? "red" : "black"
+        index >= selection[0] && index <= selection[1] ? "orange" : "black"
       )
       .attr("cx", (value, index) => xScale(index))
       .attr("cy", yScale);
 
-    // axes- set up of the x and y axis
+    // axes
     const xAxis = axisBottom(xScale);
     svg
       .select(".x-axis")
@@ -71,39 +75,26 @@ function BrushChart({ data, children }) {
 
     const yAxis = axisLeft(yScale);
     svg.select(".y-axis").call(yAxis);
-    const brush = brushX()
-      .extent([
-        [0, 0],
-        [width, height]
-      ])
-      .on("start brush end", () => {
-        if (event.selection) {
-          const indexSelection = event.selection.map(xScale.invert);
-          setSelection(indexSelection);
-        }
-      });
-
-    if (previousSelection === selection) {
-      svg
-        .select(".brush")
-        .call(brush)
-        .call(brush.move, selection.map(xScale));
-    }
-  }, [data, dimensions, previousSelection, selection]);
+  }, [data, dimensions, selection]);
 
   return (
     <React.Fragment>
+      <h3>Expanded view of brush</h3>
       <div ref={wrapperRef} style={{ marginBottom: "2rem" }}>
         <svg ref={svgRef}>
+          <defs>
+            <clipPath id={id}>
+              <rect x="0" y="0" width="100%" hight="100%" />
+            </clipPath>
+          </defs>
+
+          <g className="content" clipPath={`url(#${id})`} />
           <g className="x-axis" />
           <g className="y-axis" />
-          <g className="brush" />
         </svg>
       </div>
-
-      {children(selection)}
     </React.Fragment>
   );
 }
 
-export default BrushChart;
+export default BrushChartChild;
