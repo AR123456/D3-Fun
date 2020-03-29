@@ -2,7 +2,6 @@ import React, { useState } from "react";
 // import Video from "./Video";
 import "./App.css";
 import BrushChart from "./BrushChart";
-import BrushChartChild from "./BrushChartChild";
 
 function App() {
   //data with array
@@ -70,17 +69,17 @@ function App() {
     33404,
     44183,
     54453,
-    68440
+    68440,
+    85356,
+    103321
   ]);
   // const onAddDataClick = () =>
   //   setData([...data, Math.round(Math.random() * 100)]);
 
   return (
     <React.Fragment>
-      <br />
-      <br />
       <h2>
-        Cumulative total number of COVID-19 Cases in US by date of Illness January 12th 2020 to March 25th
+        COVID-19 Cases in US by date of Illness January 12th 2020 to March 7th
         2020
       </h2>
       <h7>
@@ -94,9 +93,9 @@ function App() {
       </h7>
       <h4>Drag or resize the brush for closer look.</h4>
 
-      <BrushChart data={data}>
-        {selection => <BrushChartChild data={data} selection={selection} />}
-      </BrushChart>
+      <BrushChart data={data} />
+
+      {/* <Video /> */}
     </React.Fragment>
   );
 }
