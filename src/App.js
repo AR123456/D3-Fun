@@ -79,7 +79,7 @@ function App() {
   return (
     <React.Fragment>
       <h2>
-        COVID-19 Cases in US by date of Illness January 12th 2020 to March 7th
+        COVID-19 Cases in US by date reported January 12th 2020 to March 28th
         2020
       </h2>
       <h7>
