@@ -5,16 +5,34 @@ const svg = d3
   .append("svg")
   // in the attr method the first argument is the attribute to be set,
   //the second is that attributes value ie 400 pixels
-  .attr("width", 400)
+  .attr("width", 500)
   .attr("height", 400);
 
-const circle = svg
+svg
   // append takes the type of element to be added to the screen
-  .append("circle")
+  .append("rect")
   // sets the attributes of the svg
   // attr is a methond
-  .attr("cx", 100)
+  .attr("x", 200)
   // each attr methond  returns the element that they are changing
-  .attr("cy", 250)
-  .attr("r", 70)
+  .attr("y", 200)
+  .attr("width", 100)
+  .attr("height", 50)
+
   .attr("fill", "grey");
+
+svg
+
+  .append("ellipse")
+  .attr("cx", 50)
+  .attr("cy", 100)
+  .attr("rx", 50)
+  .attr("ry", 75)
+  .style("fill", "green");
+svg
+  .append("line")
+  .attr("x1", 300)
+  .attr("y1", 300)
+  .attr("x2", 350)
+  .attr("y2", 350)
+  .style("stroke", "black");
