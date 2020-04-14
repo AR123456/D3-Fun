@@ -1,38 +1,58 @@
-var data = [25, 20, 10, 12, 15];
-// data join in d3- d3 reads an array of data
-// associates each item in the array with an svg
+// d3 can load data form csv,tsv and json files
+// or from an ajax request
+//////
+// this code resutls in a promise that can either be fullfilled ,
+//rejected or pending. So can pass this value around in code without needing
+// to wait for it to evaluate.
+d3.tsv("data/ages.tsv")
+  // d3.csv("data/ages.csv")
+  // d3.json("data/ages.json")
+  // the .then is the newest syntax
+  // the function after .then waits for the data
+  .then(data => {
+    // d3 writes this data in as an array of objects
+    // the values inside the objects are strings ot need ot make them into numbers
+    // use forEach to loop
+    data.forEach(d => {
+      // here the plus sign is making each age an integer
+      d.age = +d.age;
+    });
 
-const svg = d3
-  .select("#chart-area")
-  .append("svg")
-  .attr("width", 400)
-  .attr("height", 400);
-// using select all to get all of the circles on the screen
-const circles = svg
-  .selectAll("circle")
-  //associate this selection with the array of data
-  .data(data);
+    var svg = d3
+      .select("#chart-area")
+      .append("svg")
+      .attr("width", 400)
+      .attr("height", 400);
 
-circles
-  // the result of above is passed on to the method enter
-  .enter()
-  // the result of enter is then passed on to append
-  .append("circle")
-  // now have the option of setting attributes with a annonymous function
-  // instead of an integer or a string
-  // the function can take one or two arguments
-  // the first argument is the items in the array ( d)
-  // the second argument represents it's index in the array
-  // can set the attributes based on each item in the array
-  .attr("cx", (d, i) => {
-    // function is looping through and setting cx to be the index * 50 + 25
-    return i * 50 + 25;
+    var circles = svg
+      .selectAll("circle")
+      // now getting data from external file
+      .data(data);
+
+    circles
+      .enter()
+      .append("circle")
+      .attr("cx", (d, i) => {
+        // d now retruns an object, not an integer
+        // console.log(d);
+        return i * 50 + 25;
+      })
+      .attr("cy", 25)
+      .attr("r", d => {
+        // returning 2 * the age value in the object
+        return d.age * 2;
+      })
+      .attr("fill", d => {
+        // using this if statement to set
+        //fill colors based on name value in the object
+        if (d.name == "Tony") {
+          return "blue";
+        } else {
+          return "red";
+        }
+      });
   })
-  // the y axis is set at 25
-  .attr("cy", 25)
-  // the radius of the circle is being set to what d is,
-  // the value of the item in the array
-  .attr("r", d => {
-    return d;
-  })
-  .attr("fill", "red");
+  // the .then needs the .catch
+  .catch(error => {
+    console.log(error);
+  });
