@@ -24,7 +24,7 @@ circles
   // the first argument is the items in the array ( d)
   // the second argument represents it's index in the array
   // can set the attributes based on each item in the array
-  .attr("cx", (d, i) => {
+  .attr("cx", function(d, i) {
     // function is looping through and setting cx to be the index * 50 + 25
     return i * 50 + 25;
   })
@@ -32,7 +32,7 @@ circles
   .attr("cy", 25)
   // the radius of the circle is being set to what d is,
   // the value of the item in the array
-  .attr("r", d => {
+  .attr("r", function(d) {
     return d;
   })
   .attr("fill", "red");
