@@ -1,58 +1,35 @@
-// d3 can load data form csv,tsv and json files
-// or from an ajax request
-//////
-// this code resutls in a promise that can either be fullfilled ,
-//rejected or pending. So can pass this value around in code without needing
-// to wait for it to evaluate.
-d3.tsv("data/ages.tsv")
-  // d3.csv("data/ages.csv")
-  // d3.json("data/ages.json")
-  // the .then is the newest syntax
-  // the function after .then waits for the data
-  .then(data => {
-    // d3 writes this data in as an array of objects
-    // the values inside the objects are strings ot need ot make them into numbers
-    // use forEach to loop
-    data.forEach(d => {
-      // here the plus sign is making each age an integer
-      d.age = +d.age;
-    });
-
-    var svg = d3
-      .select("#chart-area")
-      .append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
-
-    var circles = svg
-      .selectAll("circle")
-      // now getting data from external file
-      .data(data);
-
-    circles
-      .enter()
-      .append("circle")
-      .attr("cx", (d, i) => {
-        // d now retruns an object, not an integer
-        // console.log(d);
-        return i * 50 + 25;
-      })
-      .attr("cy", 25)
-      .attr("r", d => {
-        // returning 2 * the age value in the object
-        return d.age * 2;
-      })
-      .attr("fill", d => {
-        // using this if statement to set
-        //fill colors based on name value in the object
-        if (d.name == "Tony") {
-          return "blue";
-        } else {
-          return "red";
-        }
-      });
-  })
-  // the .then needs the .catch
-  .catch(error => {
-    console.log(error);
+// get the data from the file
+d3.json("data/buildings.json").then(data => {
+  //all the work with data goes here
+  data.forEach(d => {
+    // turn string to number
+    d.height = +d.height;
   });
+  const svg = d3
+    .select("#chart-area")
+    .append("svg")
+    .attr("width", 400)
+    .attr("height", 400);
+
+  const rectangle = svg.selectAll("rectangle").data(data);
+  rectangle
+    .enter()
+    .append("rect")
+    .attr("x", (d, i) => {
+      return i * 60 + 10;
+    })
+    .attr("y", 50)
+    .attr("width", 50)
+    .attr("height", d => {
+      return d.height;
+    })
+    // .attr("rx", 0)
+    // .attr("ry", 0)
+    .style("margin", 10)
+    .style("fill", "black")
+
+    ///
+    .catch(error => {
+      console.log(error);
+    });
+});
