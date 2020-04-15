@@ -1,35 +1,30 @@
-// get the data from the file
+var svg = d3
+  .select("#chart-area")
+  .append("svg")
+  .attr("width", "400")
+  .attr("height", "400");
+
 d3.json("data/buildings.json").then(data => {
-  //all the work with data goes here
+  console.log(data);
+
   data.forEach(d => {
-    // turn string to number
     d.height = +d.height;
   });
-  const svg = d3
-    .select("#chart-area")
-    .append("svg")
-    .attr("width", 400)
-    .attr("height", 400);
 
-  const rectangle = svg.selectAll("rectangle").data(data);
-  rectangle
+  var rects = svg
+    .selectAll("rect")
+    .data(data)
     .enter()
     .append("rect")
+    .attr("y", 0)
     .attr("x", (d, i) => {
-      return i * 60 + 10;
+      return i * 60;
     })
-    .attr("y", 50)
-    .attr("width", 50)
+    .attr("width", 40)
     .attr("height", d => {
       return d.height;
     })
-    // .attr("rx", 0)
-    // .attr("ry", 0)
-    .style("margin", 10)
-    .style("fill", "black")
-
-    ///
-    .catch(error => {
-      console.log(error);
+    .attr("fill", d => {
+      return "grey";
     });
 });
