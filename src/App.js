@@ -1,30 +1,28 @@
 import React, { useState } from "react";
-import Circles from "./Circles";
+import Buildings from "./Buildings";
 import "./App.css";
 
 function App() {
-  // https://swizec.com/blog/building-a-react-dataviz-with-react-hooks/swizec/8801
-  //  https://swizec1.teachable.com/courses/447741/lectures/9911350
   const [data] = useState([
     {
-      name: "Tony",
-      age: "10",
+      name: "Burj Khalifa",
+      height: "350",
     },
     {
-      name: "Jessica",
-      age: "12",
+      name: "Shanghai Tower",
+      height: "263.34",
     },
     {
-      name: "Andrew",
-      age: "9",
+      name: "Abraj Al-Bait Clock Tower",
+      height: "254.04",
     },
     {
-      name: "Emily",
-      age: "10",
+      name: "Ping An Finance Centre",
+      height: "253.20",
     },
     {
-      name: "Richard",
-      age: "11",
+      name: "Lotte World Tower",
+      height: "230.16",
     },
   ]);
 
@@ -32,7 +30,7 @@ function App() {
   console.log(data[0].name);
   return (
     <React.Fragment>
-      <Circles data={data} />
+      <Buildings data={data} />
     </React.Fragment>
   );
 }
