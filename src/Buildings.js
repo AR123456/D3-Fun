@@ -17,15 +17,16 @@ function Buildings({ data }) {
       .selectAll("rectangle")
       .data(data)
       .join("rect")
+      .attr("y", 0)
       .attr("x", (d, i) => {
-        return i * 60 + 10;
+        return i * 60;
       })
-      .attr("y", 50)
-      .attr("width", 50)
+
+      .attr("width", 40)
       .attr("height", (d) => {
         return d.height;
       })
-      .style("margin", 10)
+
       .style("fill", "black");
   }, [data, dimensions]);
   return (
