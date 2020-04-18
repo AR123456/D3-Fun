@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { select } from "d3";
+import { select, scaleLinear } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
 function Buildings({ data }) {
@@ -13,6 +13,16 @@ function Buildings({ data }) {
     data.forEach((d) => {
       d.height = +d.height;
     });
+    // convention is to name the const after the axis that it will apply to
+    const y =
+      // function d3.scaleLinear need 2 methods
+      scaleLinear()
+        //domain method, takes in the vaule of the min and max of the domain
+        // 0 to the height of the tallest building
+        .domain([0, 828])
+        //range method takes in the min and max of the range
+        // the out put
+        .range([0, 400]);
     svg
       .selectAll("rectangle")
       .data(data)
@@ -24,7 +34,9 @@ function Buildings({ data }) {
 
       .attr("width", 40)
       .attr("height", (d) => {
-        return d.height;
+        // pass raw hight values into the scales function before returning
+        // as value of the height attribute
+        return y(d.height);
       })
 
       .style("fill", "black");
