@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Buildings from "./zBuildings";
+import Buildings from "./Buildings";
 
 import "./App.css";
 
