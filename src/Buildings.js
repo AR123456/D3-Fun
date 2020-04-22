@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { select, scaleLog } from "d3";
+import { select, scaleLog, scaleTime } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
 function Buildings({ data }) {
@@ -13,25 +13,27 @@ function Buildings({ data }) {
     data.forEach((d) => {
       d.height = +d.height;
     });
-    // convention is to name the const after the axis that it will apply to
-    const y =
-      // use log scale to display data with large changes in value
-      // does better job displaying the diff in values
-      //scaleLog takes in min and max values for domain and range
-      // the domain of a log scale needs to be either strictly negative or positive
-      // the log of 0 is always undefined
-      // 0 cannot be in the domain
-      scaleLog()
-        //domain method, takes in the vaule of the min and max of the domain
-        // 0 to the height of the tallest building
-        .domain([28, 828])
-        //range method takes in the min and max of the range
-        // the out put
-        .range([0, 400])
-        // base value defaults to 10
-        // this would place values a factor of 10 apart
-        // a log scale with a base of 1 is the same as a linear scale
-        .base(10);
+
+    const y = scaleLog().domain([28, 828]).range([0, 400]).base(10);
+    // ***************check out the console.log to see this
+    const x =
+      // time scales are a type of linear scale
+      // domain works with the JS date object instead of integers
+      // syntax is like that of a linear scale
+      scaleTime()
+        // create a new date object here by passing in the day time and month we want
+        // to do this with with actual data would need to convert a string of the date to a javascript date object
+        .domain([new Date(2000, 0, 1), new Date(2001, 0, 1)])
+        .range([0, 400]);
+
+    console.log(x(new Date(2000, 7, 1)));
+    console.log(x(new Date(2000, 2, 1)));
+    console.log(x(new Date(2000, 10, 25)));
+
+    console.log(x.invert(232.8));
+    console.log(x.invert(66.5));
+    console.log(x.invert(360));
+    // ***************** end of console.log
     svg
       .selectAll("rectangle")
       .data(data)
@@ -43,8 +45,6 @@ function Buildings({ data }) {
 
       .attr("width", 40)
       .attr("height", (d) => {
-        // pass raw hight values into the scales function before returning
-        // as value of the height attribute
         return y(d.height);
       })
 

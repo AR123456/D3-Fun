@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Buildings from "./Buildings";
+import Buildings from "./zBuildings";
+
 import "./App.css";
 
 function App() {
