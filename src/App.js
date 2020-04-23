@@ -9,7 +9,7 @@ function App() {
   const [data] = useState([
     {
       name: "Burj Khalifa",
-      height: "28",
+      height: "828",
     },
     {
       name: "Shanghai Tower",
@@ -17,15 +17,23 @@ function App() {
     },
     {
       name: "Abraj Al-Bait Clock Tower",
-      height: "1601",
+      height: "601",
     },
     {
       name: "Ping An Finance Centre",
-      height: "3990",
+      height: "599",
     },
     {
       name: "Lotte World Tower",
-      height: "5440",
+      height: "544.5",
+    },
+    {
+      name: "One World Trade Center",
+      height: "541.3",
+    },
+    {
+      name: "Guangzhou CTF Finance Center",
+      height: "530",
     },
   ]);
 
