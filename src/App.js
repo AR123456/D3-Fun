@@ -1,39 +1,32 @@
 import React, { useState } from "react";
 import Buildings from "./Buildings";
-
 import "./App.css";
 
 function App() {
   // https://swizec.com/blog/building-a-react-dataviz-with-react-hooks/swizec/8801
   //  https://swizec1.teachable.com/courses/447741/lectures/9911350
+  // try ajax   https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
+  // muri ajax used in breaking bad timeline
   const [data] = useState([
     {
       name: "Burj Khalifa",
-      height: "828",
+      height: "350",
     },
     {
       name: "Shanghai Tower",
-      height: "623",
+      height: "263.34",
     },
     {
       name: "Abraj Al-Bait Clock Tower",
-      height: "601",
+      height: "254.04",
     },
     {
       name: "Ping An Finance Centre",
-      height: "599",
+      height: "253.20",
     },
     {
       name: "Lotte World Tower",
-      height: "544.5",
-    },
-    {
-      name: "One World Trade Center",
-      height: "541.3",
-    },
-    {
-      name: "Guangzhou CTF Finance Center",
-      height: "530",
+      height: "230.16",
     },
   ]);
 

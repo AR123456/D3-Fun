@@ -1,6 +1,7 @@
 svg {
-  /* background: #eee; */
+  background: #eee;
   overflow: visible;
+
   display: block;
   width: 100%;
 }
@@ -10,7 +11,7 @@ svg {
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  height: 50vh;
+  height: 100vh;
   padding: 0 50px;
 }
 
