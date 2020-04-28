@@ -5,8 +5,6 @@ import "./App.css";
 function App() {
   // https://swizec.com/blog/building-a-react-dataviz-with-react-hooks/swizec/8801
   //  https://swizec1.teachable.com/courses/447741/lectures/9911350
-  // try ajax   https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
-  // muri ajax used in breaking bad timeline
   const [data] = useState([
     {
       name: "Burj Khalifa",
