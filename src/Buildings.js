@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { select, scaleLinear } from "d3";
+import { select, scaleLog } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
 function Buildings({ data }) {
@@ -15,14 +15,23 @@ function Buildings({ data }) {
     });
     // convention is to name the const after the axis that it will apply to
     const y =
-      // function d3.scaleLinear need 2 methods
-      scaleLinear()
+      // use log scale to display data with large changes in value
+      // does better job displaying the diff in values
+      //scaleLog takes in min and max values for domain and range
+      // the domain of a log scale needs to be either strictly negative or positive
+      // the log of 0 is always undefined
+      // 0 cannot be in the domain
+      scaleLog()
         //domain method, takes in the vaule of the min and max of the domain
         // 0 to the height of the tallest building
-        .domain([0, 828])
+        .domain([28, 828])
         //range method takes in the min and max of the range
         // the out put
-        .range([0, 400]);
+        .range([0, 400])
+        // base value defaults to 10
+        // this would place values a factor of 10 apart
+        // a log scale with a base of 1 is the same as a linear scale
+        .base(10);
     svg
       .selectAll("rectangle")
       .data(data)
