@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { select, scaleLog } from "d3";
+import { select, scaleLinear, scaleBand } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
 function Buildings({ data }) {
@@ -13,32 +13,40 @@ function Buildings({ data }) {
     data.forEach((d) => {
       d.height = +d.height;
     });
-    // convention is to name the const after the axis that it will apply to
-    const y =
-      // use log scale to display data with large changes in value
-      // does better job displaying the diff in values
-      //scaleLog takes in min and max values for domain and range
-      // the domain of a log scale needs to be either strictly negative or positive
-      // the log of 0 is always undefined
-      // 0 cannot be in the domain
-      scaleLog()
-        //domain method, takes in the vaule of the min and max of the domain
-        // 0 to the height of the tallest building
-        .domain([28, 828])
-        //range method takes in the min and max of the range
-        // the out put
-        .range([0, 400])
-        // base value defaults to 10
-        // this would place values a factor of 10 apart
-        // a log scale with a base of 1 is the same as a linear scale
-        .base(10);
+    // changing x scale width - need to make the bands more narrow or the SVG bigger for all to fit
+    // descrete domain, continuous range
+    const x = scaleBand()
+      // space out bands of equal length based on how many elements it has in its domain
+      // cannot add new values in the same way as ordinal scale
+      // categories to display for domain - needed to add to building.json and here in the domain
+      .domain([
+        "Burj Khalifa",
+        "Shanghai Tower",
+        "Abraj Al-Bait Clock Tower",
+        "Ping An Finance Centre",
+        "Lotte World Tower",
+        "One World Trade Center",
+        "Guangzhou CTF Finance Center",
+      ])
+      // the pixle postions that we want chart spaced over
+      // span of SVG
+      .range([0, 400])
+      // padding ratio inbetween the bars in the domain -
+      .paddingInner(0.3)
+      // padding ratio the outside edge of the whole domain
+      .paddingOuter(0.3);
+    console.log(x("Burj Khalifa"));
+
+    const y = scaleLinear().domain([0, 828]).range([0, 400]);
+
     svg
       .selectAll("rectangle")
       .data(data)
       .join("rect")
       .attr("y", 0)
+      // return the value from passing the building name into the x scale
       .attr("x", (d, i) => {
-        return i * 60;
+        return x(d.name);
       })
 
       .attr("width", 40)
@@ -48,7 +56,10 @@ function Buildings({ data }) {
         return y(d.height);
       })
 
-      .style("fill", "black");
+      // .style("fill", "black");
+      .attr("fill", (d) => {
+        return "grey";
+      });
   }, [data, dimensions]);
   return (
     <React.Fragment>
