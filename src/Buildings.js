@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { select, scaleLinear, scaleBand, max } from "d3";
+import { select, scaleLinear, scaleBand, max, axisBottom, axisLeft } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
 function Buildings({ data }) {
@@ -16,6 +16,28 @@ function Buildings({ data }) {
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+    //
+    // X Label
+    svg
+      .append("text")
+      .attr("class", "x axis-label")
+      .attr("x", width / 2)
+      .attr("y", height + 140)
+      .attr("font-size", "20px")
+      .attr("text-anchor", "middle")
+      .text("The word's tallest buildings");
+
+    // using this code to add title at bottom of the graph Y label
+    svg
+      .append("text")
+      .attr("class", "y axis-label")
+      .attr("x", -(height / 2))
+      .attr("y", -60)
+      .attr("font-size", "20px")
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-90)")
+      .text("Height (m)");
+    //
     if (!dimensions) return;
     data.forEach((d) => {
       d.height = +d.height;
@@ -38,9 +60,40 @@ function Buildings({ data }) {
         }),
       ])
       .range([0, height]);
+    const xAxisCall = axisBottom(x);
+    svg
+      .append("g")
+      .attr("class", "x axis")
+      // for x translate by the hight of the visualization
+      .attr("transform", "translate(0, " + height + ")")
+      // need to call the generattor
+      .call(xAxisCall)
+      // here rotating the text on the x axis so it is readable
+      .selectAll("text")
+      .attr("y", "10")
+      .attr("x", "-5")
+      //lines the text up
+      .attr("text-anchor", "end")
+      // rotate takes one argument which is the num of deg to rotate
+      .attr("transform", "rotate(-40)");
+
+    const yAxisCall = axisLeft(y)
+      // hard code number of tick marks
+      .ticks(3)
+      // this is to show values with m after them
+      .tickFormat((d) => {
+        return d + "m";
+      });
+    svg
+      .append("g")
+      .attr("class", "y-axis")
+      // need to call the generattor
+      .call(yAxisCall);
 
     svg
+
       .selectAll("rectangle")
+
       .data(data)
       .join("rect")
       .attr("y", 0)
@@ -58,7 +111,10 @@ function Buildings({ data }) {
   return (
     <React.Fragment>
       <div ref={wrapperRef}>
-        <svg ref={svgRef}></svg>
+        <svg ref={svgRef}>
+          {/* <g className="x-axis"></g>
+          <g className="y-axis"></g> */}
+        </svg>
       </div>
     </React.Fragment>
   );
