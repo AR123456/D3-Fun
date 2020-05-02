@@ -4,14 +4,20 @@ import useResizeObserver from "./useResizeObserver";
 
 function Buildings({ data }) {
   const svgRef = useRef();
+  // console.log(svgRef);
   const wrapperRef = useRef();
+  // console.log(wrapperRef);
   const dimensions = useResizeObserver(wrapperRef);
+  // console.log(dimensions);
   const margin = { left: 100, right: 10, top: 10, bottom: 100 };
   const width = 600 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
   useEffect(() => {
-    const svg = select(svgRef.current)
+    const svg = select(svgRef.current);
+    console.log(dimensions);
+    if (!dimensions) return;
+    svg
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -26,7 +32,8 @@ function Buildings({ data }) {
       .attr("font-size", "20px")
       .attr("text-anchor", "middle")
       .text("The word's tallest buildings");
-
+    // console.log(width);
+    // console.log(dimensions.width);
     // using this code to add title at bottom of the graph Y label
     svg
       .append("text")
@@ -48,7 +55,10 @@ function Buildings({ data }) {
           return d.name;
         })
       )
-      .range([0, width])
+      // .range([0, width])
+      // this is currently re drawing the bars and axi when resized but it does resize
+      //width here is the width of the ??? bars or SVG or both ??
+      .range([0, dimensions.width]) //make SVG dynamic with dimensions.width
       .paddingInner(0.3)
       .paddingOuter(0.3);
 
@@ -91,9 +101,7 @@ function Buildings({ data }) {
       .call(yAxisCall);
 
     svg
-
       .selectAll("rectangle")
-
       .data(data)
       .join("rect")
       .attr("y", 0)
@@ -110,7 +118,7 @@ function Buildings({ data }) {
   }, [data, dimensions, height, width, margin]);
   return (
     <React.Fragment>
-      <div ref={wrapperRef}>
+      <div ref={wrapperRef} style={{ marginBottom: "2rem" }}>
         <svg ref={svgRef}>
           {/* <g className="x-axis"></g>
           <g className="y-axis"></g> */}
