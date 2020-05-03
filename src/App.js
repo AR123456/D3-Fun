@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Buildings from "./Buildings";
+import StarBreak from "./StarBreak";
 
 import "./App.css";
 
@@ -8,32 +8,39 @@ function App() {
   //  https://swizec1.teachable.com/courses/447741/lectures/9911350
   const [data] = useState([
     {
-      name: "Burj Khalifa",
-      height: "828",
+      month: "January",
+      revenue: "13432",
+      profit: "8342",
     },
     {
-      name: "Shanghai Tower",
-      height: "623",
+      month: "February",
+      revenue: "19342",
+      profit: "10342",
     },
     {
-      name: "Abraj Al-Bait Clock Tower",
-      height: "601",
+      month: "March",
+      revenue: "17443",
+      profit: "15423",
     },
     {
-      name: "Ping An Finance Centre",
-      height: "599",
+      month: "April",
+      revenue: "26342",
+      profit: "18432",
     },
     {
-      name: "Lotte World Tower",
-      height: "544.5",
+      month: "May",
+      revenue: "34213",
+      profit: "29434",
     },
     {
-      name: "One World Trade Center",
-      height: "541.3",
+      month: "June",
+      revenue: "50321",
+      profit: "45343",
     },
     {
-      name: "Guangzhou CTF Finance Center",
-      height: "530",
+      month: "July",
+      revenue: "54273",
+      profit: "47452",
     },
   ]);
 
@@ -41,7 +48,7 @@ function App() {
   console.log(data[0].name);
   return (
     <React.Fragment>
-      <Buildings data={data} />
+      <StarBreak data={data} />
     </React.Fragment>
   );
 }

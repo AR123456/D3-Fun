@@ -2,15 +2,18 @@ import React, { useEffect, useRef } from "react";
 import { select, scaleLinear, scaleBand, max, axisBottom, axisLeft } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
-function Buildings({ data }) {
+function StarBreak({ data }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
-  const margin = { left: 100, right: 10, top: 10, bottom: 100 };
+  const margin = { left: 80, right: 20, top: 50, bottom: 100 };
+
   const width = 600 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
   useEffect(() => {
+    if (!dimensions) return;
+    // console.log(dimensions);
     const svg = select(svgRef.current)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -21,11 +24,11 @@ function Buildings({ data }) {
     svg
       .append("text")
       .attr("class", "x axis-label")
+      .attr("y", height + 50)
       .attr("x", width / 2)
-      .attr("y", height + 140)
       .attr("font-size", "20px")
       .attr("text-anchor", "middle")
-      .text("The word's tallest buildings");
+      .text("Month");
 
     // using this code to add title at bottom of the graph Y label
     svg
@@ -36,27 +39,26 @@ function Buildings({ data }) {
       .attr("font-size", "20px")
       .attr("text-anchor", "middle")
       .attr("transform", "rotate(-90)")
-      .text("Height (m)");
+      .text("Revenue");
     //
-    if (!dimensions) return;
+
     data.forEach((d) => {
-      d.height = +d.height;
+      d.revenue = +d.revenue;
     });
     const x = scaleBand()
       .domain(
         data.map((d) => {
-          return d.name;
+          return d.month;
         })
       )
       .range([0, width])
-      .paddingInner(0.3)
-      .paddingOuter(0.3);
+      .padding(0.2);
 
     const y = scaleLinear()
       .domain([
         0,
         max(data, (d) => {
-          return d.height;
+          return d.revenue;
         }),
       ])
       //reversing the range of linear scale so 0 maps to bottom of svg
@@ -70,22 +72,22 @@ function Buildings({ data }) {
       // for x translate by the hight of the visualization
       .attr("transform", "translate(0, " + height + ")")
       // need to call the generattor
-      .call(xAxisCall)
-      // here rotating the text on the x axis so it is readable
-      .selectAll("text")
-      .attr("y", "10")
-      .attr("x", "-5")
-      //lines the text up
-      .attr("text-anchor", "end")
-      // rotate takes one argument which is the num of deg to rotate
-      .attr("transform", "rotate(-40)");
+      .call(xAxisCall);
+    // // here rotating the text on the x axis so it is readable
+    // .selectAll("text")
+    // .attr("y", "10")
+    // .attr("x", "-5")
+    // //lines the text up
+    // .attr("text-anchor", "end")
+    // // rotate takes one argument which is the num of deg to rotate
+    // .attr("transform", "rotate(-40)");
 
     const yAxisCall = axisLeft(y)
-      // hard code number of tick marks
-      .ticks(3)
+      // // hard code number of tick marks
+      // .ticks(3)
       // this is to show values with m after them
       .tickFormat((d) => {
-        return d + "m";
+        return "$" + d;
       });
     svg
       .append("g")
@@ -103,16 +105,14 @@ function Buildings({ data }) {
       .attr("y", (d) => {
         // shift bars to bottom of screen
         // set y attribute val to val from y scale
-        return y(d.height);
+        return y(d.revenue);
       })
       .attr("x", (d, i) => {
-        return x(d.name);
+        return x(d.month);
       })
       .attr("width", x.bandwidth)
       .attr("height", (d) => {
-        // return y(d.height);
-        // changing the height of the bars to hight of vis from y scale
-        return height - y(d.height);
+        return height - y(d.revenue);
       })
       .attr("fill", (d) => {
         return "grey";
@@ -130,4 +130,4 @@ function Buildings({ data }) {
   );
 }
 
-export default Buildings;
+export default StarBreak;
