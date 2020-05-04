@@ -13,7 +13,7 @@ function StarBreak({ data }) {
 
   useEffect(() => {
     if (!dimensions) return;
-    // console.log(dimensions);
+
     const svg = select(svgRef.current)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -30,7 +30,7 @@ function StarBreak({ data }) {
       .attr("text-anchor", "middle")
       .text("Month");
 
-    // using this code to add title at bottom of the graph Y label
+    //  Y label
     svg
       .append("text")
       .attr("class", "y axis-label")
@@ -73,22 +73,10 @@ function StarBreak({ data }) {
       .attr("transform", "translate(0, " + height + ")")
       // need to call the generattor
       .call(xAxisCall);
-    // // here rotating the text on the x axis so it is readable
-    // .selectAll("text")
-    // .attr("y", "10")
-    // .attr("x", "-5")
-    // //lines the text up
-    // .attr("text-anchor", "end")
-    // // rotate takes one argument which is the num of deg to rotate
-    // .attr("transform", "rotate(-40)");
 
-    const yAxisCall = axisLeft(y)
-      // // hard code number of tick marks
-      // .ticks(3)
-      // this is to show values with m after them
-      .tickFormat((d) => {
-        return "$" + d;
-      });
+    const yAxisCall = axisLeft(y).tickFormat((d) => {
+      return "$" + d;
+    });
     svg
       .append("g")
       .attr("class", "y-axis")
@@ -96,15 +84,12 @@ function StarBreak({ data }) {
       .call(yAxisCall);
 
     svg
-
       .selectAll("rectangle")
-
       .data(data)
       .join("rect")
+      // shift bars to bottom of screen
       // .attr("y", 0)
       .attr("y", (d) => {
-        // shift bars to bottom of screen
-        // set y attribute val to val from y scale
         return y(d.revenue);
       })
       .attr("x", (d, i) => {

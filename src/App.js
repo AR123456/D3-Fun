@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StarBreak from "./StarBreak";
+import useInterval from "./useInterval";
 
 import "./App.css";
 
@@ -44,8 +45,11 @@ function App() {
     },
   ]);
 
-  console.log(data);
-  console.log(data[0].name);
+  // console.log(data);
+  // console.log(data[0].name);
+  useInterval(() => {
+    console.log("Hello");
+  }, 2000);
   return (
     <React.Fragment>
       <StarBreak data={data} />
