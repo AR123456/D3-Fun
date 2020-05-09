@@ -84,24 +84,20 @@ function StarBreak({ data }) {
       .call(yAxisCall);
 
     svg
-      .selectAll("rectangle")
+      .selectAll("rect")
       .data(data)
       .join("rect")
-      // shift bars to bottom of screen
-      // .attr("y", 0)
+      .attr("fill", "grey")
       .attr("y", (d) => {
         return y(d.revenue);
       })
-      .attr("x", (d, i) => {
+      .attr("x", (d) => {
         return x(d.month);
       })
-      .attr("width", x.bandwidth)
       .attr("height", (d) => {
         return height - y(d.revenue);
       })
-      .attr("fill", (d) => {
-        return "grey";
-      });
+      .attr("width", x.bandwidth);
   }, [data, dimensions, height, width, margin]);
   return (
     <React.Fragment>
