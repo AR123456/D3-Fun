@@ -44,15 +44,25 @@ function App() {
       profit: "47452",
     },
   ]);
-
+  // create flagData const ans setFlagData function
+  const [flagData, setFlagData] = useState(true);
   // console.log(data);
   // console.log(data[0].name);
+  let flag;
   useInterval(() => {
-    console.log("Hello");
+    ////////////// this is updating  flag every 2 sec in this log but when I try to
+    ///////////// move over to StarBreak neither it is not seconds
+    // console.log("Hello");
+    // setFlagData to opposite what it started at every 2 sec
+    // then pass it to StarBreak component
+    setFlagData((flag = !flag));
+
+    // console.log(flag);
   }, 2000);
+
   return (
     <React.Fragment>
-      <StarBreak data={data} />
+      <StarBreak data={data} flagData={flagData} />
     </React.Fragment>
   );
 }

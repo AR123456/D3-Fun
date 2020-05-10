@@ -2,23 +2,25 @@ import React, { useEffect, useRef } from "react";
 import { select, scaleLinear, scaleBand, max, axisBottom, axisLeft } from "d3";
 import useResizeObserver from "./useResizeObserver";
 
-function StarBreak({ data }) {
+function StarBreak({ data, flagData }) {
+  // flagData changeing true to faluse ever 2 seconds
+  console.log(flagData);
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
-  const margin = { left: 80, right: 20, top: 50, bottom: 100 };
 
-  const width = 600 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+  let height = 350,
+    width = 700;
 
   useEffect(() => {
     if (!dimensions) return;
 
     const svg = select(svgRef.current)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .append("svg")
+      .attr("width", width + 100)
+      .attr("height", height + 150)
       .append("g")
-      .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+      .attr("transform", "translate(" + 80 + ", " + 50 + ")");
     //
     // X Label
     svg
@@ -98,7 +100,7 @@ function StarBreak({ data }) {
         return height - y(d.revenue);
       })
       .attr("width", x.bandwidth);
-  }, [data, dimensions, height, width, margin]);
+  }, [data, dimensions, height, width]);
   return (
     <React.Fragment>
       <div ref={wrapperRef}>
