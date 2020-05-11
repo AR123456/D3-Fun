@@ -1,28 +1,45 @@
 import React, { useEffect, useRef } from "react";
-import { select, scaleLinear, scaleBand, max, axisBottom, axisLeft } from "d3";
+import {
+  select,
+  scaleLinear,
+  scaleLog,
+  scaleOrdinal,
+  schemePastel1,
+  axisBottom,
+  axisLeft,
+  transition,
+} from "d3";
 import useResizeObserver from "./useResizeObserver";
 
-function StarBreak({ data, flagData }) {
+function StarBreak({ data, time }) {
   // flagData changeing true to faluse ever 2 seconds
-  console.log(flagData);
+  console.log(time);
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
-
-  let height = 350,
+  // const margin = { left: 80, right: 20, top: 50, bottom: 100 };
+  const height = 350,
     width = 700;
 
   useEffect(() => {
     if (!dimensions) return;
 
     const svg = select(svgRef.current)
-      .append("svg")
       .attr("width", width + 100)
       .attr("height", height + 150)
       .append("g")
       .attr("transform", "translate(" + 80 + ", " + 50 + ")");
-    //
-    // X Label
+
+    // Scales
+    const x = scaleLog().base(10).range([0, width]).domain([142, 150000]);
+    const y = scaleLinear().range([height, 0]).domain([0, 90]);
+    const area = scaleLinear()
+      .range([25 * Math.PI, 1500 * Math.PI])
+      .domain([2000, 1400000000]);
+    const continentColor = scaleOrdinal(schemePastel1);
+
+    // Labels
+    // xLabel
     svg
       .append("text")
       .attr("class", "x axis-label")
@@ -30,51 +47,40 @@ function StarBreak({ data, flagData }) {
       .attr("x", width / 2)
       .attr("font-size", "20px")
       .attr("text-anchor", "middle")
-      .text("Month");
-
-    //  Y label
+      .text("GDP Per Capita ($)");
+    // yLabel
     svg
       .append("text")
       .attr("class", "y axis-label")
-      .attr("x", -(height / 2))
-      .attr("y", -60)
+      .attr("transform", "rotate(-90)")
+      .attr("y", -40)
+      .attr("x", -170)
       .attr("font-size", "20px")
       .attr("text-anchor", "middle")
-      .attr("transform", "rotate(-90)")
-      .text("Revenue");
-    //
+      .text("Life Expectancy (Years)");
+    // timeLable
 
-    data.forEach((d) => {
-      d.revenue = +d.revenue;
-    });
-    const x = scaleBand()
-      .domain(
-        data.map((d) => {
-          return d.month;
-        })
-      )
-      .range([0, width])
-      .padding(0.2);
-
-    const y = scaleLinear()
-      .domain([
-        0,
-        max(data, (d) => {
-          return d.revenue;
-        }),
-      ])
-      //reversing the range of linear scale so 0 maps to bottom of svg
-      // instead of the top
-      // .range([0, height]);
-      .range([height, 0]);
-    const xAxisCall = axisBottom(x);
+    svg
+      .append("text")
+      .attr("class", "timeLabel")
+      .attr("y", height - 10)
+      .attr("x", width - 40)
+      .attr("font-size", "40px")
+      .attr("opacity", "0.4")
+      .attr("text-anchor", "middle")
+      .text("1800");
+    // x-axis
+    const xAxisCall = axisBottom(x)
+      .tickValues([400, 4000, 40000])
+      .tickFormat((d) => {
+        // return format("$")
+      });
     svg
       .append("g")
       .attr("class", "x axis")
-      // for x translate by the hight of the visualization
-      .attr("transform", "translate(0, " + height + ")")
-      // need to call the generattor
+      .attr("transform", "translate(0," + height + ")")
       .call(xAxisCall);
+    //yAxis
 
     const yAxisCall = axisLeft(y).tickFormat((d) => {
       return "$" + d;
@@ -85,22 +91,58 @@ function StarBreak({ data, flagData }) {
       // need to call the generattor
       .call(yAxisCall);
 
-    svg
-      .selectAll("rect")
-      .data(data)
-      .join("rect")
-      .attr("fill", "grey")
-      .attr("y", (d) => {
-        return y(d.revenue);
-      })
-      .attr("x", (d) => {
-        return x(d.month);
-      })
-      .attr("height", (d) => {
-        return height - y(d.revenue);
-      })
-      .attr("width", x.bandwidth);
-  }, [data, dimensions, height, width]);
+    // Clean data
+
+    const formattedData = data.map((year) => {
+      return year["countries"]
+        .filter((country) => {
+          const dataExists = country.income && country.life_exp;
+          return dataExists;
+        })
+        .map((country) => {
+          country.income = +country.income;
+          country.life_exp = +country.life_exp;
+          return country;
+        });
+    });
+    // First run of the visualization
+    update(formattedData[0]);
+    function update(data) {
+      // Standard transition time for the visualization
+      const t = transition().duration(100);
+
+      // JOIN new data with old elements.
+      const circles = svg.selectAll("circle").data(data, (d) => {
+        return d.country;
+      });
+
+      // EXIT old elements not present in new data.
+      circles.exit().attr("class", "exit").remove();
+
+      // ENTER new elements present in new data.
+      circles
+        .enter()
+        .append("circle")
+        .attr("class", "enter")
+        .attr("fill", (d) => {
+          return continentColor(d.continent);
+        })
+        .merge(circles)
+        .transition(t)
+        .attr("cy", (d) => {
+          return y(d.life_exp);
+        })
+        .attr("cx", (d) => {
+          return x(d.income);
+        })
+        .attr("r", function (d) {
+          return Math.sqrt(area(d.population) / Math.PI);
+        });
+
+      // Update the time label
+      svg.text(+(time + 1800));
+    }
+  }, [data, dimensions, height, width, time]);
   return (
     <React.Fragment>
       <div ref={wrapperRef}>
