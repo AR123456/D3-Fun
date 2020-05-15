@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 
-// works like set interval Dan Abernoff
-//https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+/**
+ * Hook, that makes setInterval work with functional components.
+ */
+
 function useInterval(callback, delay) {
   const savedCallback = useRef();
 
