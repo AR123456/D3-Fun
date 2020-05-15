@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import Video from "./Video";
+
 import "./App.css";
 import BrushChart from "./BrushChart";
 import BrushChartChild from "./BrushChartChild";
