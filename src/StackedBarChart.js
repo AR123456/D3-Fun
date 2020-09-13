@@ -10,7 +10,7 @@ import {
   max,
   scaleLinear,
   axisLeft,
-  stackOrderAscending
+  stackOrderAscending,
 } from "d3";
 // makes this responsive
 import useResizeObserver from "./useResizeObserver";
@@ -31,13 +31,13 @@ function StackedBarChart({ data, keys, colors }) {
       dimensions || wrapperRef.current.getBoundingClientRect();
 
     // stacks / layers
-    // the stack generator-
+    // the stack generator function from D3-
     const stackGenerator = stack()
       // which keys to stack on top of one another
       // cuts into layers and stacks or series
       .keys(keys)
       // order is avalible out of the box with D3
-      // now lauyes with the lowest number sum will float to the bottom of the stack in the chart
+      // now layers with the lowest number sum will float to the bottom of the stack in the chart
       .order(stackOrderAscending);
     const layers = stackGenerator(data);
     const extent = [
@@ -45,13 +45,13 @@ function StackedBarChart({ data, keys, colors }) {
       // pass layers array and look for max in each sequence ,
       //then compare to each other to find highest total value
 
-      max(layers, layer => max(layer, sequence => sequence[1]))
+      max(layers, (layer) => max(layer, (sequence) => sequence[1])),
     ];
 
     // scales - values in data aray to pixel values
     const xScale = scaleBand()
       // array of years in the data array , map and return the years in the array
-      .domain(data.map(d => d.year))
+      .domain(data.map((d) => d.year))
       // how long the axis needs to be
       .range([0, width])
       .padding(0.25);
@@ -64,6 +64,7 @@ function StackedBarChart({ data, keys, colors }) {
 
     // rendering the layers - use d3 general update pattern
     svg
+      // three layers
       .selectAll(".layer")
       //sync with data from layers array
       .data(layers)
@@ -72,18 +73,18 @@ function StackedBarChart({ data, keys, colors }) {
       //give class layer to update later
       .attr("class", "layer")
       //feeding in the colors
-      .attr("fill", layer => colors[layer.key])
+      .attr("fill", (layer) => colors[layer.key])
       // select reca tn sync with data from layers array
       .selectAll("rect")
-      .data(layer => layer)
+      .data((layer) => layer)
       .join("rect")
       // add x and y attributes so we can see
       // get current year in each sequence
-      .attr("x", sequence => xScale(sequence.data.year))
+      .attr("x", (sequence) => xScale(sequence.data.year))
       .attr("width", xScale.bandwidth())
       // point of origin is top right, not bottom left
-      .attr("y", sequence => yScale(sequence[1]))
-      .attr("height", sequence => yScale(sequence[0]) - yScale(sequence[1]));
+      .attr("y", (sequence) => yScale(sequence[1]))
+      .attr("height", (sequence) => yScale(sequence[0]) - yScale(sequence[1]));
 
     // axes
     // putting x into the x-axis group element
