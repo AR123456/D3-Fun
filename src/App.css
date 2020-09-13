@@ -10,18 +10,15 @@ svg rect.selection {
   stroke: none;
 }
 
-table {
-  height: 200px;
-  background: #eee;
-}
-
 #root {
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
   height: 100vh;
-  padding: 0 50px 150px;
+  padding: 0 50px;
   text-align: center;
   box-sizing: border-box;
 }
@@ -39,4 +36,17 @@ video {
   right: 0;
   top: auto;
   width: 100%;
+}
+
+.fields {
+  margin-bottom: 1rem;
+}
+
+.field {
+  display: inline-block;
+  margin: 0 0.5em;
+}
+
+.field input {
+  margin-right: 0.5em;
 }
