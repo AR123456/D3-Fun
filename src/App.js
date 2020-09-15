@@ -1,93 +1,22 @@
-// useState in App.js
 import React, { useState } from "react";
 import "./App.css";
-import StackedAreaChart from "./StackedAreaChart";
-import StackedBarChart from "./StackedBarChart";
-
-const allKeys = ["🥑", "🍌", "🍆"];
-// this will get passed to the colors array of the stacked bar chart
-const colors = {
-  "🥑": "green",
-  "🍌": "orange",
-  "🍆": "purple"
-};
+import ZoomableLineChart from "./ZoomableLineChart";
 
 function App() {
-  const [keys, setKeys] = useState(allKeys);
-  const [data, setData] = useState([
-    {
-      year: 1980,
-      "🥑": 10,
-      "🍌": 20,
-      "🍆": 30
-    },
-    {
-      year: 1990,
-      "🥑": 20,
-      "🍌": 40,
-      "🍆": 60
-    },
-    {
-      year: 2000,
-      "🥑": 30,
-      "🍌": 45,
-      "🍆": 80
-    },
-    {
-      year: 2010,
-      "🥑": 40,
-      "🍌": 60,
-      "🍆": 100
-    },
-    {
-      year: 2020,
-      "🥑": 50,
-      "🍌": 80,
-      "🍆": 120
-    }
-  ]);
+  // generating the random numes for the graph
+  const [data, setData] = useState(
+    // generating array of 50 random numbers
+    Array.from({ length: 50 }, () => Math.round(Math.random() * 100))
+  );
 
   return (
     <React.Fragment>
-      <h2>Stacked Area Chart with D3 </h2>
-      {/* render of the chart passes on data, colors an keys  */}
-      <StackedAreaChart data={data} keys={keys} colors={colors} />
-      <StackedBarChart data={data} keys={keys} colors={colors} />
-      {/* this is for the check boxes  */}
-      <div className="fields">
-        {allKeys.map(key => (
-          <div key={key} className="field">
-            <input
-              id={key}
-              type="checkbox"
-              checked={keys.includes(key)}
-              onChange={e => {
-                if (e.target.checked) {
-                  setKeys(Array.from(new Set([...keys, key])));
-                } else {
-                  setKeys(keys.filter(_key => _key !== key));
-                }
-              }}
-            />
-            <label htmlFor={key} style={{ color: colors[key] }}>
-              {key}
-            </label>
-          </div>
-        ))}
-      </div>
-
+      <h2>Zoomable Line Chart with D3 </h2>
+      {/* passing data in state to the zoomableLineChart component */}
+      <ZoomableLineChart data={data} />
+      {/* this button adds more random data to the display  */}
       <button
-        onClick={() =>
-          setData([
-            ...data,
-            {
-              year: Math.max(...data.map(d => d.year)) + 10,
-              "🥑": Math.round(Math.random() * 100),
-              "🍌": Math.round(Math.random() * 125),
-              "🍆": Math.round(Math.random() * 150)
-            }
-          ])
-        }
+        onClick={() => setData([...data, Math.round(Math.random() * 100)])}
       >
         Add data
       </button>
